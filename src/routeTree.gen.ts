@@ -9,8 +9,56 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as ParentingCoachingRouteImport } from './routes/parenting-coaching'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as KnowledgeRouteImport } from './routes/knowledge'
+import { Route as EnquiryRouteImport } from './routes/enquiry'
+import { Route as EducationPlanningRouteImport } from './routes/education-planning'
+import { Route as CoachingRouteImport } from './routes/coaching'
+import { Route as BookshelfRouteImport } from './routes/bookshelf'
 import { Route as IndexRouteImport } from './routes/index'
 
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParentingCoachingRoute = ParentingCoachingRouteImport.update({
+  id: '/parenting-coaching',
+  path: '/parenting-coaching',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KnowledgeRoute = KnowledgeRouteImport.update({
+  id: '/knowledge',
+  path: '/knowledge',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnquiryRoute = EnquiryRouteImport.update({
+  id: '/enquiry',
+  path: '/enquiry',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EducationPlanningRoute = EducationPlanningRouteImport.update({
+  id: '/education-planning',
+  path: '/education-planning',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoachingRoute = CoachingRouteImport.update({
+  id: '/coaching',
+  path: '/coaching',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookshelfRoute = BookshelfRouteImport.update({
+  id: '/bookshelf',
+  path: '/bookshelf',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +67,144 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bookshelf': typeof BookshelfRoute
+  '/coaching': typeof CoachingRoute
+  '/education-planning': typeof EducationPlanningRoute
+  '/enquiry': typeof EnquiryRoute
+  '/knowledge': typeof KnowledgeRoute
+  '/login': typeof LoginRoute
+  '/parenting-coaching': typeof ParentingCoachingRoute
+  '/register': typeof RegisterRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bookshelf': typeof BookshelfRoute
+  '/coaching': typeof CoachingRoute
+  '/education-planning': typeof EducationPlanningRoute
+  '/enquiry': typeof EnquiryRoute
+  '/knowledge': typeof KnowledgeRoute
+  '/login': typeof LoginRoute
+  '/parenting-coaching': typeof ParentingCoachingRoute
+  '/register': typeof RegisterRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bookshelf': typeof BookshelfRoute
+  '/coaching': typeof CoachingRoute
+  '/education-planning': typeof EducationPlanningRoute
+  '/enquiry': typeof EnquiryRoute
+  '/knowledge': typeof KnowledgeRoute
+  '/login': typeof LoginRoute
+  '/parenting-coaching': typeof ParentingCoachingRoute
+  '/register': typeof RegisterRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/bookshelf'
+    | '/coaching'
+    | '/education-planning'
+    | '/enquiry'
+    | '/knowledge'
+    | '/login'
+    | '/parenting-coaching'
+    | '/register'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/bookshelf'
+    | '/coaching'
+    | '/education-planning'
+    | '/enquiry'
+    | '/knowledge'
+    | '/login'
+    | '/parenting-coaching'
+    | '/register'
+  id:
+    | '__root__'
+    | '/'
+    | '/bookshelf'
+    | '/coaching'
+    | '/education-planning'
+    | '/enquiry'
+    | '/knowledge'
+    | '/login'
+    | '/parenting-coaching'
+    | '/register'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BookshelfRoute: typeof BookshelfRoute
+  CoachingRoute: typeof CoachingRoute
+  EducationPlanningRoute: typeof EducationPlanningRoute
+  EnquiryRoute: typeof EnquiryRoute
+  KnowledgeRoute: typeof KnowledgeRoute
+  LoginRoute: typeof LoginRoute
+  ParentingCoachingRoute: typeof ParentingCoachingRoute
+  RegisterRoute: typeof RegisterRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parenting-coaching': {
+      id: '/parenting-coaching'
+      path: '/parenting-coaching'
+      fullPath: '/parenting-coaching'
+      preLoaderRoute: typeof ParentingCoachingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/knowledge': {
+      id: '/knowledge'
+      path: '/knowledge'
+      fullPath: '/knowledge'
+      preLoaderRoute: typeof KnowledgeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/enquiry': {
+      id: '/enquiry'
+      path: '/enquiry'
+      fullPath: '/enquiry'
+      preLoaderRoute: typeof EnquiryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/education-planning': {
+      id: '/education-planning'
+      path: '/education-planning'
+      fullPath: '/education-planning'
+      preLoaderRoute: typeof EducationPlanningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/coaching': {
+      id: '/coaching'
+      path: '/coaching'
+      fullPath: '/coaching'
+      preLoaderRoute: typeof CoachingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bookshelf': {
+      id: '/bookshelf'
+      path: '/bookshelf'
+      fullPath: '/bookshelf'
+      preLoaderRoute: typeof BookshelfRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +217,15 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BookshelfRoute: BookshelfRoute,
+  CoachingRoute: CoachingRoute,
+  EducationPlanningRoute: EducationPlanningRoute,
+  EnquiryRoute: EnquiryRoute,
+  KnowledgeRoute: KnowledgeRoute,
+  LoginRoute: LoginRoute,
+  ParentingCoachingRoute: ParentingCoachingRoute,
+  RegisterRoute: RegisterRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
