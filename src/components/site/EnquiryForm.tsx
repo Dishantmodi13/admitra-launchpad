@@ -116,7 +116,7 @@ export function EnquiryForm() {
         type="submit"
         className="w-full bg-foreground py-4 font-mono uppercase tracking-widest text-background transition-colors hover:bg-accent"
       >
-        Submit Inquiry
+        Submit Enquiry
       </button>
     </form>
   );

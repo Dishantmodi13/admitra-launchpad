@@ -1,88 +1,146 @@
 import { Link } from "@tanstack/react-router";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import kareerStudioLogo from "@/assets/kareer-studio-logo.png";
+
+const navigateLinks = [
+  { label: "Coaching", to: "/coaching" as const },
+  { label: "Education Planning", to: "/education-planning" as const },
+  { label: "Parenting Coaching", to: "/parenting-coaching" as const },
+  { label: "Bookshelf", to: "/bookshelf" as const },
+  { label: "Knowledge Center", to: "/knowledge" as const },
+];
+
+const socialLinks = [
+  { label: "Instagram", href: "#" },
+  { label: "LinkedIn", href: "#" },
+  { label: "Podcast", href: "#" },
+];
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-secondary px-6 py-24">
-      <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-4">
-        <div className="md:col-span-2">
-          <div className="mb-2 font-serif text-3xl font-bold italic">KAREER Studio</div>
-          <p className="mb-6 font-mono text-[10px] uppercase tracking-[0.25em] text-accent">
-            Powered by ADMITra
-          </p>
-          <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
+    <footer className="border-t border-border bg-secondary px-6 py-16 lg:py-20">
+      <div className="mx-auto grid max-w-7xl gap-12 sm:gap-14 lg:grid-cols-12 lg:gap-10">
+        {/* Brand */}
+        <div className="lg:col-span-4">
+          <Link to="/" className="inline-block">
+            <img
+              src={kareerStudioLogo}
+              alt="KAREER studio — Powered by ADMITra"
+              width={200}
+              height={54}
+              className="h-11 w-auto object-contain mix-blend-lighten md:h-12"
+            />
+          </Link>
+          <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
             A purpose-driven commitment to global education and career planning.
             Empowering the next generation of global citizens — beyond borders,
             beyond cultures.
           </p>
         </div>
-        <div>
-          <h4 className="mb-6 font-mono text-[10px] uppercase tracking-[0.25em] text-accent">
+
+        {/* Navigate */}
+        <div className="lg:col-span-2">
+          <h4 className="mb-5 font-mono text-[10px] uppercase tracking-[0.25em] text-accent">
             Navigate
           </h4>
-          <ul className="space-y-3 text-sm">
-            <li>
-              <Link to="/coaching" className="hover:text-accent">
-                Coaching
-              </Link>
-            </li>
-            <li>
-              <Link to="/education-planning" className="hover:text-accent">
-                Education Planning
-              </Link>
-            </li>
-            <li>
-              <Link to="/parenting-coaching" className="hover:text-accent">
-                Parenting Coaching
-              </Link>
-            </li>
-            <li>
-              <Link to="/bookshelf" className="hover:text-accent">
-                Bookshelf
-              </Link>
-            </li>
-            <li>
-              <Link to="/knowledge" className="hover:text-accent">
-                Knowledge Center
-              </Link>
-            </li>
+          <ul className="space-y-2.5 text-sm">
+            {navigateLinks.map((item) => (
+              <li key={item.to}>
+                <Link to={item.to} className="transition-colors hover:text-accent">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
             <li>
               <a
                 href="https://assessments.admitra.io"
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-accent"
+                className="transition-colors hover:text-accent"
               >
                 Assessments →
               </a>
             </li>
           </ul>
         </div>
-        <div>
-          <h4 className="mb-6 font-mono text-[10px] uppercase tracking-[0.25em] text-accent">
+
+        {/* Contact */}
+        <div className="lg:col-span-3">
+          <h4 className="mb-5 font-mono text-[10px] uppercase tracking-[0.25em] text-accent">
+            Contact
+          </h4>
+          <ul className="space-y-4 text-sm">
+            <li className="flex gap-3">
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
+              <address className="not-italic leading-relaxed text-muted-foreground">
+                303, Rajshree Center,
+                <br />
+                Near Kalaghoda, Sayajigunj,
+                <br />
+                Vadodara-390020 GJ, IN
+              </address>
+            </li>
+            <li className="flex gap-3">
+              <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
+              <div className="flex flex-col gap-1">
+                <a
+                  href="tel:+912653138392"
+                  className="transition-colors hover:text-accent"
+                >
+                  +91 265 31 38 392
+                </a>
+                <a
+                  href="tel:+918104215365"
+                  className="transition-colors hover:text-accent"
+                >
+                  +91 810 42 15 365
+                </a>
+              </div>
+            </li>
+            <li className="flex gap-3">
+              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
+              <a
+                href="mailto:hello@kareerstudio.com"
+                className="transition-colors hover:text-accent"
+              >
+                hello@kareerstudio.com
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Hours & Social */}
+        <div className="lg:col-span-3">
+          <h4 className="mb-5 font-mono text-[10px] uppercase tracking-[0.25em] text-accent">
+            Hours
+          </h4>
+          <ul className="space-y-2 text-sm text-muted-foreground">
+            <li className="flex gap-3">
+              <Clock className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
+              <div className="space-y-1.5">
+                <p>Mon – Sat: 10:00 – 19:30</p>
+                <p>Sun: On Request</p>
+              </div>
+            </li>
+          </ul>
+
+          <h4 className="mb-4 mt-8 font-mono text-[10px] uppercase tracking-[0.25em] text-accent">
             Connect
           </h4>
-          <ul className="space-y-3 text-sm">
-            <li>
-              <a href="#" className="hover:text-accent">
-                Instagram
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-accent">
-                LinkedIn
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-accent">
-                Podcast
-              </a>
-            </li>
-            <li className="pt-4 font-mono text-xs">hello@kareerstudio.com</li>
+          <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+            {socialLinks.map((item) => (
+              <li key={item.label}>
+                <a href={item.href} className="transition-colors hover:text-accent">
+                  {item.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
-      <div className="mx-auto mt-24 flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
-        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+
+      <div className="mx-auto mt-14 flex max-w-7xl flex-col items-center justify-between gap-3 border-t border-border pt-8 sm:flex-row sm:gap-4 lg:mt-16">
+        <p className="text-center font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground sm:text-left">
           © {new Date().getFullYear()} KAREER Studio — All Rights Reserved
         </p>
         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
