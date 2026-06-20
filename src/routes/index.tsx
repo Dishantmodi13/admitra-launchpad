@@ -5,12 +5,6 @@ import { PageLayout } from "@/components/site/PageLayout";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { ScrollReveal, ScrollRevealGroup } from "@/components/site/ScrollReveal";
-import book1 from "@/assets/book-1.jpg";
-import book2 from "@/assets/book-2.jpg";
-import book3 from "@/assets/book-3.jpg";
-import book4 from "@/assets/book-4.jpg";
-import book5 from "@/assets/book-5.jpg";
-import book6 from "@/assets/book-6.jpg";
 import blog1 from "@/assets/blog-1.jpg";
 import blog2 from "@/assets/blog-2.jpg";
 import whyChooseUs from "@/assets/why-choose-us.png";
@@ -82,15 +76,6 @@ const whyChooseReasons = [
     title: "Personalized Approach",
     body: "Strategies shaped around your goals, interests, and academic achievements.",
   },
-];
-
-const books = [
-  { cover: book1, title: "The Global Scholar", series: "Study Abroad" },
-  { cover: book2, title: "Ivy League Prep", series: "Admissions" },
-  { cover: book3, title: "Future Career", series: "Career Planning" },
-  { cover: book4, title: "IELTS Mastery", series: "Coaching" },
-  { cover: book5, title: "Global Parenting", series: "Parenting" },
-  { cover: book6, title: "Visa Handbook", series: "Study Abroad" },
 ];
 
 const stories = [
@@ -177,7 +162,8 @@ function Index() {
             </p>
           </ScrollRevealGroup>
           <ScrollRevealGroup
-            className="grid gap-px rounded-xl border border-border bg-border md:grid-cols-2 lg:grid-cols-4"
+            className="grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+            itemClassName="h-full"
             stagger={120}
             direction="up"
             threshold={0.06}
@@ -185,7 +171,7 @@ function Index() {
             {services.map((s) => (
               <div
                 key={s.n}
-                className="group bg-background p-8 transition-colors hover:bg-accent/5"
+                className="group h-full border border-border bg-background p-8 transition-colors hover:border-accent/40 hover:bg-accent/5"
               >
                 <span className="block font-mono text-xs text-accent">{s.n}</span>
                 <h3 className="mt-6 font-serif text-2xl italic leading-snug">
@@ -315,54 +301,6 @@ function Index() {
               </ScrollReveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Bookshelf */}
-      <section className="overflow-hidden bg-foreground py-24 text-background lg:py-32">
-        <div className="mb-12 flex items-end justify-between px-6">
-          <ScrollReveal direction="up">
-            <div>
-              <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">
-                The Bookshelf
-              </span>
-              <h2 className="mt-4 font-serif text-4xl italic md:text-5xl">
-                The Knowledge Library.
-              </h2>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal direction="fade" delay={120}>
-            <p className="font-mono text-[11px] uppercase tracking-widest text-accent">
-              All Resources ₹0/-
-            </p>
-          </ScrollReveal>
-        </div>
-        <div className="no-scrollbar flex gap-6 overflow-x-auto px-6 pb-8">
-          {books.map((b, i) => (
-            <ScrollReveal key={b.title} delay={i * 100} direction="up" className="flex-shrink-0">
-              <div className="group w-[230px] sm:w-[250px]">
-                <div className="overflow-hidden bg-secondary/10 transition-transform duration-500 group-hover:-translate-y-2">
-                  <img
-                    src={b.cover}
-                    alt={b.title}
-                    loading="lazy"
-                    width={360}
-                    height={540}
-                    className="aspect-[2/3] w-full object-cover"
-                  />
-                </div>
-                <div className="mt-4 flex items-baseline justify-between">
-                  <div>
-                    <h4 className="font-serif text-base italic">{b.title}</h4>
-                    <p className="mt-1 font-mono text-[10px] uppercase tracking-widest opacity-50">
-                      {b.series}
-                    </p>
-                  </div>
-                  <span className="font-mono text-xs text-accent">₹0/-</span>
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
         </div>
       </section>
 

@@ -17,6 +17,7 @@ import { Route as EnquiryRouteImport } from './routes/enquiry'
 import { Route as EducationPlanningRouteImport } from './routes/education-planning'
 import { Route as CoachingRouteImport } from './routes/coaching'
 import { Route as BookshelfRouteImport } from './routes/bookshelf'
+import { Route as AssessmentsRouteImport } from './routes/assessments'
 import { Route as IndexRouteImport } from './routes/index'
 
 const RegisterRoute = RegisterRouteImport.update({
@@ -59,6 +60,11 @@ const BookshelfRoute = BookshelfRouteImport.update({
   path: '/bookshelf',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AssessmentsRoute = AssessmentsRouteImport.update({
+  id: '/assessments',
+  path: '/assessments',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -67,6 +73,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/assessments': typeof AssessmentsRoute
   '/bookshelf': typeof BookshelfRoute
   '/coaching': typeof CoachingRoute
   '/education-planning': typeof EducationPlanningRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/assessments': typeof AssessmentsRoute
   '/bookshelf': typeof BookshelfRoute
   '/coaching': typeof CoachingRoute
   '/education-planning': typeof EducationPlanningRoute
@@ -90,6 +98,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/assessments': typeof AssessmentsRoute
   '/bookshelf': typeof BookshelfRoute
   '/coaching': typeof CoachingRoute
   '/education-planning': typeof EducationPlanningRoute
@@ -103,6 +112,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/assessments'
     | '/bookshelf'
     | '/coaching'
     | '/education-planning'
@@ -114,6 +124,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/assessments'
     | '/bookshelf'
     | '/coaching'
     | '/education-planning'
@@ -125,6 +136,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/assessments'
     | '/bookshelf'
     | '/coaching'
     | '/education-planning'
@@ -137,6 +149,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AssessmentsRoute: typeof AssessmentsRoute
   BookshelfRoute: typeof BookshelfRoute
   CoachingRoute: typeof CoachingRoute
   EducationPlanningRoute: typeof EducationPlanningRoute
@@ -205,6 +218,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BookshelfRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/assessments': {
+      id: '/assessments'
+      path: '/assessments'
+      fullPath: '/assessments'
+      preLoaderRoute: typeof AssessmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -217,6 +237,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AssessmentsRoute: AssessmentsRoute,
   BookshelfRoute: BookshelfRoute,
   CoachingRoute: CoachingRoute,
   EducationPlanningRoute: EducationPlanningRoute,

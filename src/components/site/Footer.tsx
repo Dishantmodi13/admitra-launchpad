@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
-import kareerStudioLogo from "@/assets/kareer-studio-logo.png";
+import logo from "@/assets/logo.png";
 
 const navigateLinks = [
   { label: "Coaching", to: "/coaching" as const },
@@ -16,6 +16,8 @@ const socialLinks = [
   { label: "Podcast", href: "#" },
 ];
 
+const mapsUrl = "https://maps.app.goo.gl/hhFbyjyS6YySQbQz7";
+
 export function Footer() {
   return (
     <footer className="border-t border-border bg-secondary px-6 py-16 lg:py-20">
@@ -24,11 +26,11 @@ export function Footer() {
         <div className="lg:col-span-4">
           <Link to="/" className="inline-block">
             <img
-              src={kareerStudioLogo}
-              alt="KAREER studio — Powered by ADMITra"
+              src={logo}
+              alt="KAREERstudio — Powered by ADMITra"
               width={200}
               height={54}
-              className="h-11 w-auto object-contain mix-blend-lighten md:h-12"
+              className="h-11 w-auto object-contain md:h-12"
             />
           </Link>
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
@@ -52,14 +54,9 @@ export function Footer() {
               </li>
             ))}
             <li>
-              <a
-                href="https://assessments.admitra.io"
-                target="_blank"
-                rel="noreferrer"
-                className="transition-colors hover:text-accent"
-              >
+              <Link to="/assessments" className="transition-colors hover:text-accent">
                 Assessments →
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -72,13 +69,18 @@ export function Footer() {
           <ul className="space-y-4 text-sm">
             <li className="flex gap-3">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
-              <address className="not-italic leading-relaxed text-muted-foreground">
+              <a
+                href={mapsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="leading-relaxed text-muted-foreground transition-colors hover:text-accent"
+              >
                 303, Rajshree Center,
                 <br />
                 Near Kalaghoda, Sayajigunj,
                 <br />
                 Vadodara-390020 GJ, IN
-              </address>
+              </a>
             </li>
             <li className="flex gap-3">
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />

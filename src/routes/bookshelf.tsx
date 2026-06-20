@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHeader, PageLayout } from "@/components/site/PageLayout";
+import { PageLayout } from "@/components/site/PageLayout";
+import { ScrollReveal } from "@/components/site/ScrollReveal";
+import { AutoScrollBookRow } from "@/components/site/AutoScrollBookRow";
+import heroBookshelf from "@/assets/hero-bookshelf.jpg";
 import book1 from "@/assets/book-1.jpg";
 import book2 from "@/assets/book-2.jpg";
 import book3 from "@/assets/book-3.jpg";
@@ -33,39 +36,47 @@ const books = [
 function BookshelfPage() {
   return (
     <PageLayout>
-      <PageHeader
-        eyebrow="Bookshelf"
-        title="The Knowledge Library."
-        body="Free resources to help you decide, prepare, and arrive. Every title is ₹0/-."
-      />
-      <section className="overflow-hidden px-6 py-24">
-        <div className="no-scrollbar flex gap-6 overflow-x-auto pb-4">
-          {books.map((b) => (
-            <article key={b.title} className="group w-[230px] flex-shrink-0 sm:w-[250px]">
-              <div className="overflow-hidden bg-secondary">
+      {/* Hero */}
+      <section className="border-b border-border px-6 py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            <ScrollReveal direction="left">
+              <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">
+                Bookshelf
+              </span>
+              <h1 className="mt-6 font-serif text-5xl italic leading-[1.05] md:text-6xl lg:text-7xl">
+                The Knowledge
+                <br />
+                Library.
+              </h1>
+              <p className="mt-8 max-w-xl text-lg text-muted-foreground">
+                Free resources to help you decide, prepare, and arrive. Every title
+                is ₹0/-.
+              </p>
+              <p className="mt-4 font-mono text-[11px] uppercase tracking-widest text-accent">
+                All Resources ₹0/-
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal direction="right" delay={120} className="lg:justify-self-end">
+              <div className="relative mx-auto max-w-lg overflow-hidden border border-border bg-secondary sm:max-w-xl lg:mx-0 lg:ml-auto lg:max-w-[480px] xl:max-w-[540px]">
                 <img
-                  src={b.cover}
-                  alt={b.title}
-                  loading="lazy"
-                  width={360}
-                  height={540}
-                  className="aspect-[2/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  src={heroBookshelf}
+                  alt="Curated bookshelf with premium education guides and resources"
+                  width={800}
+                  height={500}
+                  className="aspect-[16/10] w-full object-cover object-center"
+                  loading="eager"
                 />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-foreground/10 via-transparent to-transparent" />
               </div>
-              <div className="mt-4 flex items-baseline justify-between">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-accent">
-                  {b.series}
-                </span>
-                <span className="font-mono text-xs">₹0/-</span>
-              </div>
-              <h3 className="mt-2 font-serif text-lg italic">{b.title}</h3>
-              <p className="mt-2 text-xs text-muted-foreground">{b.desc}</p>
-              <button className="mt-3 font-mono text-[11px] uppercase tracking-widest text-accent underline-offset-4 hover:underline">
-                Download →
-              </button>
-            </article>
-          ))}
+            </ScrollReveal>
+          </div>
         </div>
+      </section>
+
+      <section className="overflow-hidden px-6 py-24">
+        <AutoScrollBookRow books={books} />
       </section>
     </PageLayout>
   );
