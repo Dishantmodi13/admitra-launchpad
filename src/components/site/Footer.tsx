@@ -1,14 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import logo from "@/assets/logo.png";
-
-const navigateLinks = [
-  { label: "Coaching", to: "/coaching" as const },
-  { label: "Education Planning", to: "/education-planning" as const },
-  { label: "Parenting Coaching", to: "/parenting-coaching" as const },
-  { label: "Bookshelf", to: "/bookshelf" as const },
-  { label: "Knowledge Center", to: "/knowledge" as const },
-];
+import { footerNavItems } from "@/data/primary-nav";
 
 const socialLinks = [
   { label: "Instagram", href: "#" },
@@ -20,14 +13,14 @@ const mapsUrl = "https://maps.app.goo.gl/hhFbyjyS6YySQbQz7";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-secondary px-6 py-16 lg:py-20">
+    <footer className="border-t border-border bg-background px-6 py-16 lg:py-20">
       <div className="mx-auto grid max-w-7xl gap-12 sm:gap-14 lg:grid-cols-12 lg:gap-10">
         {/* Brand */}
         <div className="lg:col-span-4">
           <Link to="/" className="inline-block">
             <img
               src={logo}
-              alt="KAREERstudio — Powered by ADMITra"
+              alt="KAREERstudio - Powered by ADMITra"
               width={200}
               height={54}
               className="h-11 w-auto object-contain md:h-12"
@@ -35,7 +28,7 @@ export function Footer() {
           </Link>
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
             A purpose-driven commitment to global education and career planning.
-            Empowering the next generation of global citizens — beyond borders,
+            Empowering the next generation of global citizens - beyond borders,
             beyond cultures.
           </p>
         </div>
@@ -46,18 +39,13 @@ export function Footer() {
             Navigate
           </h4>
           <ul className="space-y-2.5 text-sm">
-            {navigateLinks.map((item) => (
-              <li key={item.to}>
+            {footerNavItems.map((item) => (
+              <li key={item.key}>
                 <Link to={item.to} className="transition-colors hover:text-accent">
                   {item.label}
                 </Link>
               </li>
             ))}
-            <li>
-              <Link to="/assessments" className="transition-colors hover:text-accent">
-                Assessments →
-              </Link>
-            </li>
           </ul>
         </div>
 
@@ -143,7 +131,7 @@ export function Footer() {
 
       <div className="mx-auto mt-14 flex max-w-7xl flex-col items-center justify-between gap-3 border-t border-border pt-8 sm:flex-row sm:gap-4 lg:mt-16">
         <p className="text-center font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground sm:text-left">
-          © {new Date().getFullYear()} KAREER Studio — All Rights Reserved
+          © {new Date().getFullYear()} KAREER Studio - All Rights Reserved
         </p>
         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
           A division of ADMITra

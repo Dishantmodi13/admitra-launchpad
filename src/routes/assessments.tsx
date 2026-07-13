@@ -1,7 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { PageLayout } from "@/components/site/PageLayout";
+import { StripeHero } from "@/components/site/StripeHero";
+import { heroNavLinks } from "@/data/primary-nav";
 import { ScrollReveal, ScrollRevealGroup } from "@/components/site/ScrollReveal";
+import { CountUpStat } from "@/components/site/CountUpStat";
 import { AssessmentStack } from "@/components/site/AssessmentStack";
 import { cn } from "@/lib/utils";
 import heroAssessments from "@/assets/hero-assessments.jpg";
@@ -17,11 +20,11 @@ import {
 export const Route = createFileRoute("/assessments")({
   head: () => ({
     meta: [
-      { title: "Assessment Center — KAREER Studio" },
+      { title: "Assessment Center - KAREER Studio" },
       {
         name: "description",
         content:
-          "Career discovery, resilience profiling, academic-interest mapping, and study-abroad readiness — eight expert assessments for students and parents.",
+          "Career discovery, resilience profiling, academic-interest mapping, study-abroad readiness, and employability - nine expert assessments for students and parents.",
       },
     ],
   }),
@@ -31,63 +34,34 @@ export const Route = createFileRoute("/assessments")({
 const audienceCardClass =
   "group relative h-full overflow-hidden border border-border p-8 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:-translate-y-2 hover:border-accent/50 hover:shadow-[0_24px_48px_-16px_oklch(0.22_0.018_230/0.18)] lg:p-10";
 
+const assessmentsHeroNavLinks = heroNavLinks(["assessments"]);
+
 function AssessmentsPage() {
   return (
     <PageLayout>
-      {/* Hero */}
-      <section className="border-b border-border px-6 py-24 lg:py-32">
+      <StripeHero
+        image={heroAssessments}
+        imageAlt="Student reviewing a personalized career assessment report"
+        imagePosition="object-[center_40%]"
+        quoteEyebrow="Assessment Center"
+        quote="‘Career discovery, resilience profiling, academic-interest mapping, study-abroad readiness, and employability - one trusted platform for students and parents.’"
+        stripeHeading="Assessment Center"
+        stripeTagline="Know yourself. Choose smarter."
+        navLinks={assessmentsHeroNavLinks}
+        showAssessment={false}
+      />
+
+      <section className="border-b border-border px-6 py-16 lg:py-20">
         <div className="mx-auto max-w-7xl">
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-            <ScrollReveal direction="left">
-              <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">
-                Assessment Center
-              </span>
-              <h1 className="mt-6 font-serif text-5xl italic leading-[1.05] md:text-6xl lg:text-7xl">
-                Know yourself.
-                <br />
-                Choose smarter.
-              </h1>
-              <p className="mt-8 max-w-xl text-lg text-muted-foreground">
-                Career discovery, resilience profiling, academic-interest mapping, and
-                study-abroad readiness — one trusted platform for students and parents.
-              </p>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Link
-                  to="/register"
-                  className="bg-foreground px-6 py-3 font-mono text-[11px] uppercase tracking-widest text-background transition-colors hover:bg-accent"
-                >
-                  Register
-                </Link>
-                <Link
-                  to="/login"
-                  className="border border-border px-6 py-3 font-mono text-[11px] uppercase tracking-widest transition-colors hover:border-accent hover:text-accent"
-                >
-                  Login
-                </Link>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal direction="right" delay={120} className="lg:justify-self-end">
-              <div className="relative mx-auto max-w-lg overflow-hidden border border-border bg-secondary sm:max-w-xl lg:mx-0 lg:ml-auto lg:max-w-[480px] xl:max-w-[540px]">
-                <img
-                  src={heroAssessments}
-                  alt="Student reviewing a personalized career assessment report"
-                  width={800}
-                  height={500}
-                  className="aspect-[16/10] w-full object-cover object-center"
-                  loading="eager"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-foreground/10 via-transparent to-transparent" />
-              </div>
-            </ScrollReveal>
-          </div>
-
-          <div className="mt-16 grid gap-8 border-t border-border pt-12 sm:grid-cols-3">
+          <div className="grid gap-8 border-t border-border pt-12 sm:grid-cols-3">
             {assessmentStats.map((item, i) => (
               <ScrollReveal key={item.label} delay={i * 100} direction="scale">
-                <div className="font-serif text-5xl italic text-accent md:text-6xl">
-                  {item.stat}
-                </div>
+                <CountUpStat
+                  value={item.value}
+                  suffix={item.suffix}
+                  padStart={item.padStart}
+                  delay={i * 100}
+                />
                 <div className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
                   {item.label}
                 </div>
@@ -119,7 +93,7 @@ function AssessmentsPage() {
               Who should take these assessments?
             </h2>
             <p className="mt-6 max-w-2xl text-muted-foreground">
-              Seven assessments are built for students. The Litmus Test is designed
+              Eight assessments are built for students. The Litmus Test is designed
               for parents. Register once and access the tests that fit your role.
             </p>
           </ScrollReveal>
@@ -203,14 +177,14 @@ function AssessmentsPage() {
       </section>
 
       {/* All assessments */}
-      <section className="border-y border-border bg-secondary px-6 py-24 lg:py-32">
+      <section className="border-y border-border px-6 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <ScrollReveal direction="blur">
             <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">
               Explore
             </span>
             <h2 className="mt-4 max-w-2xl font-serif text-4xl italic md:text-5xl">
-              Our 8 Assessments
+              Our 9 Assessments
             </h2>
             <p className="mt-6 max-w-2xl text-muted-foreground">
               Each assessment is built around a proven psychological model, and
@@ -231,7 +205,7 @@ function AssessmentsPage() {
               More than just a score
             </h2>
             <p className="mt-4 max-w-xl text-muted-foreground">
-              Every assessment delivers a complete, actionable package — not a single
+              Every assessment delivers a complete, actionable package - not a single
               number.
             </p>
           </ScrollReveal>
@@ -287,12 +261,12 @@ function AssessmentsPage() {
             </h2>
             <p className="mt-6 text-muted-foreground">
               Join thousands of students and parents who use Assessment Center to make
-              confident decisions about careers, streams, and education — backed by
+              confident decisions about careers, streams, and education - backed by
               science, not guesswork.
             </p>
             <ul className="mt-8 space-y-2 text-sm text-muted-foreground">
-              <li>OTP verification — no password needed</li>
-              <li>Access all 8 assessments</li>
+              <li>OTP verification - no password needed</li>
+              <li>Access all 9 assessments</li>
               <li>Premium PDF reports included</li>
             </ul>
             <div className="mt-10 flex flex-wrap justify-center gap-4">

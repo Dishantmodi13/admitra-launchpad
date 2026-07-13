@@ -6,10 +6,10 @@ import blog2 from "@/assets/blog-2.jpg";
 export const Route = createFileRoute("/knowledge")({
   head: () => ({
     meta: [
-      { title: "Knowledge Center — KAREER Studio" },
+      { title: "Knowledge Center - KAREER Studio" },
       {
         name: "description",
-        content: "Podcasts and blogs from KAREER Studio — Voices of the Globe.",
+        content: "Podcasts and blogs from KAREER Studio - Voices of the Globe.",
       },
     ],
   }),

@@ -1,0 +1,316 @@
+import { Link } from "@tanstack/react-router";
+import { ArrowRight, Check } from "lucide-react";
+import type { CoachingBenefit, CoachingProgram } from "@/data/coaching-programs";
+import {
+  getBenefitIconStyle,
+  getProgramLinkStyle,
+} from "@/data/coaching-icon-styles";
+import { CoachingArchBanner } from "@/components/site/CoachingArchBanner";
+import { PageLayout } from "@/components/site/PageLayout";
+import { ScrollReveal } from "@/components/site/ScrollReveal";
+import { cn } from "@/lib/utils";
+
+const sectionLabelClass =
+  "font-mono text-base uppercase tracking-[0.3em] text-accent md:text-lg";
+const pageTitleClass =
+  "font-serif text-4xl italic leading-snug text-foreground md:text-5xl lg:text-[3.25rem] lg:leading-[1.1]";
+const sectionSubtitleClass =
+  "font-serif text-4xl italic leading-snug text-foreground md:text-5xl lg:text-6xl";
+const cardTitleClass = "text-xl font-medium text-foreground md:text-2xl";
+
+const cardHoverClass =
+  "group relative transform-gpu rounded-xl border border-border bg-background transition-all duration-300 ease-out hover:-translate-y-3 hover:scale-[1.03] hover:border-accent/50 hover:shadow-xl hover:shadow-foreground/10 hover:z-10";
+
+const bulletListClass = "space-y-3";
+const bulletItemClass = "flex gap-3 text-sm leading-relaxed text-muted-foreground";
+
+function CoachingBulletList({
+  items,
+  className,
+  itemClassName,
+}: {
+  items: string[];
+  className?: string;
+  itemClassName?: string;
+}) {
+  return (
+    <ul className={cn(bulletListClass, className)}>
+      {items.map((item) => (
+        <li key={item} className={cn(bulletItemClass, itemClassName)}>
+          <Check className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function MaskedIcon({
+  src,
+  iconClass,
+  className,
+}: {
+  src: string;
+  iconClass: string;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(iconClass, className)}
+      style={{
+        maskImage: `url(${src})`,
+        WebkitMaskImage: `url(${src})`,
+        maskSize: "contain",
+        WebkitMaskSize: "contain",
+        maskRepeat: "no-repeat",
+        WebkitMaskRepeat: "no-repeat",
+        maskPosition: "center",
+        WebkitMaskPosition: "center",
+      }}
+      aria-hidden
+    />
+  );
+}
+
+function BenefitCard({
+  benefit,
+  delay,
+  className,
+  wrapperClassName,
+}: {
+  benefit: CoachingBenefit;
+  delay: number;
+  className?: string;
+  wrapperClassName?: string;
+}) {
+  const iconStyle = getBenefitIconStyle(benefit.image);
+
+  return (
+    <ScrollReveal
+      delay={delay}
+      direction="up"
+      threshold={0.06}
+      className={cn("h-full", wrapperClassName)}
+    >
+      <div className={cn(cardHoverClass, "flex h-full flex-col p-5 lg:p-6", className)}>
+        <div
+          className={cn(
+            "flex h-14 w-14 items-center justify-center rounded-xl",
+            iconStyle.surface,
+          )}
+        >
+          <MaskedIcon
+            src={benefit.image}
+            iconClass={iconStyle.icon}
+            className="h-9 w-9 transition-transform duration-300 ease-out group-hover:scale-110"
+          />
+        </div>
+        <h3 className={`${cardTitleClass} mt-4`}>{benefit.title}</h3>
+        <CoachingBulletList items={benefit.points} className="mt-3" />
+      </div>
+    </ScrollReveal>
+  );
+}
+
+function BenefitsGrid({ benefits }: { benefits: NonNullable<CoachingProgram["benefits"]> }) {
+  if (benefits.length === 5) {
+    return (
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6 lg:gap-5 [perspective:1200px]">
+        {benefits.map((benefit, index) => (
+          <BenefitCard
+            key={benefit.title}
+            benefit={benefit}
+            delay={index * 90}
+            wrapperClassName={cn("lg:col-span-2", index === 3 && "lg:col-start-2")}
+          />
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5 [perspective:1200px]">
+      {benefits.map((benefit, index) => (
+        <BenefitCard key={benefit.title} benefit={benefit} delay={index * 90} />
+      ))}
+    </div>
+  );
+}
+
+function IntroSection({ program }: { program: CoachingProgram }) {
+  return (
+    <section className="border-b border-border px-6 pb-12 pt-12 lg:pb-14 lg:pt-14">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-x-12 lg:gap-y-10">
+          <ScrollReveal direction="left" className="lg:col-span-5">
+            <h1 className={pageTitleClass}>{program.pageTitle}</h1>
+            {program.sectionTitle !== program.pageTitle && (
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground lg:text-lg">
+                {program.sectionTitle}
+              </p>
+            )}
+          </ScrollReveal>
+
+          <ScrollReveal direction="up" threshold={0.08} className="lg:col-span-7">
+            <CoachingBulletList
+              items={program.intro}
+              itemClassName="text-base lg:text-lg"
+            />
+          </ScrollReveal>
+        </div>
+
+        {program.introImage && (
+          <ScrollReveal direction="up" className="mt-14 lg:mt-20">
+            <div className="mx-auto w-full max-w-[1024px] bg-content-surface">
+              <img
+                src={program.introImage}
+                alt={program.pageTitle}
+                width={1024}
+                height={398}
+                decoding="async"
+                className="h-auto w-full object-contain mix-blend-darken"
+              />
+            </div>
+          </ScrollReveal>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function ProgramsSection({ program }: { program: CoachingProgram }) {
+  if (!program.programLinks?.length) return null;
+
+  return (
+    <section className="border-b border-border px-6 py-14 lg:py-16">
+      <div className="mx-auto max-w-7xl">
+        <ScrollReveal direction="blur" className="mb-8">
+          <h2 className={sectionLabelClass}>Programs</h2>
+        </ScrollReveal>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5 [perspective:1200px]">
+          {program.programLinks.map((item, index) => {
+            const linkStyle = getProgramLinkStyle(item.slug);
+            const backgroundImage = item.backgroundImage;
+            const hasPhotoBackground = Boolean(backgroundImage);
+
+            return (
+            <ScrollReveal key={item.slug} delay={index * 80} direction="up">
+              <Link
+                to="/coaching/$slug"
+                params={{ slug: item.slug }}
+                className={cn(
+                  cardHoverClass,
+                  "relative isolate flex h-full min-h-[16rem] flex-col overflow-hidden border-0 px-5 py-7 lg:min-h-[18rem] lg:px-6 lg:py-8",
+                  hasPhotoBackground && "bg-foreground text-white shadow-lg hover:shadow-xl",
+                )}
+              >
+                {backgroundImage && (
+                  <img
+                    src={backgroundImage}
+                    alt=""
+                    aria-hidden
+                    loading="lazy"
+                    decoding="async"
+                    className="pointer-events-none absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  />
+                )}
+                <div
+                  className={cn(
+                    "pointer-events-none absolute inset-0",
+                    linkStyle?.cardGradient ?? "bg-gradient-to-t from-black/80 via-black/40 to-black/10",
+                  )}
+                  aria-hidden
+                />
+
+                <div className="relative z-10 flex h-full flex-col">
+                {item.image && (
+                  <div
+                    className={cn(
+                      "mx-auto w-fit rounded-xl px-3 py-2 shadow-sm",
+                      linkStyle?.surface ?? "bg-background/80",
+                    )}
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.label}
+                      className="h-12 w-auto object-contain transition-transform duration-300 ease-out group-hover:scale-110 lg:h-14"
+                    />
+                  </div>
+                )}
+                <span
+                  className={cn(
+                    "mt-4 text-center font-serif text-2xl italic md:text-3xl",
+                    hasPhotoBackground
+                      ? "text-white group-hover:text-white"
+                      : "transition-colors group-hover:text-accent",
+                  )}
+                >
+                  {item.label}
+                </span>
+                {item.points?.length ? (
+                  <CoachingBulletList
+                    items={item.points}
+                    className="mt-5 text-left"
+                    itemClassName={hasPhotoBackground ? "text-white/90" : undefined}
+                  />
+                ) : null}
+                </div>
+              </Link>
+            </ScrollReveal>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BenefitsSection({ program }: { program: CoachingProgram }) {
+  if (!program.benefits?.length) return null;
+
+  return (
+    <section className="border-b border-border px-6 py-14 lg:py-16">
+      <div className="mx-auto max-w-7xl">
+        <ScrollReveal direction="blur" className="mb-8 max-w-2xl">
+          <h2 className={sectionLabelClass}>{program.benefitsHeading ?? "Benefits"}</h2>
+        </ScrollReveal>
+        <BenefitsGrid benefits={program.benefits} />
+      </div>
+    </section>
+  );
+}
+
+function CtaSection() {
+  return (
+    <section className="px-6 py-14 lg:py-16">
+      <div className="mx-auto max-w-3xl text-center">
+        <ScrollReveal direction="blur">
+          <h3 className={sectionSubtitleClass}>Unlock your potential</h3>
+          <p className="mt-6 text-muted-foreground">
+            A complimentary session offers valuable insights and a chance to connect with
+            industry experts!
+          </p>
+          <Link
+            to="/enquiry"
+            className="group mt-8 inline-flex items-center gap-3 bg-foreground px-8 py-4 font-mono text-[11px] uppercase tracking-widest text-background transition-colors hover:bg-accent"
+          >
+            Book Appointment
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
+export function CoachingProgramPage({ program }: { program: CoachingProgram }) {
+  return (
+    <PageLayout>
+      <CoachingArchBanner slug={program.slug} />
+      <IntroSection program={program} />
+      <ProgramsSection program={program} />
+      <BenefitsSection program={program} />
+      <CtaSection />
+    </PageLayout>
+  );
+}

@@ -4,7 +4,7 @@ import { PageLayout } from "@/components/site/PageLayout";
 export const Route = createFileRoute("/register")({
   head: () => ({
     meta: [
-      { title: "Register — KAREER Studio" },
+      { title: "Register - KAREER Studio" },
       { name: "description", content: "Create your KAREER Studio student account." },
     ],
   }),

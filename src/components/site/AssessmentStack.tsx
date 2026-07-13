@@ -68,7 +68,7 @@ function AssessmentCard({
         </span>
         {stacked && (
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent/80">
-            {String(index + 1).padStart(2, "0")} / 08
+            {String(index + 1).padStart(2, "0")} / {String(assessments.length).padStart(2, "0")}
           </span>
         )}
       </div>

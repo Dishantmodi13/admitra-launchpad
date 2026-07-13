@@ -1,24 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Link } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { PageLayout } from "@/components/site/PageLayout";
 import { HeroSlider } from "@/components/site/HeroSlider";
-import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { ScrollReveal, ScrollRevealGroup } from "@/components/site/ScrollReveal";
-import blog1 from "@/assets/blog-1.jpg";
-import blog2 from "@/assets/blog-2.jpg";
+import { CountUpStat } from "@/components/site/CountUpStat";
 import whyChooseUs from "@/assets/why-choose-us.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "KAREER Studio — Powered by ADMITra | Study Abroad & Career Planning" },
+      { title: "KAREER Studio - Powered by ADMITra | Study Abroad & Career Planning" },
       {
         name: "description",
         content:
-          "KAREER Studio: Your partner in professional growth beyond borders. Personalized, scientific consulting in global education, study abroad, live coaching, and parenting.",
+          "KAREER Studio: Plan your education, shape your career, and build your global future through personalized education planning, study abroad consulting, psychometric assessments, and live coaching.",
       },
-      { property: "og:title", content: "KAREER Studio — Powered by ADMITra" },
+      { property: "og:title", content: "KAREER Studio - Powered by ADMITra" },
       {
         property: "og:description",
         content:
@@ -29,169 +26,193 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const services = [
-  {
-    n: "01",
-    title: "Global Career & Education Advisory",
-    body: "Scientific mapping of your professional trajectory across international markets.",
-  },
-  {
-    n: "02",
-    title: "Career-Focused Study Abroad",
-    body: "End-to-end guidance from university shortlisting to visa, arrival, and beyond.",
-  },
-  {
-    n: "03",
-    title: "Online Live Coaching",
-    body: "Language proficiency and scholastic prep — IELTS, GRE, SAT, PTE — delivered live.",
-  },
-  {
-    n: "04",
-    title: "Parenting Coaching",
-    body: "Strategic guidance for parents supporting their child's global ambitions.",
-  },
-];
-
-const pillars = [
-  { stat: "15+", label: "Years of Practice" },
-  { stat: "500+", label: "Global Admits" },
-  { stat: "8", label: "Scientific Assessments" },
-  { stat: "40+", label: "Partner Universities" },
+const focusAreas = [
+  "Career and education planning",
+  "Career-focused study abroad consulting",
+  "IVY League Admission Coaching & Consulting",
+  "Coaching for language and scholastic proficiency",
+  "Psychometric Assessment Center",
 ];
 
 const whyChooseReasons = [
   {
     title: "Expert Advice",
-    body: "Experienced professionals with global exposure, offering personalized guidance for your journey.",
+    body: "Our team comprises experienced professionals with extensive global exposure, ready to offer personalized advice for your unique journey.",
   },
   {
     title: "Global Network",
-    body: "Access to prestigious international institutions and trusted partners worldwide.",
+    body: "Access a vast network of prestigious educational international institutions and esteemed service providers worldwide, creating pathways to success.",
   },
   {
     title: "Comprehensive Services",
-    body: "Education planning, university applications, career strategy, coaching, and ongoing support.",
+    body: "We offer a suite of services covering education planning, application process in international universities, career strategizing, language & scholastic coaching, value added services and ongoing support.",
   },
   {
     title: "Personalized Approach",
-    body: "Strategies shaped around your goals, interests, and academic achievements.",
+    body: "Your ambitions are at the core of our focus. We personalize our strategies to align perfectly with your educational and career goals understanding your potential intelligence, acquired intelligence, interest areas and current academic achievements.",
   },
 ];
 
-const stories = [
-  {
-    image: blog1,
-    kind: "Podcast",
-    title: "Voices of the Globe: Episode 12",
-    meta: "28 min • Hosted by KAREER Studio",
-  },
-  {
-    image: blog2,
-    kind: "Blog",
-    title: "New Student Visa Regulations for 2026",
-    meta: "5 min read • Knowledge Center",
-  },
+const pillars = [
+  { value: 15, suffix: "+", label: "Years of Practice" },
+  { value: 500, suffix: "+", label: "Global Admits" },
+  { value: 8, suffix: "", label: "Scientific Assessments" },
+  { value: 40, suffix: "+", label: "Partner Universities" },
 ];
+
+function boldKareerStudio(
+  text: string,
+  emphasisClass = "font-bold text-foreground",
+  additionalPhrases: string[] = [],
+) {
+  const phrases = ["KAREER Studio", ...additionalPhrases];
+  const pattern = new RegExp(
+    `(${phrases.map((p) => p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})`,
+    "g",
+  );
+  return text.split(pattern).map((part, i) =>
+    phrases.includes(part) ? (
+      <strong key={i} className={emphasisClass}>
+        {part}
+      </strong>
+    ) : (
+      part
+    ),
+  );
+}
+
 
 function Index() {
   return (
     <PageLayout>
       <HeroSlider />
 
-      {/* Who We Are */}
-      <section className="border-b border-border px-6 py-24 lg:py-32">
+      {/* Hero Subtext */}
+      <section className="border-b border-border px-6 py-16 lg:py-20">
         <ScrollRevealGroup
-          className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[1fr_auto_1fr]"
-          stagger={160}
+          className="mx-auto max-w-4xl space-y-6 text-justify text-muted-foreground"
+          stagger={120}
           direction="up"
-          threshold={0.08}
+          threshold={0.1}
         >
-          <div>
-            <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">
-              Who We Are
-            </span>
-            <h2 className="mt-6 font-serif text-4xl italic leading-tight md:text-5xl">
-              Your partner in professional growth beyond borders.
-            </h2>
-          </div>
-          <div className="hidden h-full w-px bg-border lg:block" />
-          <ScrollRevealGroup
-            className="space-y-6 text-muted-foreground"
-            stagger={120}
-            direction="up"
-            threshold={0.05}
-          >
-            <p>
-              At KAREER Studio, we are more than just advisors; we are your
-              partners in shaping your academic journey for an employable
-              future. We specialize in guiding students towards global success
-              through personalized and scientific consulting in Global
-              Education & Career Planning, Career-Focused Study Abroad
-              solutions, and Online Live Coaching.
-            </p>
-            <p>
-              Rooted in research-backed methodologies, we are committed to
-              unlocking your highest potential through planned and
-              purpose-driven actions — guiding you toward opportunities that
-              transcend borders and cultures.
-            </p>
-          </ScrollRevealGroup>
+          <p className="text-base leading-relaxed lg:text-lg">
+            {boldKareerStudio(
+              "KAREER Studio is a student-focused education and career planning platform, built to help students identify their Academic & Career Potential, choose the right Academic Path, prepare for Global Employable Careers, and develop the skills required for a successful future.",
+              "font-bold text-foreground",
+            )}
+          </p>
+          <p className="text-base leading-relaxed lg:text-lg">
+            We do not believe in one-size-fits-all counselling. Every student has a
+            different potential, learning pattern, personality, ambition, family
+            background, financial reality, and career possibility. Our role is to bring
+            clarity to that complexity.
+          </p>
         </ScrollRevealGroup>
       </section>
 
-      {/* Services */}
-      <section className="px-6 py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl">
-          <ScrollRevealGroup
-            className="mb-16 flex flex-wrap items-end justify-between gap-6"
-            stagger={120}
-            direction="blur"
-            threshold={0.08}
-          >
-            <div>
-              <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">
-                Our Services
-              </span>
-              <h2 className="mt-4 max-w-2xl font-serif text-4xl italic leading-tight md:text-5xl">
-                Crafted solutions, precisely aligned with your vision.
-              </h2>
-            </div>
-            <p className="max-w-md text-sm text-muted-foreground">
-              We partner with you to identify your potential, unique needs and
-              aspirations — ensuring every solution unlocks new opportunities.
+      {/* Who We Are — label + subtitle left, content right */}
+      <section className="border-b border-border px-6 py-24 lg:py-32">
+        <div className="mx-auto grid max-w-7xl items-start gap-12 lg:grid-cols-2 lg:gap-20">
+          <ScrollReveal direction="left">
+            <h2 className="font-mono text-sm uppercase tracking-[0.3em] text-accent md:text-base">
+              Who We Are
+            </h2>
+            <p className="mt-4 font-serif text-3xl italic leading-snug text-foreground md:text-4xl lg:text-5xl">
+              Your Education Partner for Assessing, Planning and Managing Academic
+              Success
             </p>
-          </ScrollRevealGroup>
+          </ScrollReveal>
+
           <ScrollRevealGroup
-            className="grid gap-6 md:grid-cols-2 lg:grid-cols-4"
-            itemClassName="h-full"
+            className="space-y-6 text-justify text-muted-foreground"
             stagger={120}
-            direction="up"
-            threshold={0.06}
+            direction="right"
+            threshold={0.05}
           >
-            {services.map((s) => (
-              <div
-                key={s.n}
-                className="group h-full border border-border bg-background p-8 transition-colors hover:border-accent/40 hover:bg-accent/5"
-              >
-                <span className="block font-mono text-xs text-accent">{s.n}</span>
-                <h3 className="mt-6 font-serif text-2xl italic leading-snug">
-                  {s.title}
-                </h3>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  {s.body}
-                </p>
-              </div>
-            ))}
+            <p>
+              At {boldKareerStudio("KAREER Studio")}, we are more than career advisors. We
+              are strategic education consulting partners for students and parents who want
+              to make smart academic and career decisions.
+            </p>
+            <p className="font-bold text-foreground">
+              We specialize in scientific and personalized guidance across five critical areas:
+            </p>
+            <ul className="list-disc space-y-2 pl-5">
+              {focusAreas.map((area) => (
+                <li key={area}>{area}</li>
+              ))}
+            </ul>
+            <p>
+              Our approach is rooted in research-backed assessments, structured
+              counselling, practical planning, and continuous student support. We help
+              students understand their potential, explore suitable career pathways,
+              select the right academic options, and prepare for opportunities that go
+              beyond borders.
+            </p>
+            <p className="font-bold text-foreground">
+              Because the truth is simple: a successful career is not created by
+              choosing a popular course. It is created by making planned, informed, and
+              purpose-driven decisions at the right time.
+            </p>
           </ScrollRevealGroup>
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="bg-foreground px-6 py-24 text-background lg:py-32">
+      {/* Why KAREER Studio — content left, heading right */}
+      <section className="border-b border-border px-6 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl">
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
+            <ScrollRevealGroup
+              className="order-2 space-y-4 text-justify text-muted-foreground lg:order-1"
+              stagger={120}
+              direction="left"
+              threshold={0.08}
+            >
+              <p>
+                Marks are important, but they are not enough. Today&apos;s students need
+                clarity, direction, skill-readiness, global exposure, and the ability
+                to make decisions that match future career realities.
+              </p>
+              <p>
+                Many students choose streams, degrees, colleges, or countries without
+                understanding the long-term impact of those emotional decisions. This
+                often leads to confusion, course mismatch, financial stress, weak
+                employability, and career dissatisfaction.
+              </p>
+              <p>
+                {boldKareerStudio(
+                  "KAREER Studio helps students avoid these mistakes through a structured and scientific planning process.",
+                )}
+              </p>
+            </ScrollRevealGroup>
+
+            <ScrollReveal direction="right" className="order-1 lg:order-2 lg:text-right">
+              <h2 className="font-mono text-sm uppercase tracking-[0.3em] text-accent md:text-base">
+                Why KAREER Studio?
+              </h2>
+              <p className="mt-4 font-serif text-3xl italic leading-snug text-foreground md:text-4xl lg:ml-auto lg:max-w-lg lg:text-5xl">
+                Because Career Success Needs More Than Marks
+              </p>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us — heading top, image left, content right */}
+      <section className="border-b border-border px-6 py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl">
+          <ScrollReveal direction="up" className="mb-16 max-w-2xl">
+            <h2 className="font-mono text-sm uppercase tracking-[0.3em] text-accent md:text-base">
+              Why Choose Us
+            </h2>
+            <p className="mt-4 font-serif text-3xl italic leading-snug text-foreground md:text-4xl lg:text-5xl">
+              Trusted Guidance for Your Global Journey
+            </p>
+          </ScrollReveal>
+
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <ScrollReveal direction="left">
-              <div className="overflow-hidden border border-background/10">
+              <div className="overflow-hidden border border-border">
                 <img
                   src={whyChooseUs}
                   alt="Student planning a global education journey"
@@ -203,47 +224,34 @@ function Index() {
               </div>
             </ScrollReveal>
 
-            <div>
-              <ScrollReveal direction="right">
-                <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">
-                  Why Choose Us
-                </span>
-                <h2 className="mt-4 font-serif text-4xl italic leading-tight md:text-5xl">
-                  A dedication that knows no boundaries.
-                </h2>
-              </ScrollReveal>
-
-              <ScrollRevealGroup
-                className="mt-10 space-y-6"
-                stagger={100}
-                direction="up"
-                threshold={0.08}
-              >
-                {whyChooseReasons.map((item) => (
-                  <div key={item.title} className="flex gap-4">
-                    <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border border-accent/40 bg-accent/10">
-                      <Check className="size-3.5 text-accent" aria-hidden />
-                    </span>
-                    <div>
-                      <h3 className="font-medium text-background">{item.title}</h3>
-                      <p className="mt-1.5 text-sm leading-relaxed text-background/65">
-                        {item.body}
-                      </p>
-                    </div>
+            <ScrollRevealGroup
+              className="space-y-6"
+              stagger={100}
+              direction="right"
+              threshold={0.08}
+            >
+              {whyChooseReasons.map((item) => (
+                <div key={item.title} className="flex gap-4">
+                  <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border border-accent/40 bg-accent/10">
+                    <Check className="size-3.5 text-accent" aria-hidden />
+                  </span>
+                  <div>
+                    <h3 className="font-medium text-foreground">{item.title}</h3>
+                    <p className="mt-1.5 text-justify text-sm leading-relaxed text-muted-foreground">
+                      {item.body}
+                    </p>
                   </div>
-                ))}
-              </ScrollRevealGroup>
-            </div>
+                </div>
+              ))}
+            </ScrollRevealGroup>
           </div>
 
-          <div className="mt-16 grid grid-cols-2 gap-8 border-t border-background/10 pt-12 lg:mt-20 lg:grid-cols-4">
+          <div className="mt-16 grid grid-cols-2 gap-8 border-t border-border pt-12 lg:mt-20 lg:grid-cols-4">
             {pillars.map((p, i) => (
               <ScrollReveal key={p.label} delay={i * 100} direction="scale">
                 <div>
-                  <div className="font-serif text-5xl italic text-accent md:text-6xl">
-                    {p.stat}
-                  </div>
-                  <div className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-background/60">
+                  <CountUpStat value={p.value} suffix={p.suffix} delay={i * 100} />
+                  <div className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
                     {p.label}
                   </div>
                 </div>
@@ -251,76 +259,6 @@ function Index() {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* Knowledge Center */}
-      <section className="border-b border-border px-6 py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-16 flex items-end justify-between">
-            <ScrollReveal direction="blur">
-              <div>
-                <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">
-                  Knowledge Center
-                </span>
-                <h2 className="mt-4 font-serif text-4xl italic md:text-5xl">
-                  Voices of the Globe.
-                </h2>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal direction="fade" delay={150}>
-              <Link
-                to="/knowledge"
-                className="hidden font-mono text-[11px] uppercase tracking-widest text-accent underline-offset-4 hover:underline md:block"
-              >
-                View all →
-              </Link>
-            </ScrollReveal>
-          </div>
-          <div className="grid gap-8 md:grid-cols-2">
-            {stories.map((s, i) => (
-              <ScrollReveal key={s.title} delay={i * 150} direction={i === 0 ? "left" : "right"}>
-                <article className="group cursor-pointer overflow-hidden border border-border">
-                  <div className="aspect-[4/3] overflow-hidden bg-secondary">
-                    <img
-                      src={s.image}
-                      alt={s.title}
-                      loading="lazy"
-                      width={800}
-                      height={600}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-accent">
-                      {s.kind}
-                    </span>
-                    <h3 className="mt-3 font-serif text-2xl italic">{s.title}</h3>
-                    <p className="mt-3 text-xs text-muted-foreground">{s.meta}</p>
-                  </div>
-                </article>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Enquiry */}
-      <section id="enquiry" className="grid border-y border-border lg:grid-cols-2">
-        <ScrollReveal direction="left" className="flex flex-col justify-center border-r border-border bg-accent/5 p-12 lg:p-24">
-          <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">
-            Enquiry
-          </span>
-          <h2 className="mt-6 font-serif text-5xl italic leading-[1.05] md:text-6xl">
-            Begin your departure.
-          </h2>
-          <p className="mt-8 max-w-sm text-muted-foreground">
-            Map your future with us. Our consultants will respond within 24
-            hours to chart your border-crossing journey.
-          </p>
-        </ScrollReveal>
-        <ScrollReveal direction="right" delay={150} className="bg-background p-12 lg:p-24">
-          <EnquiryForm />
-        </ScrollReveal>
       </section>
     </PageLayout>
   );

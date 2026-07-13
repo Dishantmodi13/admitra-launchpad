@@ -1,7 +1,7 @@
 export const assessmentStats = [
-  { stat: "08", label: "Expert Assessments" },
-  { stat: "15+", label: "Pages of Insightful Report" },
-  { stat: "52", label: "Readiness Dimensions Measured" },
+  { value: 9, padStart: 2, suffix: "", label: "Expert Assessments" },
+  { value: 15, suffix: "+", label: "Pages of Insightful Report" },
+  { value: 52, suffix: "", label: "Readiness Dimensions Measured" },
 ];
 
 export const assessmentTicker = [
@@ -13,20 +13,22 @@ export const assessmentTicker = [
   "RQ",
   "Academic Career",
   "Study Abroad",
+  "Employability Quotient",
 ];
 
 export const studentAssessments = [
-  "Career Compass Test — personality-based stream & career selection",
-  "Career DNA Test — cognitive & aptitude-based stream & career selection",
-  "Academic Interest Mapping Test — interest-based stream & career selection",
-  "CLEAR Test — check your self-awareness & blind spots",
-  "Thinking & Expression Skill Test — know your thinking & expression ability",
-  "Resilience Quotient Test — ability to handle pressure & stress",
-  "Study Abroad Readiness — check your readiness to study abroad",
+  "Career Compass Test - personality-based stream & career selection",
+  "Career DNA Test - cognitive & aptitude-based stream & career selection",
+  "Academic Interest Mapping Test - interest-based stream & career selection",
+  "CLEAR Test - check your self-awareness & blind spots",
+  "Thinking & Expression Skill Test - know your thinking & expression ability",
+  "Resilience Quotient Test - ability to handle pressure & stress",
+  "Study Abroad Readiness - check your readiness to study abroad",
+  "Employability Quotient - measure your workplace readiness for placements & internships",
 ];
 
 export const parentBenefits = [
-  "Litmus Test — understand your parenting style",
+  "Litmus Test - understand your parenting style",
   "K·S·E·P·J scoring across 5 dimensions",
   "Family guidance report with action plan",
   "Insights to support your child's growth",
@@ -38,7 +40,7 @@ export const assessments = [
     title: "Career Compass Assessment",
     subtitle: "Career & Stream Exploration & Planning Assessment",
     description:
-      "A scientifically designed personality assessment that helps students understand their strengths, interests, and natural working style — so they can choose the right stream, subjects, and career path with confidence.",
+      "A scientifically designed personality assessment that helps students understand their strengths, interests, and natural working style - so they can choose the right stream, subjects, and career path with confidence.",
     bestFor: "Students: Grade 8 onwards",
     measures: [
       "Know your traits and personality",
@@ -72,7 +74,7 @@ export const assessments = [
   },
   {
     icon: "🎓",
-    title: "AIM — Academic Interest Mapping",
+    title: "AIM - Academic Interest Mapping",
     subtitle: "Interest based Career & Stream Selection",
     description:
       "Identify the student's academic interests, career direction, and stream readiness with a structured assessment.",
@@ -87,7 +89,7 @@ export const assessments = [
   },
   {
     icon: "🪟",
-    title: "CLEAR — Self-Awareness Assessment",
+    title: "CLEAR - Self-Awareness Assessment",
     subtitle: "Emotional Awareness & Reflection Assessment",
     description:
       "Understand how you see yourself, how others may experience you, and where your real growth potential lies.",
@@ -151,6 +153,24 @@ export const assessments = [
     ],
   },
   {
+    icon: "💼",
+    title: "Employability Quotient",
+    subtitle: "Future-Ready Workplace Skills Assessment",
+    description:
+      "A scenario-based assessment across 10 employability dimensions - from analytical thinking and resilience to leadership, creativity, and service orientation - so students can measure placement readiness with a tiered report.",
+    bestFor: "Students preparing for internships, campus placements, and early-career roles",
+    measures: [
+      "50 workplace-style multiple-choice scenarios",
+      "10 future-skills dimensions (5 questions each)",
+      "Analytical thinking, resilience, leadership, and creativity",
+      "Motivation, technology literacy, empathy, and curiosity",
+      "Talent management and service orientation",
+      "Performance tier: Future-Ready Leader, Adaptive Professional, or Emerging Contender",
+      "Dimension radar with strengths and focus areas",
+      "Downloadable PDF report for mentors and placement prep",
+    ],
+  },
+  {
     icon: "⚗️",
     title: "Litmus Parenting Assessment",
     subtitle: "Parenting Style Assessment",
@@ -172,7 +192,7 @@ export const assessments = [
 export const reportFeatures = [
   {
     title: "Premium PDF Report",
-    body: "Multi-page, beautifully designed reports with scores, breakdowns, and next steps — ready to print or share.",
+    body: "Multi-page, beautifully designed reports with scores, breakdowns, and next steps - ready to print or share.",
   },
   {
     title: "Email Delivery",
@@ -180,7 +200,7 @@ export const reportFeatures = [
   },
   {
     title: "Dimension Scores",
-    body: "Every assessment breaks down your result into multiple scored dimensions — not just a single number.",
+    body: "Every assessment breaks down your result into multiple scored dimensions - not just a single number.",
   },
   {
     title: "Actionable Guidance",
@@ -200,16 +220,16 @@ export const howItWorks = [
   {
     n: "01",
     title: "Register in minutes",
-    body: "Sign up with your email, verify via OTP, and join the Kareer Studio assessment portal instantly — completely free.",
+    body: "Sign up with your email, verify via OTP, and join the Kareer Studio assessment portal instantly - completely free.",
   },
   {
     n: "02",
     title: "Pick your assessment",
-    body: "Choose from career, resilience, academic-interest, study-abroad, and parent-focused tests tailored for you.",
+    body: "Choose from career, resilience, academic-interest, study-abroad, employability, and parent-focused tests tailored for you.",
   },
   {
     n: "03",
     title: "Get your report",
-    body: "Receive a detailed, branded PDF report with scores, insights, and actionable next steps — delivered to your inbox.",
+    body: "Receive a detailed, branded PDF report with scores, insights, and actionable next steps - delivered to your inbox.",
   },
 ];

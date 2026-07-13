@@ -19,6 +19,8 @@ import { Route as CoachingRouteImport } from './routes/coaching'
 import { Route as BookshelfRouteImport } from './routes/bookshelf'
 import { Route as AssessmentsRouteImport } from './routes/assessments'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CoachingIndexRouteImport } from './routes/coaching/index'
+import { Route as CoachingSlugRouteImport } from './routes/coaching/$slug'
 
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
@@ -70,43 +72,58 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CoachingIndexRoute = CoachingIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CoachingRoute,
+} as any)
+const CoachingSlugRoute = CoachingSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => CoachingRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/assessments': typeof AssessmentsRoute
   '/bookshelf': typeof BookshelfRoute
-  '/coaching': typeof CoachingRoute
+  '/coaching': typeof CoachingRouteWithChildren
   '/education-planning': typeof EducationPlanningRoute
   '/enquiry': typeof EnquiryRoute
   '/knowledge': typeof KnowledgeRoute
   '/login': typeof LoginRoute
   '/parenting-coaching': typeof ParentingCoachingRoute
   '/register': typeof RegisterRoute
+  '/coaching/$slug': typeof CoachingSlugRoute
+  '/coaching/': typeof CoachingIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/assessments': typeof AssessmentsRoute
   '/bookshelf': typeof BookshelfRoute
-  '/coaching': typeof CoachingRoute
   '/education-planning': typeof EducationPlanningRoute
   '/enquiry': typeof EnquiryRoute
   '/knowledge': typeof KnowledgeRoute
   '/login': typeof LoginRoute
   '/parenting-coaching': typeof ParentingCoachingRoute
   '/register': typeof RegisterRoute
+  '/coaching/$slug': typeof CoachingSlugRoute
+  '/coaching': typeof CoachingIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/assessments': typeof AssessmentsRoute
   '/bookshelf': typeof BookshelfRoute
-  '/coaching': typeof CoachingRoute
+  '/coaching': typeof CoachingRouteWithChildren
   '/education-planning': typeof EducationPlanningRoute
   '/enquiry': typeof EnquiryRoute
   '/knowledge': typeof KnowledgeRoute
   '/login': typeof LoginRoute
   '/parenting-coaching': typeof ParentingCoachingRoute
   '/register': typeof RegisterRoute
+  '/coaching/$slug': typeof CoachingSlugRoute
+  '/coaching/': typeof CoachingIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -121,18 +138,21 @@ export interface FileRouteTypes {
     | '/login'
     | '/parenting-coaching'
     | '/register'
+    | '/coaching/$slug'
+    | '/coaching/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/assessments'
     | '/bookshelf'
-    | '/coaching'
     | '/education-planning'
     | '/enquiry'
     | '/knowledge'
     | '/login'
     | '/parenting-coaching'
     | '/register'
+    | '/coaching/$slug'
+    | '/coaching'
   id:
     | '__root__'
     | '/'
@@ -145,13 +165,15 @@ export interface FileRouteTypes {
     | '/login'
     | '/parenting-coaching'
     | '/register'
+    | '/coaching/$slug'
+    | '/coaching/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AssessmentsRoute: typeof AssessmentsRoute
   BookshelfRoute: typeof BookshelfRoute
-  CoachingRoute: typeof CoachingRoute
+  CoachingRoute: typeof CoachingRouteWithChildren
   EducationPlanningRoute: typeof EducationPlanningRoute
   EnquiryRoute: typeof EnquiryRoute
   KnowledgeRoute: typeof KnowledgeRoute
@@ -232,14 +254,42 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/coaching/': {
+      id: '/coaching/'
+      path: '/'
+      fullPath: '/coaching/'
+      preLoaderRoute: typeof CoachingIndexRouteImport
+      parentRoute: typeof CoachingRoute
+    }
+    '/coaching/$slug': {
+      id: '/coaching/$slug'
+      path: '/$slug'
+      fullPath: '/coaching/$slug'
+      preLoaderRoute: typeof CoachingSlugRouteImport
+      parentRoute: typeof CoachingRoute
+    }
   }
 }
+
+interface CoachingRouteChildren {
+  CoachingSlugRoute: typeof CoachingSlugRoute
+  CoachingIndexRoute: typeof CoachingIndexRoute
+}
+
+const CoachingRouteChildren: CoachingRouteChildren = {
+  CoachingSlugRoute: CoachingSlugRoute,
+  CoachingIndexRoute: CoachingIndexRoute,
+}
+
+const CoachingRouteWithChildren = CoachingRoute._addFileChildren(
+  CoachingRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AssessmentsRoute: AssessmentsRoute,
   BookshelfRoute: BookshelfRoute,
-  CoachingRoute: CoachingRoute,
+  CoachingRoute: CoachingRouteWithChildren,
   EducationPlanningRoute: EducationPlanningRoute,
   EnquiryRoute: EnquiryRoute,
   KnowledgeRoute: KnowledgeRoute,

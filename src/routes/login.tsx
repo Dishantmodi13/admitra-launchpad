@@ -3,7 +3,7 @@ import { PageLayout } from "@/components/site/PageLayout";
 
 export const Route = createFileRoute("/login")({
   head: () => ({
-    meta: [{ title: "Login — KAREER Studio" }, { name: "description", content: "Student area login." }],
+    meta: [{ title: "Login - KAREER Studio" }, { name: "description", content: "Student area login." }],
   }),
   component: LoginPage,
 });
