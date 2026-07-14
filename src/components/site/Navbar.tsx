@@ -3,19 +3,19 @@ import { useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { coachingDropdownItems, primaryNavItems } from "@/data/primary-nav";
+import { useSmoothScroll } from "@/components/site/SmoothScrollProvider";
 import { cn } from "@/lib/utils";
 
 const navUnderline =
   "after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-accent after:transition-transform after:duration-300 after:content-['']";
 
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-function scrollIfActive(pathname: string, path: string, onAfter?: () => void) {
-  if (pathname === path) {
-    scrollToTop();
-  }
+function scrollIfActive(
+  pathname: string,
+  path: string,
+  scrollToTop: () => void,
+  onAfter?: () => void,
+) {
+  if (pathname === path) scrollToTop();
   onAfter?.();
 }
 
@@ -32,9 +32,11 @@ function isNavItemActive(pathname: string, key: string, to: string) {
 
 function CoachingNavDropdown({
   pathname,
+  scrollToTop,
   onNavigate,
 }: {
   pathname: string;
+  scrollToTop: () => void;
   onNavigate?: () => void;
 }) {
   const active = isCoachingPath(pathname);
@@ -44,7 +46,7 @@ function CoachingNavDropdown({
       <Link
         to="/coaching"
         onClick={() => {
-          scrollIfActive(pathname, "/coaching");
+          scrollIfActive(pathname, "/coaching", scrollToTop);
           onNavigate?.();
         }}
         className={cn(
@@ -65,7 +67,7 @@ function CoachingNavDropdown({
               key={item.key}
               to={item.to}
               onClick={() => {
-                scrollIfActive(pathname, item.to);
+                scrollIfActive(pathname, item.to, scrollToTop);
                 onNavigate?.();
               }}
               className="block rounded-lg px-3 py-2 text-sm font-medium normal-case tracking-normal text-foreground transition-colors hover:bg-accent/10 hover:text-accent"
@@ -83,6 +85,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const [coachingOpen, setCoachingOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { scrollToTop } = useSmoothScroll();
 
   const closeMobile = () => {
     setOpen(false);
@@ -105,7 +108,7 @@ export function Navbar() {
         <Link
           to="/"
           className="shrink-0"
-          onClick={() => scrollIfActive(pathname, "/", closeMobile)}
+          onClick={() => scrollIfActive(pathname, "/", scrollToTop, closeMobile)}
         >
           <img
             src={logo}
@@ -119,7 +122,7 @@ export function Navbar() {
         <div className="hidden items-center gap-6 text-[12px] font-medium uppercase tracking-[0.06em] text-muted-foreground lg:flex xl:gap-7 xl:text-[13px]">
           <Link
             to="/"
-            onClick={() => scrollIfActive(pathname, "/")}
+            onClick={() => scrollIfActive(pathname, "/", scrollToTop)}
             className={cn(
               "relative transition-colors duration-300",
               navUnderline,
@@ -132,7 +135,7 @@ export function Navbar() {
           </Link>
           {primaryNavItems.map((item) => {
             if (item.key === "coaching") {
-              return <CoachingNavDropdown key={item.key} pathname={pathname} />;
+              return <CoachingNavDropdown key={item.key} pathname={pathname} scrollToTop={scrollToTop} />;
             }
 
             const active = isNavItemActive(pathname, item.key, item.to);
@@ -140,7 +143,7 @@ export function Navbar() {
               <Link
                 key={item.key}
                 to={item.to}
-                onClick={() => scrollIfActive(pathname, item.to)}
+                onClick={() => scrollIfActive(pathname, item.to, scrollToTop)}
                 className={cn(
                   "relative transition-colors duration-300",
                   navUnderline,
@@ -158,7 +161,7 @@ export function Navbar() {
         <div className="hidden items-center gap-3 lg:flex">
           <Link
             to="/login"
-            onClick={() => scrollIfActive(pathname, "/login")}
+            onClick={() => scrollIfActive(pathname, "/login", scrollToTop)}
             className={cn(
               "text-sm font-medium transition-all duration-300",
               pathname === "/login"
@@ -170,7 +173,7 @@ export function Navbar() {
           </Link>
           <Link
             to="/register"
-            onClick={() => scrollIfActive(pathname, "/register")}
+            onClick={() => scrollIfActive(pathname, "/register", scrollToTop)}
             className={cn(
               "text-sm font-medium transition-all duration-300",
               pathname === "/register"
@@ -182,7 +185,7 @@ export function Navbar() {
           </Link>
           <Link
             to="/enquiry"
-            onClick={() => scrollIfActive(pathname, "/enquiry")}
+            onClick={() => scrollIfActive(pathname, "/enquiry", scrollToTop)}
             className={cn(
               "px-4 py-2 text-sm font-medium transition-all duration-300",
               pathname === "/enquiry"
@@ -214,7 +217,7 @@ export function Navbar() {
                   ? "border-accent font-medium text-accent"
                   : "border-transparent text-foreground hover:border-accent/40 hover:text-accent",
               )}
-              onClick={() => scrollIfActive(pathname, "/", closeMobile)}
+              onClick={() => scrollIfActive(pathname, "/", scrollToTop, closeMobile)}
             >
               Home
             </Link>
@@ -224,7 +227,7 @@ export function Navbar() {
                   <div key={item.key}>
                     <Link
                       to="/coaching"
-                      onClick={() => scrollIfActive(pathname, "/coaching", closeMobile)}
+                      onClick={() => scrollIfActive(pathname, "/coaching", scrollToTop, closeMobile)}
                       className={cn(
                         "flex w-full items-center justify-between border-l-2 py-2 pl-3 text-left transition-all duration-300",
                         isCoachingPath(pathname)
@@ -258,7 +261,7 @@ export function Navbar() {
                             key={subItem.key}
                             to={subItem.to}
                             className="block py-2 text-sm text-muted-foreground transition-colors hover:text-accent"
-                            onClick={() => scrollIfActive(pathname, subItem.to, closeMobile)}
+                            onClick={() => scrollIfActive(pathname, subItem.to, scrollToTop, closeMobile)}
                           >
                             {subItem.label}
                           </Link>
@@ -274,7 +277,7 @@ export function Navbar() {
                   key={item.key}
                   to={item.to}
                   className={mobileLinkClass(item.key, item.to)}
-                  onClick={() => scrollIfActive(pathname, item.to, closeMobile)}
+                  onClick={() => scrollIfActive(pathname, item.to, scrollToTop, closeMobile)}
                 >
                   {item.label}
                 </Link>
@@ -283,7 +286,7 @@ export function Navbar() {
             <Link
               to="/enquiry"
               className={mobileLinkClass("enquiry", "/enquiry")}
-              onClick={() => scrollIfActive(pathname, "/enquiry", closeMobile)}
+              onClick={() => scrollIfActive(pathname, "/enquiry", scrollToTop, closeMobile)}
             >
               Enquire
             </Link>
@@ -291,14 +294,14 @@ export function Navbar() {
               <Link
                 to="/login"
                 className={cn(pathname === "/login" && "font-medium text-accent")}
-                onClick={() => scrollIfActive(pathname, "/login", closeMobile)}
+                onClick={() => scrollIfActive(pathname, "/login", scrollToTop, closeMobile)}
               >
                 Login
               </Link>
               <Link
                 to="/register"
                 className={cn(pathname === "/register" && "font-medium text-accent")}
-                onClick={() => scrollIfActive(pathname, "/register", closeMobile)}
+                onClick={() => scrollIfActive(pathname, "/register", scrollToTop, closeMobile)}
               >
                 Register
               </Link>

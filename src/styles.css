@@ -153,12 +153,29 @@
     border-color: var(--color-border);
   }
 
+  html {
+    scroll-behavior: auto;
+  }
+
+  html.lenis {
+    height: auto;
+  }
+
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: clip;
   }
 
   ::selection {
@@ -189,5 +206,52 @@
   @keyframes scroll {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
+  }
+
+  @keyframes scholastic-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes scholastic-fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scholastic-text-reveal {
+    from { opacity: 0; transform: translateY(110%); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scholastic-scroll-bounce {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(6px); opacity: 1; }
+  }
+
+  .scholastic-glass-card {
+    animation: scholastic-float ease-in-out infinite;
+  }
+
+  .scholastic-fade-in {
+    animation: scholastic-fade-in 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  .scholastic-text-reveal > span {
+    animation: scholastic-text-reveal 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  .scholastic-scroll-indicator {
+    animation: scholastic-scroll-bounce 2.4s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scholastic-glass-card,
+    .scholastic-fade-in,
+    .scholastic-text-reveal > span,
+    .scholastic-scroll-indicator {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
   }
 }

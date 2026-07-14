@@ -14,23 +14,23 @@ const directionStyles: Record<
   { hidden: string; visible: string }
 > = {
   up: {
-    hidden: "translate-y-12 opacity-0",
+    hidden: "translate-y-10 opacity-0",
     visible: "translate-y-0 opacity-100",
   },
   down: {
-    hidden: "-translate-y-12 opacity-0",
+    hidden: "-translate-y-10 opacity-0",
     visible: "translate-y-0 opacity-100",
   },
   left: {
-    hidden: "-translate-x-12 opacity-0",
+    hidden: "-translate-x-10 opacity-0",
     visible: "translate-x-0 opacity-100",
   },
   right: {
-    hidden: "translate-x-12 opacity-0",
+    hidden: "translate-x-10 opacity-0",
     visible: "translate-x-0 opacity-100",
   },
   scale: {
-    hidden: "scale-90 opacity-0",
+    hidden: "scale-[0.96] opacity-0",
     visible: "scale-100 opacity-100",
   },
   fade: {
@@ -44,9 +44,9 @@ const directionStyles: Record<
 };
 
 const revealTransition =
-  "transition-all duration-[900ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] will-change-[transform,opacity]";
+  "transform-gpu transition-[transform,opacity,filter] duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none motion-reduce:transform-none motion-reduce:opacity-100 motion-reduce:blur-none";
 
-function useRevealOnScroll(once = true, threshold = 0.12) {
+function useRevealOnScroll(once = true, threshold = 0.1) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -73,7 +73,7 @@ function useRevealOnScroll(once = true, threshold = 0.12) {
               setVisible(false);
             }
           },
-          { threshold, rootMargin: "0px 0px -5% 0px" },
+          { threshold, rootMargin: "0px 0px -6% 0px" },
         );
 
         observer.observe(el);
@@ -105,7 +105,7 @@ export function ScrollReveal({
   delay = 0,
   direction = "up",
   once = true,
-  threshold = 0.12,
+  threshold = 0.1,
 }: ScrollRevealProps) {
   const { ref, visible } = useRevealOnScroll(once, threshold);
   const styles = directionStyles[direction];
@@ -139,7 +139,7 @@ export function ScrollRevealGroup({
   children,
   className,
   itemClassName,
-  stagger = 140,
+  stagger = 120,
   direction = "up",
   once = true,
   threshold = 0.08,

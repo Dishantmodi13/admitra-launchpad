@@ -6,6 +6,11 @@ import {
   getProgramLinkStyle,
 } from "@/data/coaching-icon-styles";
 import { CoachingArchBanner } from "@/components/site/CoachingArchBanner";
+import { ScholasticHero } from "@/components/site/ScholasticHero";
+import { IeltsHero } from "@/components/site/IeltsHero";
+import { GreHero } from "@/components/site/GreHero";
+import { SatHero } from "@/components/site/SatHero";
+import { PteHero } from "@/components/site/PteHero";
 import { PageLayout } from "@/components/site/PageLayout";
 import { ScrollReveal } from "@/components/site/ScrollReveal";
 import { cn } from "@/lib/utils";
@@ -137,30 +142,40 @@ function BenefitsGrid({ benefits }: { benefits: NonNullable<CoachingProgram["ben
   );
 }
 
-function IntroSection({ program }: { program: CoachingProgram }) {
+function IntroSection({
+  program,
+  hideHeader = false,
+}: {
+  program: CoachingProgram;
+  hideHeader?: boolean;
+}) {
+  if (hideHeader && !program.introImage) return null;
+
   return (
     <section className="border-b border-border px-6 pb-12 pt-12 lg:pb-14 lg:pt-14">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-x-12 lg:gap-y-10">
-          <ScrollReveal direction="left" className="lg:col-span-5">
-            <h1 className={pageTitleClass}>{program.pageTitle}</h1>
-            {program.sectionTitle !== program.pageTitle && (
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground lg:text-lg">
-                {program.sectionTitle}
-              </p>
-            )}
-          </ScrollReveal>
+        {!hideHeader && (
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-x-12 lg:gap-y-10">
+            <ScrollReveal direction="left" className="lg:col-span-5">
+              <h1 className={pageTitleClass}>{program.pageTitle}</h1>
+              {program.sectionTitle !== program.pageTitle && (
+                <p className="mt-4 text-base leading-relaxed text-muted-foreground lg:text-lg">
+                  {program.sectionTitle}
+                </p>
+              )}
+            </ScrollReveal>
 
-          <ScrollReveal direction="up" threshold={0.08} className="lg:col-span-7">
-            <CoachingBulletList
-              items={program.intro}
-              itemClassName="text-base lg:text-lg"
-            />
-          </ScrollReveal>
-        </div>
+            <ScrollReveal direction="up" threshold={0.08} className="lg:col-span-7">
+              <CoachingBulletList
+                items={program.intro}
+                itemClassName="text-base lg:text-lg"
+              />
+            </ScrollReveal>
+          </div>
+        )}
 
         {program.introImage && (
-          <ScrollReveal direction="up" className="mt-14 lg:mt-20">
+          <ScrollReveal direction="up" className={hideHeader ? undefined : "mt-14 lg:mt-20"}>
             <div className="mx-auto w-full max-w-[1024px] bg-content-surface">
               <img
                 src={program.introImage}
@@ -178,11 +193,20 @@ function IntroSection({ program }: { program: CoachingProgram }) {
   );
 }
 
-function ProgramsSection({ program }: { program: CoachingProgram }) {
+function ProgramsSection({
+  program,
+  sectionId,
+}: {
+  program: CoachingProgram;
+  sectionId?: string;
+}) {
   if (!program.programLinks?.length) return null;
 
   return (
-    <section className="border-b border-border px-6 py-14 lg:py-16">
+    <section
+      id={sectionId}
+      className="border-b border-border px-6 py-14 lg:py-16"
+    >
       <div className="mx-auto max-w-7xl">
         <ScrollReveal direction="blur" className="mb-8">
           <h2 className={sectionLabelClass}>Programs</h2>
@@ -265,11 +289,20 @@ function ProgramsSection({ program }: { program: CoachingProgram }) {
   );
 }
 
-function BenefitsSection({ program }: { program: CoachingProgram }) {
+function BenefitsSection({
+  program,
+  sectionId,
+}: {
+  program: CoachingProgram;
+  sectionId?: string;
+}) {
   if (!program.benefits?.length) return null;
 
   return (
-    <section className="border-b border-border px-6 py-14 lg:py-16">
+    <section
+      id={sectionId}
+      className="border-b border-border px-6 py-14 lg:py-16"
+    >
       <div className="mx-auto max-w-7xl">
         <ScrollReveal direction="blur" className="mb-8 max-w-2xl">
           <h2 className={sectionLabelClass}>{program.benefitsHeading ?? "Benefits"}</h2>
@@ -304,12 +337,51 @@ function CtaSection() {
 }
 
 export function CoachingProgramPage({ program }: { program: CoachingProgram }) {
+  const hasCustomHero = [
+    "scholastic-language",
+    "ielts",
+    "gre",
+    "sat",
+    "pte",
+  ].includes(program.slug);
+
+  const benefitsSectionId =
+    program.slug === "ielts"
+      ? "ielts-benefits"
+      : program.slug === "gre"
+        ? "gre-benefits"
+        : program.slug === "sat"
+          ? "sat-benefits"
+          : program.slug === "pte"
+            ? "pte-benefits"
+            : undefined;
+
+  function renderHero() {
+    switch (program.slug) {
+      case "scholastic-language":
+        return <ScholasticHero />;
+      case "ielts":
+        return <IeltsHero />;
+      case "gre":
+        return <GreHero />;
+      case "sat":
+        return <SatHero />;
+      case "pte":
+        return <PteHero />;
+      default:
+        return <CoachingArchBanner slug={program.slug} />;
+    }
+  }
+
   return (
     <PageLayout>
-      <CoachingArchBanner slug={program.slug} />
-      <IntroSection program={program} />
-      <ProgramsSection program={program} />
-      <BenefitsSection program={program} />
+      {renderHero()}
+      <IntroSection program={program} hideHeader={hasCustomHero} />
+      <ProgramsSection
+        program={program}
+        sectionId={program.slug === "scholastic-language" ? "scholastic-programs" : undefined}
+      />
+      <BenefitsSection program={program} sectionId={benefitsSectionId} />
       <CtaSection />
     </PageLayout>
   );

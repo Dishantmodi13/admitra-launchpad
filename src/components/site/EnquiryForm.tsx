@@ -39,7 +39,7 @@ function Field({
 }) {
   return (
     <div className="space-y-2">
-      <label className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+      <label className="font-sans text-xs font-bold text-foreground sm:text-sm">
         {label}
       </label>
       {children}
@@ -124,7 +124,9 @@ export function EnquiryForm() {
         <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">
           Your details
         </p>
-        <h2 className="font-serif text-2xl italic md:text-3xl">Tell us about yourself</h2>
+        <h2 className="font-sans text-2xl font-bold text-foreground md:text-3xl">
+          Tell us about yourself
+        </h2>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
@@ -156,7 +158,9 @@ export function EnquiryForm() {
         <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">
           Location
         </p>
-        <h3 className="font-serif text-xl italic">Where are you based?</h3>
+        <h3 className="font-sans text-xl font-bold text-foreground md:text-2xl">
+          Where are you based?
+        </h3>
       </div>
 
       <div className="grid gap-6 md:grid-cols-3">
