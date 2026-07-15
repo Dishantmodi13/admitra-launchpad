@@ -54,7 +54,7 @@ const reasonIcons = {
   sparkles: Sparkles,
 } as const;
 
-const educationHeroNavLinks = heroNavLinks(["education-planning", "study-abroad"]);
+const educationHeroNavLinks = heroNavLinks(["education-planning"]);
 
 function boldKareerStudio(text: string) {
   return text.split(/(KAREER Studio)/g).map((part, i) =>
@@ -176,7 +176,7 @@ function EducationPlanningPage() {
       </section>
 
       {/* Phases of Education */}
-      <section className="border-b border-border px-6 py-24 lg:py-32">
+      <section className="overflow-x-clip border-b border-border px-6 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <ScrollReveal direction="blur" className="mb-16 max-w-2xl">
             <h2 className={sectionLabelClass}>The Journey</h2>
@@ -188,7 +188,9 @@ function EducationPlanningPage() {
               <ScrollReveal
                 key={phase.phase}
                 direction={index % 2 === 0 ? "left" : "right"}
-                delay={80}
+                distance="wide"
+                delay={120}
+                threshold={0.18}
               >
                 <article className="overflow-hidden border border-border bg-background">
                   <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">

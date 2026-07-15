@@ -25,7 +25,6 @@ function isCoachingPath(pathname: string) {
 
 function isNavItemActive(pathname: string, key: string, to: string) {
   if (pathname === to) return true;
-  if (key === "study-abroad" && pathname === "/education-planning") return true;
   if ((key === "ivy-league" || key === "coaching") && isCoachingPath(pathname)) return true;
   return false;
 }

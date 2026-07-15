@@ -228,6 +228,23 @@
     50% { transform: translateY(6px); opacity: 1; }
   }
 
+  @keyframes study-abroad-dash {
+    to { stroke-dashoffset: -40; }
+  }
+
+  @keyframes study-abroad-orbit {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .study-abroad-flight-path {
+    animation: study-abroad-dash 12s linear infinite;
+  }
+
+  .study-abroad-orbit-ring {
+    animation: study-abroad-orbit 24s linear infinite;
+  }
+
   .scholastic-glass-card {
     animation: scholastic-float ease-in-out infinite;
   }
@@ -248,7 +265,9 @@
     .scholastic-glass-card,
     .scholastic-fade-in,
     .scholastic-text-reveal > span,
-    .scholastic-scroll-indicator {
+    .scholastic-scroll-indicator,
+    .study-abroad-flight-path,
+    .study-abroad-orbit-ring {
       animation: none !important;
       opacity: 1 !important;
       transform: none !important;

@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as StudyAbroadRouteImport } from './routes/study-abroad'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ParentingCoachingRouteImport } from './routes/parenting-coaching'
 import { Route as LoginRouteImport } from './routes/login'
@@ -22,6 +23,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as CoachingIndexRouteImport } from './routes/coaching/index'
 import { Route as CoachingSlugRouteImport } from './routes/coaching/$slug'
 
+const StudyAbroadRoute = StudyAbroadRouteImport.update({
+  id: '/study-abroad',
+  path: '/study-abroad',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
@@ -94,6 +100,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/parenting-coaching': typeof ParentingCoachingRoute
   '/register': typeof RegisterRoute
+  '/study-abroad': typeof StudyAbroadRoute
   '/coaching/$slug': typeof CoachingSlugRoute
   '/coaching/': typeof CoachingIndexRoute
 }
@@ -107,6 +114,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/parenting-coaching': typeof ParentingCoachingRoute
   '/register': typeof RegisterRoute
+  '/study-abroad': typeof StudyAbroadRoute
   '/coaching/$slug': typeof CoachingSlugRoute
   '/coaching': typeof CoachingIndexRoute
 }
@@ -122,6 +130,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/parenting-coaching': typeof ParentingCoachingRoute
   '/register': typeof RegisterRoute
+  '/study-abroad': typeof StudyAbroadRoute
   '/coaching/$slug': typeof CoachingSlugRoute
   '/coaching/': typeof CoachingIndexRoute
 }
@@ -138,6 +147,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/parenting-coaching'
     | '/register'
+    | '/study-abroad'
     | '/coaching/$slug'
     | '/coaching/'
   fileRoutesByTo: FileRoutesByTo
@@ -151,6 +161,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/parenting-coaching'
     | '/register'
+    | '/study-abroad'
     | '/coaching/$slug'
     | '/coaching'
   id:
@@ -165,6 +176,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/parenting-coaching'
     | '/register'
+    | '/study-abroad'
     | '/coaching/$slug'
     | '/coaching/'
   fileRoutesById: FileRoutesById
@@ -180,10 +192,18 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   ParentingCoachingRoute: typeof ParentingCoachingRoute
   RegisterRoute: typeof RegisterRoute
+  StudyAbroadRoute: typeof StudyAbroadRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/study-abroad': {
+      id: '/study-abroad'
+      path: '/study-abroad'
+      fullPath: '/study-abroad'
+      preLoaderRoute: typeof StudyAbroadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/register': {
       id: '/register'
       path: '/register'
@@ -296,6 +316,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   ParentingCoachingRoute: ParentingCoachingRoute,
   RegisterRoute: RegisterRoute,
+  StudyAbroadRoute: StudyAbroadRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

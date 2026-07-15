@@ -6,7 +6,7 @@ export type PrimaryNavItem = {
 
 export const primaryNavItems: PrimaryNavItem[] = [
   { key: "education-planning", label: "Education Planning", to: "/education-planning" },
-  { key: "study-abroad", label: "Study Abroad", to: "/education-planning" },
+  { key: "study-abroad", label: "Study Abroad", to: "/study-abroad" },
   { key: "ivy-league", label: "Ivy League", to: "/coaching" },
   { key: "coaching", label: "Coaching", to: "/coaching" },
   { key: "assessments", label: "Assessment Center", to: "/assessments" },
@@ -26,7 +26,11 @@ export const footerNavItems: PrimaryNavItem[] = [
 ];
 
 export function heroNavLinks(excludeKeys: string[] = []) {
-  return primaryNavItems
+  const items: PrimaryNavItem[] = [
+    { key: "home", label: "Home", to: "/" },
+    ...primaryNavItems,
+  ];
+  return items
     .filter((item) => !excludeKeys.includes(item.key))
     .map(({ key, label, to }) => ({ key, label, to }));
 }

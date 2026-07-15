@@ -9,39 +9,50 @@ import { cn } from "@/lib/utils";
 
 type RevealDirection = "up" | "down" | "left" | "right" | "scale" | "fade" | "blur";
 
-const directionStyles: Record<
+type RevealDistance = "default" | "wide";
+
+function getDirectionStyles(distance: RevealDistance): Record<
   RevealDirection,
   { hidden: string; visible: string }
-> = {
-  up: {
-    hidden: "translate-y-10 opacity-0",
-    visible: "translate-y-0 opacity-100",
-  },
-  down: {
-    hidden: "-translate-y-10 opacity-0",
-    visible: "translate-y-0 opacity-100",
-  },
-  left: {
-    hidden: "-translate-x-10 opacity-0",
-    visible: "translate-x-0 opacity-100",
-  },
-  right: {
-    hidden: "translate-x-10 opacity-0",
-    visible: "translate-x-0 opacity-100",
-  },
-  scale: {
-    hidden: "scale-[0.96] opacity-0",
-    visible: "scale-100 opacity-100",
-  },
-  fade: {
-    hidden: "opacity-0",
-    visible: "opacity-100",
-  },
-  blur: {
-    hidden: "translate-y-8 opacity-0 blur-sm",
-    visible: "translate-y-0 opacity-100 blur-0",
-  },
-};
+> {
+  const leftHidden =
+    distance === "wide" ? "-translate-x-24 opacity-0" : "-translate-x-10 opacity-0";
+  const rightHidden =
+    distance === "wide" ? "translate-x-24 opacity-0" : "translate-x-10 opacity-0";
+
+  return {
+    up: {
+      hidden: "translate-y-10 opacity-0",
+      visible: "translate-y-0 opacity-100",
+    },
+    down: {
+      hidden: "-translate-y-10 opacity-0",
+      visible: "translate-y-0 opacity-100",
+    },
+    left: {
+      hidden: leftHidden,
+      visible: "translate-x-0 opacity-100",
+    },
+    right: {
+      hidden: rightHidden,
+      visible: "translate-x-0 opacity-100",
+    },
+    scale: {
+      hidden: "scale-[0.96] opacity-0",
+      visible: "scale-100 opacity-100",
+    },
+    fade: {
+      hidden: "opacity-0",
+      visible: "opacity-100",
+    },
+    blur: {
+      hidden: "translate-y-8 opacity-0 blur-sm",
+      visible: "translate-y-0 opacity-100 blur-0",
+    },
+  };
+}
+
+const directionStyles = getDirectionStyles("default");
 
 const revealTransition =
   "transform-gpu transition-[transform,opacity,filter] duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none motion-reduce:transform-none motion-reduce:opacity-100 motion-reduce:blur-none";
@@ -95,6 +106,7 @@ interface ScrollRevealProps {
   className?: string;
   delay?: number;
   direction?: RevealDirection;
+  distance?: RevealDistance;
   once?: boolean;
   threshold?: number;
 }
@@ -104,11 +116,12 @@ export function ScrollReveal({
   className,
   delay = 0,
   direction = "up",
+  distance = "default",
   once = true,
   threshold = 0.1,
 }: ScrollRevealProps) {
   const { ref, visible } = useRevealOnScroll(once, threshold);
-  const styles = directionStyles[direction];
+  const styles = getDirectionStyles(distance)[direction];
 
   return (
     <div
