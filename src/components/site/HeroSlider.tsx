@@ -15,7 +15,7 @@ export function HeroSlider() {
       ctaEyebrow="Get Started"
       ctaTitle="Book a Discovery Session"
       ctaTo="/enquiry"
-      navLinks={heroNavLinks()}
+      navLinks={heroNavLinks(["home"])}
     />
   );
 }
