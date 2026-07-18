@@ -78,7 +78,7 @@ export const educationPhases = [
     phase: "Early School Years",
     tagline: "Build up Phase",
     focus: "Self-Exploration",
-    ages: "6–12 Years",
+    ages: "6-12 Years",
     items: [
       {
         title: "Explore Interests",
@@ -98,7 +98,7 @@ export const educationPhases = [
     phase: "Middle to High School",
     tagline: "Transition Phase",
     focus: "Academic Focus and Exploration",
-    ages: "12–14 Years",
+    ages: "12-14 Years",
     items: [
       {
         title: "Subject Exploration",
@@ -118,7 +118,7 @@ export const educationPhases = [
     phase: "High School Years",
     tagline: "Formative Phase",
     focus: "College Preparation and Application",
-    ages: "14–18 Years",
+    ages: "14-18 Years",
     items: [
       {
         title: "Research Colleges",

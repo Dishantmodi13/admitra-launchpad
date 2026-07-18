@@ -265,7 +265,7 @@ export function IeltsHero() {
               style={{ animationDelay: "420ms" }}
             >
               IELTS is your passport to studying abroad. Live, expert-led coaching
-              that builds the band score universities trust — and the confidence to
+              that builds the band score universities trust - and the confidence to
               step onto an international campus.
             </p>
 

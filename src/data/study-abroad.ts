@@ -2,7 +2,7 @@ export const studyAbroadIntro = {
   eyebrow: "Career-Focused Study Abroad",
   headline: "Turn global dreams into a planned, employable career path.",
   summary:
-    "At KAREER Studio, we pair scientific assessments with senior mentor judgment to design your international education journey — from first doubts to departure day.",
+    "At KAREER Studio, we pair scientific assessments with senior mentor judgment to design your international education journey - from first doubts to departure day.",
   pillars: [
     { value: 25, suffix: "+", label: "Challenge areas we guide you through" },
     { value: 5, suffix: "", label: "Phases on your global timeline" },
@@ -41,7 +41,7 @@ export const challengePhases: ChallengePhase[] = [
         id: "information-overload",
         title: "Information Overload",
         summary:
-          "Destinations, courses, rankings, and advice from every direction — filtering signal from noise is the first real challenge.",
+          "Destinations, courses, rankings, and advice from every direction - filtering signal from noise is the first real challenge.",
         detail:
           "The abundance of information available about various study destinations, courses, and institutions can be overwhelming. You may find it challenging to sift through this information and make informed choices that truly align with your profile and career goals.",
         icon: "layers",
@@ -52,7 +52,7 @@ export const challengePhases: ChallengePhase[] = [
         summary:
           "Tuition, living expenses, scholarships, and funding options across countries create real uncertainty for students and families.",
         detail:
-          "Cost is a major factor. Students and their families might face uncertainty regarding tuition fees, living expenses, scholarships, and funding options available in different countries — making early financial clarity essential.",
+          "Cost is a major factor. Students and their families might face uncertainty regarding tuition fees, living expenses, scholarships, and funding options available in different countries - making early financial clarity essential.",
         icon: "wallet",
       },
       {
@@ -68,9 +68,9 @@ export const challengePhases: ChallengePhase[] = [
         id: "cultural-adjustment",
         title: "Cultural Adjustment",
         summary:
-          "A new culture, language barriers, and social norms can shape your entire experience abroad — preparation starts long before departure.",
+          "A new culture, language barriers, and social norms can shape your entire experience abroad - preparation starts long before departure.",
         detail:
-          "Adapting to a new culture, language barriers, and social norms can pose challenges. This adjustment period may impact a student's overall experience and well-being abroad — something worth planning for from day one.",
+          "Adapting to a new culture, language barriers, and social norms can pose challenges. This adjustment period may impact a student's overall experience and well-being abroad - something worth planning for from day one.",
         icon: "globe",
       },
       {
@@ -95,9 +95,9 @@ export const challengePhases: ChallengePhase[] = [
         id: "homesickness",
         title: "Homesickness & Support",
         summary:
-          "Distance from family and friends can affect mental health — building a support plan before you leave matters.",
+          "Distance from family and friends can affect mental health - building a support plan before you leave matters.",
         detail:
-          "Being away from family and friends can lead to feelings of homesickness. Lack of a strong support system in the new environment can affect mental health and well-being — a factor families often underestimate at the decision stage.",
+          "Being away from family and friends can lead to feelings of homesickness. Lack of a strong support system in the new environment can affect mental health and well-being - a factor families often underestimate at the decision stage.",
         icon: "heart",
       },
       {
@@ -117,13 +117,13 @@ export const challengePhases: ChallengePhase[] = [
     tagline: "Building your profile",
     introTitle: "Pre-admission challenges",
     introBody:
-      "Once you commit to studying abroad, the application phase demands precision at every step. International universities require essays, recommendation letters, standardized test scores, and carefully prepared documents — each with its own deadlines and standards. Competing against highly qualified applicants worldwide means your profile, preparation, and timing must be flawless.",
+      "Once you commit to studying abroad, the application phase demands precision at every step. International universities require essays, recommendation letters, standardized test scores, and carefully prepared documents - each with its own deadlines and standards. Competing against highly qualified applicants worldwide means your profile, preparation, and timing must be flawless.",
     challenges: [
       {
         id: "application-complexity",
         title: "Application Complexity",
         summary:
-          "Essays, recommendation letters, standardized test scores, and university portals — each requirement has its own rules and deadlines.",
+          "Essays, recommendation letters, standardized test scores, and university portals - each requirement has its own rules and deadlines.",
         detail:
           "The application process for international universities can be intricate, involving various documents, essays, recommendation letters, and standardized test scores. Understanding and meeting each requirement can be overwhelming without a structured plan.",
         icon: "file-stack",
@@ -132,7 +132,7 @@ export const challengePhases: ChallengePhase[] = [
         id: "language-tests",
         title: "Language Proficiency Tests",
         summary:
-          "IELTS, TOEFL, or PTE scores must meet strict cut-offs — particularly demanding for non-native English speakers.",
+          "IELTS, TOEFL, or PTE scores must meet strict cut-offs - particularly demanding for non-native English speakers.",
         detail:
           "Many universities require language proficiency tests like TOEFL or IELTS. Achieving the required scores can be challenging, particularly for non-native speakers who need targeted coaching and realistic timelines.",
         icon: "languages",
@@ -141,7 +141,7 @@ export const challengePhases: ChallengePhase[] = [
         id: "deadlines",
         title: "Navigating Admission Deadlines",
         summary:
-          "Universities worldwide run on different timelines — missing one deadline can push your entire plan back by a year.",
+          "Universities worldwide run on different timelines - missing one deadline can push your entire plan back by a year.",
         detail:
           "Different universities worldwide have varying application deadlines. Keeping track of these deadlines while ensuring all materials are submitted on time can be stressful without a central tracker and mentor oversight.",
         icon: "calendar",
@@ -159,7 +159,7 @@ export const challengePhases: ChallengePhase[] = [
         id: "financial-planning",
         title: "Financial Planning",
         summary:
-          "Tuition, accommodation, living costs, and proof-of-funds for visas — budgeting early prevents last-minute surprises.",
+          "Tuition, accommodation, living costs, and proof-of-funds for visas - budgeting early prevents last-minute surprises.",
         detail:
           "Estimating and managing the costs of tuition fees, living expenses, accommodation, and potential scholarships or financial aid can be discouraging. Students often face uncertainty regarding their financial capacity and funding options.",
         icon: "piggy-bank",
@@ -168,7 +168,7 @@ export const challengePhases: ChallengePhase[] = [
         id: "visa-prep",
         title: "Visa and Immigration Procedures",
         summary:
-          "Paperwork, interviews, and legal compliance often begin before your admit letter arrives — preparation cannot wait.",
+          "Paperwork, interviews, and legal compliance often begin before your admit letter arrives - preparation cannot wait.",
         detail:
           "Securing the necessary visas and understanding immigration regulations can be a significant hurdle. Navigating paperwork, interviews, and meeting legal requirements can be challenging during the application phase itself.",
         icon: "shield",
@@ -186,7 +186,7 @@ export const challengePhases: ChallengePhase[] = [
         id: "competition",
         title: "Competition",
         summary:
-          "Global applicant pools are intensely competitive — standing out requires a differentiated, authentic profile.",
+          "Global applicant pools are intensely competitive - standing out requires a differentiated, authentic profile.",
         detail:
           "The global nature of study abroad programs means intense competition among applicants. Standing out amidst a pool of highly qualified candidates can be a challenge that demands strategic profile building.",
         icon: "trophy",
@@ -199,7 +199,7 @@ export const challengePhases: ChallengePhase[] = [
     tagline: "Landing & thriving abroad",
     introTitle: "Post-admission challenges",
     introBody:
-      "Receiving your acceptance letter is a milestone — not the finish line. The path from admit to arrival involves visa processing, financial planning, housing, healthcare, travel logistics, and emotional preparation. Each step carries its own complexities, and navigating them with the right support ensures a smooth transition into your new academic life abroad.",
+      "Receiving your acceptance letter is a milestone - not the finish line. The path from admit to arrival involves visa processing, financial planning, housing, healthcare, travel logistics, and emotional preparation. Each step carries its own complexities, and navigating them with the right support ensures a smooth transition into your new academic life abroad.",
     challenges: [
       {
         id: "visa-final",
@@ -259,7 +259,7 @@ export const challengePhases: ChallengePhase[] = [
         id: "emotional-support",
         title: "Emotional Support",
         summary:
-          "Homesickness, loneliness, and separation from family can be emotionally taxing — support networks matter.",
+          "Homesickness, loneliness, and separation from family can be emotionally taxing - support networks matter.",
         detail:
           "Coping with homesickness, loneliness, and separation from family and friends can be emotionally taxing. Students may need access to support networks, counseling services, and resources for mental health and well-being.",
         icon: "users",
@@ -299,8 +299,8 @@ export const timelinePhases: TimelinePhase[] = [
   {
     id: "exploration",
     phase: "Exploration",
-    timeframe: "24–30 months before departure",
-    monthsBefore: "24–30 mo",
+    timeframe: "24-30 months before departure",
+    monthsBefore: "24-30 mo",
     color: "#3038CF",
     steps: [
       "Research destinations & self-assessment",
@@ -312,8 +312,8 @@ export const timelinePhases: TimelinePhase[] = [
   {
     id: "preparation",
     phase: "Preparation",
-    timeframe: "14–16 months before departure",
-    monthsBefore: "14–16 mo",
+    timeframe: "14-16 months before departure",
+    monthsBefore: "14-16 mo",
     color: "#1e40af",
     steps: [
       "Shortlist target universities",
@@ -325,8 +325,8 @@ export const timelinePhases: TimelinePhase[] = [
   {
     id: "application",
     phase: "Application",
-    timeframe: "12–14 months before departure",
-    monthsBefore: "12–14 mo",
+    timeframe: "12-14 months before departure",
+    monthsBefore: "12-14 mo",
     color: "#059669",
     steps: [
       "Submit university applications",
@@ -337,8 +337,8 @@ export const timelinePhases: TimelinePhase[] = [
   {
     id: "pre-departure",
     phase: "Pre-Departure",
-    timeframe: "3–6 months before departure",
-    monthsBefore: "3–6 mo",
+    timeframe: "3-6 months before departure",
+    monthsBefore: "3-6 mo",
     color: "#d97706",
     steps: [
       "Accept offers & confirm enrollment",
@@ -350,13 +350,13 @@ export const timelinePhases: TimelinePhase[] = [
   {
     id: "departure",
     phase: "Departure",
-    timeframe: "1–2 months before departure",
-    monthsBefore: "1–2 mo",
+    timeframe: "1-2 months before departure",
+    monthsBefore: "1-2 mo",
     color: "#dc2626",
     steps: [
       "Pack essentials & organize documents",
       "Cultural & emotional preparation",
-      "Depart — your global chapter begins",
+      "Depart - your global chapter begins",
     ],
   },
 ];
@@ -368,14 +368,14 @@ export const kareerApproach = [
   },
   {
     title: "Personalized Roadmap",
-    body: "Every plan is built around your profile, budget, career goals, and family context — never a template.",
+    body: "Every plan is built around your profile, budget, career goals, and family context - never a template.",
   },
   {
     title: "End-to-End Application Support",
-    body: "From shortlisting to essays, tests, and interviews — structured deadlines so nothing is left to chance.",
+    body: "From shortlisting to essays, tests, and interviews - structured deadlines so nothing is left to chance.",
   },
   {
     title: "Beyond the Admit Letter",
-    body: "Visa, housing, finances, and pre-departure prep — we stay with you until you land confidently.",
+    body: "Visa, housing, finances, and pre-departure prep - we stay with you until you land confidently.",
   },
 ];

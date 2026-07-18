@@ -59,7 +59,7 @@ export const assessments = [
     subtitle: "Career & Stream Selection Assessment",
     description:
       "A complete career clarity assessment to help students choose the right stream, subjects, career domain, and future direction.",
-    bestFor: "Student: Grade 8–10",
+    bestFor: "Student: Grade 8-10",
     measures: [
       "Identify your Cognitive Ability and Aptitude Score",
       "Understand your academic strengths and developmental areas",
@@ -78,7 +78,7 @@ export const assessments = [
     subtitle: "Interest based Career & Stream Selection",
     description:
       "Identify the student's academic interests, career direction, and stream readiness with a structured assessment.",
-    bestFor: "Student: Grade 8–10",
+    bestFor: "Student: Grade 8-10",
     measures: [
       "Discover your multidimensional Academic and Career Interest Profile",
       "Understand the academic alignment of your interest areas",

@@ -48,7 +48,7 @@ export function StudyAbroadTimeline() {
             Your roadmap, month by month
           </h2>
           <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-            A structured framework from first research to departure — so you never wonder
+            A structured framework from first research to departure - so you never wonder
             &ldquo;what should I be doing now?&rdquo;
           </p>
         </ScrollReveal>

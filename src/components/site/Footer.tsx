@@ -108,7 +108,7 @@ export function Footer() {
             <li className="flex gap-3">
               <Clock className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
               <div className="space-y-1.5">
-                <p>Mon – Sat: 10:00 – 19:30</p>
+                <p>Mon - Sat: 10:00 - 19:30</p>
                 <p>Sun: On Request</p>
               </div>
             </li>

@@ -110,7 +110,7 @@ function Index() {
         </ScrollRevealGroup>
       </section>
 
-      {/* Who We Are — label + subtitle left, content right */}
+      {/* Who We Are - label + subtitle left, content right */}
       <section className="border-b border-border px-6 py-24 lg:py-32">
         <div className="mx-auto grid max-w-7xl items-start gap-12 lg:grid-cols-2 lg:gap-20">
           <ScrollReveal direction="left">
@@ -158,7 +158,7 @@ function Index() {
         </div>
       </section>
 
-      {/* Why KAREER Studio — content left, heading right */}
+      {/* Why KAREER Studio - content left, heading right */}
       <section className="border-b border-border px-6 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
@@ -198,7 +198,7 @@ function Index() {
         </div>
       </section>
 
-      {/* Why Choose Us — heading top, image left, content right */}
+      {/* Why Choose Us - heading top, image left, content right */}
       <section className="border-b border-border px-6 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <ScrollReveal direction="up" className="mb-16 max-w-2xl">

@@ -57,7 +57,8 @@ const programs = [
   },
 ];
 
-const coachingHeroNavLinks = heroNavLinks(["coaching", "ivy-league"]);
+// Ivy League must appear in the hero "Go to" list.
+const coachingHeroNavLinks = heroNavLinks(["coaching"]);
 
 function CoachingPage() {
   return (
@@ -71,6 +72,9 @@ function CoachingPage() {
         stripeHeading="Coaching"
         stripeTagline="Live, expert coaching - built for outcomes."
         navLinks={coachingHeroNavLinks}
+        ctaEyebrow="Get Started"
+        ctaTitle="Book a Discovery Session"
+        ctaTo="/enquiry"
       />
 
       <section className="px-6 py-24">

@@ -7,7 +7,7 @@ export type PrimaryNavItem = {
 export const primaryNavItems: PrimaryNavItem[] = [
   { key: "education-planning", label: "Education Planning", to: "/education-planning" },
   { key: "study-abroad", label: "Study Abroad", to: "/study-abroad" },
-  { key: "ivy-league", label: "Ivy League", to: "/coaching" },
+  { key: "ivy-league", label: "Ivy League", to: "/ivy-league" },
   { key: "coaching", label: "Coaching", to: "/coaching" },
   { key: "assessments", label: "Assessment Center", to: "/assessments" },
 ];

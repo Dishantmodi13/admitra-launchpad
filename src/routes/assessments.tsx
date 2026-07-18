@@ -48,7 +48,9 @@ function AssessmentsPage() {
         stripeHeading="Assessment Center"
         stripeTagline="Know yourself. Choose smarter."
         navLinks={assessmentsHeroNavLinks}
-        showAssessment={false}
+        ctaEyebrow="Get Started"
+        ctaTitle="Book a Discovery Session"
+        ctaTo="/enquiry"
       />
 
       <section className="border-b border-border px-6 py-16 lg:py-20">
@@ -111,7 +113,7 @@ function AssessmentsPage() {
                   Students
                 </h3>
                 <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-accent">
-                  Grades 6–12 & college
+                  Grades 6-12 & college
                 </p>
                 <ul className="mt-8 space-y-4">
                   {studentAssessments.map((item) => (

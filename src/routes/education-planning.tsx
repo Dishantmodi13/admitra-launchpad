@@ -76,10 +76,13 @@ function EducationPlanningPage() {
         imageAlt="Students collaborating on education planning with books and a tablet"
         imagePosition="object-[center_40%]"
         quoteEyebrow="Education Planning"
-        quote="‘We pair scientific assessments with senior mentor judgment to design the next 4–8 years of your academic life.’"
+        quote="‘We pair scientific assessments with senior mentor judgment to design the next 4-8 years of your academic life.’"
         stripeHeading="Education Planning"
         stripeTagline="A roadmap, not a guess."
         navLinks={educationHeroNavLinks}
+        ctaEyebrow="Get Started"
+        ctaTitle="Book a Discovery Session"
+        ctaTo="/enquiry"
       />
 
       {/* Introduction */}

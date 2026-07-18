@@ -54,7 +54,7 @@ export const greHeroConfig: CoachingTestHeroConfig = {
   ],
   headlineLine2: [{ text: "Starts With GRE.", gradient: true }],
   description:
-    "The GRE opens doors to master's and PhD programs worldwide. Live, expert-led coaching that sharpens verbal, quant, and analytical writing — and builds the score profile top programs expect.",
+    "The GRE opens doors to master's and PhD programs worldwide. Live, expert-led coaching that sharpens verbal, quant, and analytical writing - and builds the score profile top programs expect.",
   heroImage: "/coaching/gre-hero.jpg",
   heroImageAlt:
     "Graduate students collaborating on GRE preparation in a modern study lounge",
@@ -131,7 +131,7 @@ export const satHeroConfig: CoachingTestHeroConfig = {
   ],
   headlineLine2: [{ text: "Starts With SAT.", gradient: true }],
   description:
-    "The SAT is your gateway to top US universities and scholarships. Structured live coaching across reading, writing, and math — built to raise your score with confidence and clarity.",
+    "The SAT is your gateway to top US universities and scholarships. Structured live coaching across reading, writing, and math - built to raise your score with confidence and clarity.",
   heroImage: "/coaching/sat-hero.jpg",
   heroImageAlt:
     "Motivated students preparing for the SAT together in a modern learning center",
@@ -208,7 +208,7 @@ export const pteHeroConfig: CoachingTestHeroConfig = {
   ],
   headlineLine2: [{ text: "Starts With PTE.", gradient: true }],
   description:
-    "PTE is your computer-based path to study abroad, work, and immigration. Live coaching for speaking, writing, reading, and listening — with the fluency and technique exam day demands.",
+    "PTE is your computer-based path to study abroad, work, and immigration. Live coaching for speaking, writing, reading, and listening - with the fluency and technique exam day demands.",
   heroImage: "/coaching/pte-hero.jpg",
   heroImageAlt:
     "International students preparing for PTE in a modern computer-based learning lab",

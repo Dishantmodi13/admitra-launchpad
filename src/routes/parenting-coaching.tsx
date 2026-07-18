@@ -45,7 +45,7 @@ function ParentingPage() {
               </li>
               <li className="flex gap-4">
                 <span className="font-mono text-xs text-accent">02</span>
-                <span>Parent–child alignment frameworks and check-ins.</span>
+                <span>Parent-child alignment frameworks and check-ins.</span>
               </li>
               <li className="flex gap-4">
                 <span className="font-mono text-xs text-accent">03</span>

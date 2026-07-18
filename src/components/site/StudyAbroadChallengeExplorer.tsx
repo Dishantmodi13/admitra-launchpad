@@ -25,6 +25,7 @@ import {
   Wallet,
   type LucideIcon,
 } from "lucide-react";
+import { MousePointerClick } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ScrollReveal, ScrollRevealGroup } from "@/components/site/ScrollReveal";
 import { challengePhases, type ChallengePhaseId, type StudyAbroadChallenge } from "@/data/study-abroad";
@@ -105,7 +106,7 @@ export function StudyAbroadChallengeExplorer() {
             Every stage has its own storm. We map the calm path through it.
           </h2>
           <p className="mt-6 text-base leading-relaxed text-muted-foreground lg:text-lg">
-            Study abroad isn&apos;t one decision — it&apos;s three distinct journeys. Tap a phase
+            Study abroad isn&apos;t one decision - it&apos;s three distinct journeys. Tap a phase
             to explore the challenges students face, and how we guide you through each one.
           </p>
         </ScrollReveal>
@@ -116,29 +117,45 @@ export function StudyAbroadChallengeExplorer() {
             role="tablist"
             aria-label="Study abroad challenge phases"
           >
-            {challengePhases.map((p) => (
+            {challengePhases.map((p) => {
+              const isActive = activePhase === p.id;
+              return (
               <button
                 key={p.id}
                 type="button"
                 role="tab"
-                aria-selected={activePhase === p.id}
+                aria-selected={isActive}
                 onClick={() => setActivePhase(p.id)}
                 className={cn(
-                  "flex-1 rounded-xl px-4 py-4 text-left transition-all duration-500 sm:px-6 sm:py-5",
-                  activePhase === p.id
+                  "group flex flex-1 items-start justify-between gap-3 rounded-xl px-4 py-4 text-left transition-all duration-500 sm:px-6 sm:py-5",
+                  isActive
                     ? "border border-border bg-background text-foreground shadow-md"
                     : "text-muted-foreground hover:bg-background/60 hover:text-foreground",
                 )}
               >
-                <span className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
-                  {p.tagline}
-                </span>
-                <span className="mt-1 block text-lg font-semibold sm:text-xl">{p.label}</span>
-                <span className="mt-1 block text-xs text-muted-foreground">
-                  {p.challenges.length} areas
+                <div className="min-w-0">
+                  <span className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
+                    {p.tagline}
+                  </span>
+                  <span className="mt-1 block text-lg font-semibold sm:text-xl">{p.label}</span>
+                  <span className="mt-1 block text-xs text-muted-foreground">
+                    {p.challenges.length} areas
+                  </span>
+                </div>
+                <span
+                  className={cn(
+                    "mt-0.5 flex shrink-0 items-center gap-1 rounded-full border px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.14em] transition-all duration-300 sm:text-[10px]",
+                    isActive
+                      ? "border-accent/40 bg-accent/10 text-accent"
+                      : "border-border bg-background/80 text-muted-foreground group-hover:border-accent/30 group-hover:text-accent",
+                  )}
+                >
+                  <MousePointerClick className="size-3 shrink-0" aria-hidden />
+                  Click
                 </span>
               </button>
-            ))}
+            );
+            })}
           </div>
         </ScrollReveal>
 

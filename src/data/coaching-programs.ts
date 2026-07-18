@@ -100,11 +100,11 @@ export const coachingPrograms: Record<string, CoachingProgram> = {
     slug: "ielts",
     metaTitle: "IELTS Coaching & Test Prep | Ace Your IELTS | KAREER Studio",
     metaDescription:
-      "Online live IELTS coaching with experienced instructors — flexible, interactive preparation for speaking, writing, reading, and listening.",
+      "Online live IELTS coaching with experienced instructors - flexible, interactive preparation for speaking, writing, reading, and listening.",
     pageTitle: "IELTS",
     sectionTitle: "IELTS Coaching (Online-Live)",
     intro: [
-      "Real-time online IELTS preparation — ideal when in-person classes are not an option",
+      "Real-time online IELTS preparation - ideal when in-person classes are not an option",
       "Flexible scheduling for students with time or location constraints",
       "Interactive sessions across speaking, writing, reading, and listening",
       "Instant feedback from experienced instructors",
@@ -166,7 +166,7 @@ export const coachingPrograms: Record<string, CoachingProgram> = {
     slug: "gre",
     metaTitle: "GRE Coaching & Test Prep | Boost Your Score | KAREER Studio",
     metaDescription:
-      "Online live GRE coaching for verbal reasoning, quantitative reasoning, and analytical writing — personalized guidance from expert instructors.",
+      "Online live GRE coaching for verbal reasoning, quantitative reasoning, and analytical writing - personalized guidance from expert instructors.",
     pageTitle: "GRE",
     sectionTitle: "GRE Coaching (Online-Live)",
     intro: [
@@ -174,7 +174,7 @@ export const coachingPrograms: Record<string, CoachingProgram> = {
       "Measures verbal reasoning, quantitative reasoning, and analytical writing",
       "Personalized instruction with targeted practice on each section",
       "Expert feedback on a schedule that fits your life",
-      "Study from anywhere — no travel to a physical classroom",
+      "Study from anywhere - no travel to a physical classroom",
     ],
     benefitsHeading: "Benefits",
     benefits: [
@@ -224,7 +224,7 @@ export const coachingPrograms: Record<string, CoachingProgram> = {
     slug: "sat",
     metaTitle: "SAT Coaching & Test Prep | Achieve High Scores | KAREER Studio",
     metaDescription:
-      "Online live SAT coaching for reading, writing, and mathematics — structured prep aligned with College Board standards.",
+      "Online live SAT coaching for reading, writing, and mathematics - structured prep aligned with College Board standards.",
     pageTitle: "SAT",
     sectionTitle: "SAT Coaching (Online-Live)",
     intro: [
@@ -282,7 +282,7 @@ export const coachingPrograms: Record<string, CoachingProgram> = {
     slug: "pte",
     metaTitle: "PTE Coaching & Test Prep | Achieve Your Score | KAREER Studio",
     metaDescription:
-      "Online live PTE coaching for speaking, writing, reading, and listening — computer-based English proficiency preparation.",
+      "Online live PTE coaching for speaking, writing, reading, and listening - computer-based English proficiency preparation.",
     pageTitle: "PTE",
     sectionTitle: "PTE Coaching (Online-Live)",
     intro: [

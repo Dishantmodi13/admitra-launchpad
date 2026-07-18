@@ -46,7 +46,7 @@ function StudyAbroadPage() {
         quoteEyebrow="Career-Focused Study Abroad"
         quote="‘We pair scientific assessments with senior mentor judgment to turn your global education dream into a planned, employable career path.’"
         stripeHeading="Study Abroad"
-        stripeTagline="Personalized higher education solutions — from first doubts to departure day."
+        stripeTagline="Personalized higher education solutions - from first doubts to departure day."
         navLinks={studyAbroadHeroNavLinks}
         ctaEyebrow="Get Started"
         ctaTitle="Book a Discovery Session"

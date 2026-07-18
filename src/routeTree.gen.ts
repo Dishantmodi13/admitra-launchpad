@@ -14,6 +14,7 @@ import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ParentingCoachingRouteImport } from './routes/parenting-coaching'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as KnowledgeRouteImport } from './routes/knowledge'
+import { Route as IvyLeagueRouteImport } from './routes/ivy-league'
 import { Route as EnquiryRouteImport } from './routes/enquiry'
 import { Route as EducationPlanningRouteImport } from './routes/education-planning'
 import { Route as CoachingRouteImport } from './routes/coaching'
@@ -46,6 +47,11 @@ const LoginRoute = LoginRouteImport.update({
 const KnowledgeRoute = KnowledgeRouteImport.update({
   id: '/knowledge',
   path: '/knowledge',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IvyLeagueRoute = IvyLeagueRouteImport.update({
+  id: '/ivy-league',
+  path: '/ivy-league',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EnquiryRoute = EnquiryRouteImport.update({
@@ -96,6 +102,7 @@ export interface FileRoutesByFullPath {
   '/coaching': typeof CoachingRouteWithChildren
   '/education-planning': typeof EducationPlanningRoute
   '/enquiry': typeof EnquiryRoute
+  '/ivy-league': typeof IvyLeagueRoute
   '/knowledge': typeof KnowledgeRoute
   '/login': typeof LoginRoute
   '/parenting-coaching': typeof ParentingCoachingRoute
@@ -110,6 +117,7 @@ export interface FileRoutesByTo {
   '/bookshelf': typeof BookshelfRoute
   '/education-planning': typeof EducationPlanningRoute
   '/enquiry': typeof EnquiryRoute
+  '/ivy-league': typeof IvyLeagueRoute
   '/knowledge': typeof KnowledgeRoute
   '/login': typeof LoginRoute
   '/parenting-coaching': typeof ParentingCoachingRoute
@@ -126,6 +134,7 @@ export interface FileRoutesById {
   '/coaching': typeof CoachingRouteWithChildren
   '/education-planning': typeof EducationPlanningRoute
   '/enquiry': typeof EnquiryRoute
+  '/ivy-league': typeof IvyLeagueRoute
   '/knowledge': typeof KnowledgeRoute
   '/login': typeof LoginRoute
   '/parenting-coaching': typeof ParentingCoachingRoute
@@ -143,6 +152,7 @@ export interface FileRouteTypes {
     | '/coaching'
     | '/education-planning'
     | '/enquiry'
+    | '/ivy-league'
     | '/knowledge'
     | '/login'
     | '/parenting-coaching'
@@ -157,6 +167,7 @@ export interface FileRouteTypes {
     | '/bookshelf'
     | '/education-planning'
     | '/enquiry'
+    | '/ivy-league'
     | '/knowledge'
     | '/login'
     | '/parenting-coaching'
@@ -172,6 +183,7 @@ export interface FileRouteTypes {
     | '/coaching'
     | '/education-planning'
     | '/enquiry'
+    | '/ivy-league'
     | '/knowledge'
     | '/login'
     | '/parenting-coaching'
@@ -188,6 +200,7 @@ export interface RootRouteChildren {
   CoachingRoute: typeof CoachingRouteWithChildren
   EducationPlanningRoute: typeof EducationPlanningRoute
   EnquiryRoute: typeof EnquiryRoute
+  IvyLeagueRoute: typeof IvyLeagueRoute
   KnowledgeRoute: typeof KnowledgeRoute
   LoginRoute: typeof LoginRoute
   ParentingCoachingRoute: typeof ParentingCoachingRoute
@@ -230,6 +243,13 @@ declare module '@tanstack/react-router' {
       path: '/knowledge'
       fullPath: '/knowledge'
       preLoaderRoute: typeof KnowledgeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ivy-league': {
+      id: '/ivy-league'
+      path: '/ivy-league'
+      fullPath: '/ivy-league'
+      preLoaderRoute: typeof IvyLeagueRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/enquiry': {
@@ -312,6 +332,7 @@ const rootRouteChildren: RootRouteChildren = {
   CoachingRoute: CoachingRouteWithChildren,
   EducationPlanningRoute: EducationPlanningRoute,
   EnquiryRoute: EnquiryRoute,
+  IvyLeagueRoute: IvyLeagueRoute,
   KnowledgeRoute: KnowledgeRoute,
   LoginRoute: LoginRoute,
   ParentingCoachingRoute: ParentingCoachingRoute,
