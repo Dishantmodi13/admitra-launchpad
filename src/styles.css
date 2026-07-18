@@ -190,6 +190,16 @@
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+  @media (max-width: 1023px) {
+    html.mobile-go-to-nav-active main {
+      padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+    }
+
+    html.mobile-go-to-nav-active .scroll-to-top-btn {
+      bottom: calc(6.5rem + env(safe-area-inset-bottom));
+    }
+  }
+
   @keyframes ks-reveal {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }

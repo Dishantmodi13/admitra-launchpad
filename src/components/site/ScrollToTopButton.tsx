@@ -36,7 +36,7 @@ export function ScrollToTopButton() {
       aria-label="Scroll to top"
       aria-hidden={!visible}
       className={cn(
-        "fixed right-4 z-[9999] flex size-12 items-center justify-center rounded-full",
+        "scroll-to-top-btn fixed right-4 z-[9999] flex size-12 items-center justify-center rounded-full",
         "border-2 border-background bg-foreground text-background",
         "shadow-[0_8px_28px_rgba(15,23,42,0.35)]",
         "transition-all duration-300 active:scale-95 lg:hidden",

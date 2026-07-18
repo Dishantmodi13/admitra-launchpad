@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { MobileHeroGoToNav } from "@/components/site/MobileHeroGoToNav";
 
 function boldKareerStudio(text: string, emphasisClass = "font-extrabold") {
   return text.split(/(KAREER Studio)/g).map((part, i) =>
@@ -252,27 +253,11 @@ export function StripeHero({
                 </p>
               </div>
 
-              {/* Go to navigation */}
-              <div className="w-full shrink-0 pb-1 lg:w-[min(100%,360px)] lg:px-5 lg:pb-4 lg:pt-4">
-                <p className="text-sm font-bold text-white lg:text-base">Go to</p>
+              {/* Go to navigation — desktop only (mobile uses fixed bottom bar) */}
+              <div className="hidden w-full shrink-0 lg:block lg:w-[min(100%,360px)] lg:px-5 lg:pb-4 lg:pt-4">
+                <p className="text-base font-bold text-white">Go to</p>
                 <nav aria-label="Quick navigation" className="mt-2">
-                  {/* Mobile: compact horizontal chips */}
-                  <ul className="no-scrollbar -mx-1 flex gap-2 overflow-x-auto px-1 pb-0.5 lg:hidden">
-                    {navLinks.map((link) => (
-                      <li key={link.key} className="shrink-0">
-                        <Link
-                          to={link.to}
-                          className="inline-flex items-center gap-1.5 rounded-full border border-white/30 bg-white/10 px-3.5 py-2 text-xs font-bold uppercase tracking-[0.05em] text-white transition-colors hover:bg-white/20"
-                        >
-                          <ArrowRight className="size-3 shrink-0" />
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Desktop: vertical list */}
-                  <ul className="mt-2 hidden space-y-2 lg:block">
+                  <ul className="space-y-2">
                     {navLinks.map((link) => (
                       <li key={link.key}>
                         <Link
@@ -293,6 +278,8 @@ export function StripeHero({
           </div>
         </div>
       </div>
+
+      <MobileHeroGoToNav navLinks={navLinks} />
     </section>
   );
 }
