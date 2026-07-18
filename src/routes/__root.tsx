@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SmoothScrollProvider } from "../components/site/SmoothScrollProvider";
+import { ScrollToTopButton } from "../components/site/ScrollToTopButton";
 
 function NotFoundComponent() {
   return (
@@ -133,6 +134,7 @@ function RootComponent() {
       <SmoothScrollProvider>
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
+        <ScrollToTopButton />
       </SmoothScrollProvider>
     </QueryClientProvider>
   );

@@ -14,13 +14,14 @@ import { PteHero } from "@/components/site/PteHero";
 import { PageLayout } from "@/components/site/PageLayout";
 import { ScrollReveal } from "@/components/site/ScrollReveal";
 import { cn } from "@/lib/utils";
+import {
+  sectionLabelClass,
+  sectionPadding,
+  sectionSubtitleClass,
+} from "@/lib/section-styles";
 
-const sectionLabelClass =
-  "font-mono text-base uppercase tracking-[0.3em] text-accent md:text-lg";
 const pageTitleClass =
-  "font-serif text-4xl italic leading-snug text-foreground md:text-5xl lg:text-[3.25rem] lg:leading-[1.1]";
-const sectionSubtitleClass =
-  "font-serif text-4xl italic leading-snug text-foreground md:text-5xl lg:text-6xl";
+  "font-serif text-3xl font-bold italic leading-snug text-foreground sm:text-4xl md:text-5xl lg:text-[3.25rem] lg:leading-[1.1]";
 const cardTitleClass = "text-xl font-medium text-foreground md:text-2xl";
 
 const cardHoverClass =
@@ -278,6 +279,16 @@ function ProgramsSection({
                     itemClassName={hasPhotoBackground ? "text-white/90" : undefined}
                   />
                 ) : null}
+                <span
+                  className={cn(
+                    "mt-auto mx-auto w-fit rounded-sm px-3 py-2 pt-5 text-sm font-semibold underline decoration-2 underline-offset-[6px] transition-colors active:opacity-75",
+                    hasPhotoBackground
+                      ? "text-white decoration-white/90 group-hover:text-white group-hover:decoration-white"
+                      : "text-accent decoration-accent/70 group-hover:decoration-accent",
+                  )}
+                >
+                  Click
+                </span>
                 </div>
               </Link>
             </ScrollReveal>

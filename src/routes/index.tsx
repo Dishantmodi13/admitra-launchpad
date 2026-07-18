@@ -4,6 +4,18 @@ import { PageLayout } from "@/components/site/PageLayout";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { ScrollReveal, ScrollRevealGroup } from "@/components/site/ScrollReveal";
 import { CountUpStat } from "@/components/site/CountUpStat";
+import {
+  bodyTextClass,
+  sectionDivider,
+  sectionLabelClass,
+  sectionPadding,
+  sectionSubtitleClass,
+  statCellClass,
+  cardHeadingClass,
+  sectionGridGap,
+  sectionHeaderMb,
+  sectionPaddingIntro,
+} from "@/lib/section-styles";
 import whyChooseUs from "@/assets/why-choose-us.png";
 
 export const Route = createFileRoute("/")({
@@ -60,6 +72,9 @@ const pillars = [
   { value: 40, suffix: "+", label: "Partner Universities" },
 ];
 
+const homeStatLabelClass =
+  "mt-2 w-fit font-mono text-[11px] uppercase tracking-[0.2em] text-center text-foreground/85 lg:mt-3 lg:text-left lg:text-muted-foreground";
+
 function boldKareerStudio(
   text: string,
   emphasisClass = "font-bold text-foreground",
@@ -88,9 +103,9 @@ function Index() {
       <HeroSlider />
 
       {/* Hero Subtext */}
-      <section className="border-b border-border px-6 py-16 lg:py-20">
+      <section className={`${sectionDivider} ${sectionPaddingIntro}`}>
         <ScrollRevealGroup
-          className="mx-auto max-w-4xl space-y-6 text-justify text-muted-foreground"
+          className={`mx-auto max-w-4xl space-y-4 ${bodyTextClass}`}
           stagger={120}
           direction="up"
           threshold={0.1}
@@ -111,20 +126,18 @@ function Index() {
       </section>
 
       {/* Who We Are - label + subtitle left, content right */}
-      <section className="border-b border-border px-6 py-24 lg:py-32">
-        <div className="mx-auto grid max-w-7xl items-start gap-12 lg:grid-cols-2 lg:gap-20">
+      <section className={`${sectionDivider} ${sectionPadding}`}>
+        <div className={`mx-auto grid max-w-7xl items-start lg:grid-cols-2 ${sectionGridGap}`}>
           <ScrollReveal direction="left">
-            <h2 className="font-mono text-sm uppercase tracking-[0.3em] text-accent md:text-base">
-              Who We Are
-            </h2>
-            <p className="mt-4 font-serif text-3xl italic leading-snug text-foreground md:text-4xl lg:text-5xl">
+            <h2 className={sectionLabelClass}>Who We Are</h2>
+            <p className={sectionSubtitleClass}>
               Your Education Partner for Assessing, Planning and Managing Academic
               Success
             </p>
           </ScrollReveal>
 
           <ScrollRevealGroup
-            className="space-y-6 text-justify text-muted-foreground"
+            className={`space-y-4 ${bodyTextClass}`}
             stagger={120}
             direction="right"
             threshold={0.05}
@@ -159,11 +172,11 @@ function Index() {
       </section>
 
       {/* Why KAREER Studio - content left, heading right */}
-      <section className="border-b border-border px-6 py-24 lg:py-32">
+      <section className={`${sectionDivider} ${sectionPadding}`}>
         <div className="mx-auto max-w-7xl">
-          <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
+          <div className={`grid items-start lg:grid-cols-2 ${sectionGridGap}`}>
             <ScrollRevealGroup
-              className="order-2 space-y-4 text-justify text-muted-foreground lg:order-1"
+              className={`order-2 space-y-4 ${bodyTextClass} lg:order-1`}
               stagger={120}
               direction="left"
               threshold={0.08}
@@ -187,10 +200,8 @@ function Index() {
             </ScrollRevealGroup>
 
             <ScrollReveal direction="right" className="order-1 lg:order-2 lg:text-right">
-              <h2 className="font-mono text-sm uppercase tracking-[0.3em] text-accent md:text-base">
-                Why KAREER Studio?
-              </h2>
-              <p className="mt-4 font-serif text-3xl italic leading-snug text-foreground md:text-4xl lg:ml-auto lg:max-w-lg lg:text-5xl">
+              <h2 className={sectionLabelClass}>Why KAREER Studio?</h2>
+              <p className={`${sectionSubtitleClass} lg:ml-auto lg:max-w-lg`}>
                 Because Career Success Needs More Than Marks
               </p>
             </ScrollReveal>
@@ -199,18 +210,16 @@ function Index() {
       </section>
 
       {/* Why Choose Us - heading top, image left, content right */}
-      <section className="border-b border-border px-6 py-24 lg:py-32">
+      <section className={`${sectionDivider} ${sectionPadding}`}>
         <div className="mx-auto max-w-7xl">
-          <ScrollReveal direction="up" className="mb-16 max-w-2xl">
-            <h2 className="font-mono text-sm uppercase tracking-[0.3em] text-accent md:text-base">
-              Why Choose Us
-            </h2>
-            <p className="mt-4 font-serif text-3xl italic leading-snug text-foreground md:text-4xl lg:text-5xl">
+          <ScrollReveal direction="up" className={`${sectionHeaderMb} max-w-2xl`}>
+            <h2 className={sectionLabelClass}>Why Choose Us</h2>
+            <p className={sectionSubtitleClass}>
               Trusted Guidance for Your Global Journey
             </p>
           </ScrollReveal>
 
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          <div className={`grid items-center lg:grid-cols-2 ${sectionGridGap}`}>
             <ScrollReveal direction="left">
               <div className="overflow-hidden border border-border">
                 <img
@@ -236,8 +245,8 @@ function Index() {
                     <Check className="size-3.5 text-accent" aria-hidden />
                   </span>
                   <div>
-                    <h3 className="font-medium text-foreground">{item.title}</h3>
-                    <p className="mt-1.5 text-justify text-sm leading-relaxed text-muted-foreground">
+                    <h3 className={cardHeadingClass}>{item.title}</h3>
+                    <p className={`mt-1.5 text-sm ${bodyTextClass}`}>
                       {item.body}
                     </p>
                   </div>
@@ -246,14 +255,17 @@ function Index() {
             </ScrollRevealGroup>
           </div>
 
-          <div className="mt-16 grid grid-cols-2 gap-8 border-t border-border pt-12 lg:mt-20 lg:grid-cols-4">
+          <div className="mt-8 grid grid-cols-1 gap-5 border-t-2 border-accent pt-6 sm:grid-cols-2 lg:mt-12 lg:border-t lg:border-border lg:grid-cols-4 lg:pt-8">
             {pillars.map((p, i) => (
               <ScrollReveal key={p.label} delay={i * 100} direction="scale">
-                <div>
-                  <CountUpStat value={p.value} suffix={p.suffix} delay={i * 100} />
-                  <div className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-                    {p.label}
-                  </div>
+                <div className={`${statCellClass} flex flex-col items-center lg:items-start`}>
+                  <CountUpStat
+                    value={p.value}
+                    suffix={p.suffix}
+                    delay={i * 100}
+                    className="w-fit"
+                  />
+                  <div className={homeStatLabelClass}>{p.label}</div>
                 </div>
               </ScrollReveal>
             ))}

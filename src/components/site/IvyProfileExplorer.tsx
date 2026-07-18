@@ -34,11 +34,13 @@ import {
   type IvyProfilePillar,
   type ProfilePhaseId,
 } from "@/data/ivy-league";
-
-const sectionLabelClass =
-  "font-mono text-base uppercase tracking-[0.3em] text-accent md:text-lg";
-const sectionSubtitleClass =
-  "mt-4 font-serif text-4xl italic leading-snug text-foreground md:text-5xl lg:text-6xl";
+import {
+  sectionContentMt,
+  sectionDivider,
+  sectionLabelClass,
+  sectionPadding,
+  sectionSubtitleClass,
+} from "@/lib/section-styles";
 
 const iconMap: Record<string, LucideIcon> = {
   target: Target,
@@ -94,7 +96,7 @@ export function IvyProfileExplorer() {
   const phase = profilePhases.find((p) => p.id === activePhase)!;
 
   return (
-    <section id="ivy-journey" className="border-b border-border px-6 py-24 lg:py-32">
+    <section id="ivy-journey" className={`${sectionDivider} ${sectionPadding}`}>
       <div className="mx-auto max-w-7xl">
         <ScrollReveal direction="up" className="max-w-3xl">
           <p className={sectionLabelClass}>Your Ivy Journey</p>
@@ -108,9 +110,9 @@ export function IvyProfileExplorer() {
           </p>
         </ScrollReveal>
 
-        <ScrollReveal delay={120} direction="up" className="mt-12">
+        <ScrollReveal delay={120} direction="up" className={sectionContentMt}>
           <div
-            className="flex flex-col gap-2 rounded-2xl border border-border bg-secondary/40 p-2 sm:flex-row sm:gap-0"
+            className="flex flex-col gap-2 rounded-2xl border border-border bg-secondary/40 p-2 md:flex-row md:gap-0"
             role="tablist"
             aria-label="Ivy profile building phases"
           >
@@ -141,7 +143,7 @@ export function IvyProfileExplorer() {
                   </div>
                   <span
                     className={cn(
-                      "mt-0.5 flex shrink-0 items-center gap-1 rounded-full border px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.14em] transition-all duration-300 sm:text-[10px]",
+                      "mt-0.5 hidden shrink-0 items-center gap-1 rounded-full border px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.14em] transition-all duration-300 sm:flex sm:text-[10px]",
                       isActive
                         ? "border-[#8c1d2b]/40 bg-[#8c1d2b]/10 text-[#8c1d2b]"
                         : "border-border bg-background/80 text-muted-foreground group-hover:border-[#8c1d2b]/30 group-hover:text-[#8c1d2b]",
@@ -156,7 +158,7 @@ export function IvyProfileExplorer() {
           </div>
         </ScrollReveal>
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-12 lg:gap-10">
+        <div className="mt-8 grid gap-6 lg:grid-cols-12 lg:gap-10">
           <ScrollRevealGroup
             key={activePhase}
             className="grid auto-rows-fr gap-4 sm:grid-cols-2 lg:col-span-7 lg:grid-cols-2"

@@ -3,11 +3,13 @@ import { Check, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ScrollReveal } from "@/components/site/ScrollReveal";
 import { ivyScorePoints } from "@/data/ivy-league";
-
-const sectionLabelClass =
-  "font-mono text-base uppercase tracking-[0.3em] text-accent md:text-lg";
-const sectionSubtitleClass =
-  "mt-4 font-serif text-4xl italic leading-snug text-foreground md:text-5xl lg:text-6xl";
+import {
+  sectionContentMt,
+  sectionDivider,
+  sectionLabelClass,
+  sectionPadding,
+  sectionSubtitleClass,
+} from "@/lib/section-styles";
 
 const RING_RADIUS = 78;
 const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
@@ -89,7 +91,7 @@ export function IvyScoreBuilder() {
   };
 
   return (
-    <section id="ivy-score" className="border-b border-border px-6 py-24 lg:py-32">
+    <section id="ivy-score" className={`${sectionDivider} ${sectionPadding}`}>
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
           <ScrollReveal direction="left" className="lg:col-span-7">
@@ -110,7 +112,7 @@ export function IvyScoreBuilder() {
           </ScrollReveal>
         </div>
 
-        <div className="mt-12 space-y-3">
+        <div className={`${sectionContentMt} space-y-3`}>
           {ivyScorePoints.map((point) => {
             const isChecked = checked.has(point.id);
             const isExpanded = expanded === point.id;

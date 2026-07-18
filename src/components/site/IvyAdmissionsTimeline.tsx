@@ -3,6 +3,13 @@ import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ScrollReveal } from "@/components/site/ScrollReveal";
 import { ivyTimelinePhases } from "@/data/ivy-league";
+import {
+  sectionContentMt,
+  sectionDivider,
+  sectionLabelClass,
+  sectionPadding,
+  sectionSubtitleClass,
+} from "@/lib/section-styles";
 
 export function IvyAdmissionsTimeline() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -38,13 +45,11 @@ export function IvyAdmissionsTimeline() {
   const progress = ((activeIndex + 1) / ivyTimelinePhases.length) * 100;
 
   return (
-    <section id="ivy-timeline" className="border-b border-border px-6 py-24 lg:py-32">
+    <section id="ivy-timeline" className={`${sectionDivider} ${sectionPadding}`}>
       <div className="mx-auto max-w-7xl">
         <ScrollReveal direction="left" className="max-w-2xl">
-          <p className="font-mono text-base uppercase tracking-[0.3em] text-accent md:text-lg">
-            Ivy Admissions Timeline
-          </p>
-          <h2 className="mt-4 font-serif text-4xl italic leading-snug text-foreground md:text-5xl lg:text-6xl">
+          <p className={sectionLabelClass}>Ivy Admissions Timeline</p>
+          <h2 className={sectionSubtitleClass}>
             Your grade-by-grade roadmap to the Ivy League
           </h2>
           <p className="mt-6 text-base leading-relaxed text-muted-foreground">
@@ -53,7 +58,38 @@ export function IvyAdmissionsTimeline() {
           </p>
         </ScrollReveal>
 
-        <div className="mt-16 lg:grid lg:grid-cols-12 lg:gap-12">
+        <div className={`${sectionContentMt} lg:hidden`}>
+          <div className="relative h-1.5 overflow-hidden rounded-full bg-secondary">
+            <div
+              className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[#8c1d2b] to-brand-blue transition-all duration-700 ease-out"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+          <div className="no-scrollbar -mx-6 mt-4 flex gap-2 overflow-x-auto px-6 pb-1">
+            {ivyTimelinePhases.map((phase, i) => (
+              <button
+                key={phase.id}
+                type="button"
+                onClick={() => {
+                  setActiveIndex(i);
+                  document
+                    .getElementById(`ivy-timeline-${phase.id}`)
+                    ?.scrollIntoView({ behavior: "smooth", block: "center" });
+                }}
+                className={cn(
+                  "shrink-0 rounded-full px-3 py-2 font-mono text-[10px] uppercase tracking-wider transition-colors",
+                  activeIndex === i
+                    ? "bg-[#8c1d2b] text-white"
+                    : "border border-border bg-background text-muted-foreground",
+                )}
+              >
+                {phase.gradeLabel}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className={`${sectionContentMt} lg:grid lg:grid-cols-12 lg:gap-10`}>
           <div className="hidden lg:col-span-4 lg:block">
             <div className="sticky top-28">
               <div className="relative h-2 overflow-hidden rounded-full bg-secondary">

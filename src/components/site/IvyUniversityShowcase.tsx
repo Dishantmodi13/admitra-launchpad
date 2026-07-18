@@ -2,11 +2,13 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { ScrollReveal } from "@/components/site/ScrollReveal";
 import { universities } from "@/data/ivy-league";
-
-const sectionLabelClass =
-  "font-mono text-base uppercase tracking-[0.3em] text-accent md:text-lg";
-const sectionSubtitleClass =
-  "mt-4 font-serif text-4xl italic leading-snug text-foreground md:text-5xl lg:text-6xl";
+import {
+  sectionContentMt,
+  sectionDivider,
+  sectionLabelClass,
+  sectionPadding,
+  sectionSubtitleClass,
+} from "@/lib/section-styles";
 
 const RING_RADIUS = 34;
 const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
@@ -131,7 +133,7 @@ function IvyConstellation({
               />
               <span
                 className={cn(
-                  "whitespace-nowrap font-mono text-[9px] uppercase tracking-wider transition-colors duration-300 sm:text-[10px]",
+                  "whitespace-normal text-center font-mono text-[9px] uppercase tracking-wider transition-colors duration-300 sm:whitespace-nowrap sm:text-[10px]",
                   isActive ? "font-semibold text-[#8c1d2b]" : "text-muted-foreground",
                 )}
               >
@@ -159,7 +161,7 @@ export function IvyUniversityShowcase() {
   const activeUni = universities[activeIndex]!;
 
   return (
-    <section id="the-eight" className="border-b border-border px-6 py-24 lg:py-32">
+    <section id="the-eight" className={`${sectionDivider} ${sectionPadding}`}>
       <div className="mx-auto max-w-7xl">
         <ScrollReveal direction="left" className="max-w-3xl">
           <p className={sectionLabelClass}>The League</p>
@@ -170,7 +172,7 @@ export function IvyUniversityShowcase() {
           </p>
         </ScrollReveal>
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-12">
+        <div className={`${sectionContentMt} grid gap-8 lg:grid-cols-12 lg:gap-10`}>
           <ScrollReveal direction="scale" className="lg:col-span-5">
             <IvyConstellation activeIndex={activeIndex} onSelect={setActiveIndex} />
           </ScrollReveal>

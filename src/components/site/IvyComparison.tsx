@@ -2,6 +2,7 @@ import { useState } from "react";
 import {
   Briefcase,
   Check,
+  ChevronDown,
   FlaskConical,
   Globe,
   MousePointerClick,
@@ -13,13 +14,15 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { ScrollReveal, ScrollRevealGroup } from "@/components/site/ScrollReveal";
+import { ScrollReveal } from "@/components/site/ScrollReveal";
 import { comparisonDestinations, comparisonFactors } from "@/data/ivy-league";
-
-const sectionLabelClass =
-  "font-mono text-base uppercase tracking-[0.3em] text-accent md:text-lg";
-const sectionSubtitleClass =
-  "mt-4 font-serif text-4xl italic leading-snug text-foreground md:text-5xl lg:text-6xl";
+import {
+  sectionContentMt,
+  sectionDivider,
+  sectionLabelClass,
+  sectionPadding,
+  sectionSubtitleClass,
+} from "@/lib/section-styles";
 
 const iconMap: Record<string, LucideIcon> = {
   globe: Globe,
@@ -33,12 +36,13 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 type DestKey = "ivy" | "india" | "uk" | "canada";
+type ComparisonFactor = (typeof comparisonFactors)[number];
 
-function scoreFor(factor: (typeof comparisonFactors)[0], key: DestKey) {
+function scoreFor(factor: ComparisonFactor, key: DestKey) {
   return factor[`${key}Score` as keyof typeof factor] as number;
 }
 
-function textFor(factor: (typeof comparisonFactors)[0], key: DestKey) {
+function textFor(factor: ComparisonFactor, key: DestKey) {
   return factor[key];
 }
 
@@ -107,31 +111,163 @@ function ComparisonBar({
   );
 }
 
+function ComparisonFactorDetail({
+  active,
+  animate = true,
+}: {
+  active: ComparisonFactor;
+  animate?: boolean;
+}) {
+  const Icon = iconMap[active.icon] ?? Globe;
+
+  return (
+    <div
+      className={cn(
+        "relative min-h-0 overflow-hidden rounded-3xl border border-border bg-background p-5 shadow-[0_16px_48px_rgba(15,23,42,0.06)] sm:p-6",
+        animate && "ivy-spotlight-reveal",
+      )}
+    >
+      <div className="ivy-orbit-ring pointer-events-none absolute -right-16 -top-16 size-48 rounded-full border border-dashed border-[#8c1d2b]/15" />
+
+      <div className="relative flex items-start gap-4 border-b border-border pb-5">
+        <div className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-[#8c1d2b]/10 text-[#8c1d2b]">
+          <Icon className="size-5" strokeWidth={1.5} />
+        </div>
+        <div className="min-w-0">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
+            Comparing on
+          </p>
+          <h3 className="mt-1 text-xl font-semibold text-foreground sm:text-2xl">
+            {active.label}
+          </h3>
+        </div>
+      </div>
+
+      <div className="relative mt-4 rounded-2xl border border-[#8c1d2b]/20 bg-[#8c1d2b]/[0.04] p-4">
+        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#8c1d2b]">
+          For parents
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-foreground">{active.parentTip}</p>
+      </div>
+
+      <div className="relative mt-4 grid gap-3">
+        {comparisonDestinations.map((dest, i) => (
+          <ComparisonBar
+            key={dest.key}
+            label={dest.label}
+            short={dest.short}
+            color={dest.color}
+            score={scoreFor(active, dest.key)}
+            text={textFor(active, dest.key)}
+            highlight={dest.key === "ivy"}
+            delay={i * 60}
+          />
+        ))}
+      </div>
+
+      <div className="relative mt-4 flex flex-wrap items-center gap-3 border-t border-border pt-4">
+        <span className="flex items-center gap-2 text-xs text-muted-foreground">
+          <Check className="size-4 text-[#8c1d2b]" strokeWidth={2} />
+          Higher bar = stronger on this factor
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function IvyComparisonMobileAccordion() {
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  const toggle = (id: string) => {
+    setExpandedId((current) => (current === id ? null : id));
+  };
+
+  return (
+    <div className={`${sectionContentMt} space-y-2 lg:hidden`}>
+      {comparisonFactors.map((factor) => {
+        const FactorIcon = iconMap[factor.icon] ?? Globe;
+        const isExpanded = expandedId === factor.id;
+
+        return (
+          <div
+            key={factor.id}
+            className={cn(
+              "overflow-hidden rounded-2xl border transition-all duration-500",
+              isExpanded
+                ? "border-[#8c1d2b]/30 bg-secondary/20 shadow-[0_8px_24px_rgba(15,23,42,0.06)]"
+                : "border-border bg-secondary/40",
+            )}
+          >
+            <button
+              type="button"
+              onClick={() => toggle(factor.id)}
+              aria-expanded={isExpanded}
+              className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left"
+            >
+              <div className="flex min-w-0 items-center gap-3">
+                <div
+                  className={cn(
+                    "flex size-9 shrink-0 items-center justify-center rounded-lg transition-colors duration-300",
+                    isExpanded
+                      ? "bg-[#8c1d2b]/10 text-[#8c1d2b]"
+                      : "bg-background text-muted-foreground",
+                  )}
+                >
+                  <FactorIcon className="size-4" strokeWidth={1.75} />
+                </div>
+                <span className="text-sm font-semibold text-foreground">{factor.label}</span>
+              </div>
+              <ChevronDown
+                className={cn(
+                  "size-5 shrink-0 text-[#8c1d2b] transition-transform duration-300",
+                  isExpanded && "rotate-180",
+                )}
+                strokeWidth={2}
+                aria-hidden
+              />
+            </button>
+
+            <div
+              className={cn(
+                "grid transition-[grid-template-rows] duration-300 ease-out",
+                isExpanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+              )}
+            >
+              <div className="overflow-hidden">
+                <div className="border-t border-border px-3 pb-3 pt-3">
+                  <ComparisonFactorDetail active={factor} animate={false} />
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export function IvyComparison() {
   const [activeId, setActiveId] = useState(comparisonFactors[0]!.id);
   const active = comparisonFactors.find((f) => f.id === activeId)!;
-  const Icon = iconMap[active.icon] ?? Globe;
-
-  const ivyWins = comparisonFactors.filter(
-    (f) =>
-      f.ivyScore >= f.indiaScore &&
-      f.ivyScore >= f.ukScore &&
-      f.ivyScore >= f.canadaScore,
-  ).length;
 
   return (
-    <section id="ivy-vs-world" className="border-b border-border px-6 py-24 lg:py-32">
+    <section id="ivy-vs-world" className={`${sectionDivider} ${sectionPadding}`}>
       <div className="mx-auto max-w-7xl">
         <ScrollReveal direction="left" className="max-w-3xl">
           <p className={sectionLabelClass}>Where Should Your Child Study?</p>
           <h2 className={sectionSubtitleClass}>Ivy League vs. India, UK & Canada.</h2>
           <p className="mt-6 text-base leading-relaxed text-muted-foreground lg:text-lg">
-            Tap any factor on the left to compare destinations side-by-side - with simple scores
-            and a plain-language takeaway for parents.
+            <span className="lg:hidden">
+              Tap any factor and use the arrow to expand the full comparison right below it.
+            </span>
+            <span className="hidden lg:inline">
+              Tap any factor on the left to compare destinations side-by-side - with simple scores
+              and a plain-language takeaway for parents.
+            </span>
           </p>
         </ScrollReveal>
 
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="mt-8 flex flex-wrap gap-3 max-lg:max-w-full">
           {comparisonDestinations.map((d) => (
             <span
               key={d.key}
@@ -143,7 +279,9 @@ export function IvyComparison() {
           ))}
         </div>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-12 lg:gap-10">
+        <IvyComparisonMobileAccordion />
+
+        <div className={`${sectionContentMt} hidden gap-6 lg:grid lg:grid-cols-12 lg:gap-10`}>
           <ScrollReveal direction="up" className="lg:col-span-4">
             <div
               className="flex h-full flex-col gap-2 rounded-2xl border border-border bg-secondary/40 p-2 lg:min-h-[520px]"
@@ -182,10 +320,10 @@ export function IvyComparison() {
                     </div>
                     <span
                       className={cn(
-                        "flex shrink-0 items-center gap-1 rounded-full border px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-[0.12em] transition-all duration-300",
+                        "shrink-0 items-center gap-1 rounded-full border px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-[0.12em] transition-all duration-300",
                         isActive
-                          ? "border-[#8c1d2b]/40 bg-[#8c1d2b]/10 text-[#8c1d2b]"
-                          : "border-transparent text-muted-foreground opacity-0 group-hover:opacity-100",
+                          ? "flex border-[#8c1d2b]/40 bg-[#8c1d2b]/10 text-[#8c1d2b]"
+                          : "hidden border-transparent text-muted-foreground sm:flex sm:opacity-0 sm:group-hover:opacity-100",
                       )}
                     >
                       <MousePointerClick className="size-3" aria-hidden />
@@ -199,62 +337,7 @@ export function IvyComparison() {
 
           <div className="lg:col-span-8">
             <ScrollReveal key={activeId} direction="right">
-              <div className="ivy-spotlight-reveal relative min-h-[520px] overflow-hidden rounded-3xl border border-border bg-background p-6 shadow-[0_16px_48px_rgba(15,23,42,0.06)] sm:p-8">
-                <div className="ivy-orbit-ring pointer-events-none absolute -right-16 -top-16 size-48 rounded-full border border-dashed border-[#8c1d2b]/15" />
-
-                <div className="relative flex items-start gap-4 border-b border-border pb-6">
-                  <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-[#8c1d2b]/10 text-[#8c1d2b]">
-                    <Icon className="size-6" strokeWidth={1.5} />
-                  </div>
-                  <div>
-                    <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
-                      Comparing on
-                    </p>
-                    <h3 className="mt-1 text-2xl font-semibold text-foreground sm:text-3xl">
-                      {active.label}
-                    </h3>
-                  </div>
-                </div>
-
-                <div className="relative mt-5 rounded-2xl border border-[#8c1d2b]/20 bg-[#8c1d2b]/[0.04] p-5">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#8c1d2b]">
-                    For parents
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-foreground sm:text-base">
-                    {active.parentTip}
-                  </p>
-                </div>
-
-                <ScrollRevealGroup
-                  className="mt-6 grid gap-3 sm:grid-cols-2"
-                  stagger={70}
-                  direction="up"
-                  threshold={0.05}
-                >
-                  {comparisonDestinations.map((dest, i) => (
-                    <ComparisonBar
-                      key={dest.key}
-                      label={dest.label}
-                      short={dest.short}
-                      color={dest.color}
-                      score={scoreFor(active, dest.key)}
-                      text={textFor(active, dest.key)}
-                      highlight={dest.key === "ivy"}
-                      delay={i * 60}
-                    />
-                  ))}
-                </ScrollRevealGroup>
-
-                <div className="mt-6 flex flex-wrap items-center gap-4 border-t border-border pt-5">
-                  <span className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <Check className="size-4 text-[#8c1d2b]" strokeWidth={2} />
-                    Higher bar = stronger on this factor
-                  </span>
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                    Scores are illustrative · Tap left to explore all 8 factors
-                  </span>
-                </div>
-              </div>
+              <ComparisonFactorDetail active={active} />
             </ScrollReveal>
           </div>
         </div>

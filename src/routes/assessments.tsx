@@ -55,14 +55,15 @@ function AssessmentsPage() {
 
       <section className="border-b border-border px-6 py-16 lg:py-20">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-8 border-t border-border pt-12 sm:grid-cols-3">
+          <div className="grid justify-items-center gap-8 border-t border-border pt-12 text-center sm:grid-cols-3 sm:justify-items-stretch sm:text-left">
             {assessmentStats.map((item, i) => (
-              <ScrollReveal key={item.label} delay={i * 100} direction="scale">
+              <ScrollReveal key={item.label} delay={i * 100} direction="scale" className="w-full max-w-xs sm:max-w-none">
                 <CountUpStat
                   value={item.value}
                   suffix={item.suffix}
                   padStart={item.padStart}
                   delay={i * 100}
+                  className="mx-auto sm:mx-0"
                 />
                 <div className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
                   {item.label}
@@ -179,7 +180,11 @@ function AssessmentsPage() {
       </section>
 
       {/* All assessments */}
-      <section className="border-y border-border px-6 py-24 lg:py-32">
+      <section
+        id="assessment-stack"
+        className="border-y border-border px-6 py-24 lg:py-32"
+        style={{ overflow: "visible" }}
+      >
         <div className="mx-auto max-w-7xl">
           <ScrollReveal direction="blur">
             <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">

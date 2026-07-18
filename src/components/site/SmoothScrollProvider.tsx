@@ -105,6 +105,15 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
+  useEffect(() => {
+    if (lenis) return;
+
+    const onScroll = () => setScrollY(window.scrollY);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [lenis]);
+
   const scrollToSection = (id: string, offset = -88) => {
     const el = document.getElementById(id);
     if (!el) return;

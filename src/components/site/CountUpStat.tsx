@@ -99,7 +99,7 @@ export function CountUpStat({
       : String(count);
 
   return (
-    <div ref={ref} className={cn("font-serif text-5xl italic text-accent md:text-6xl", className)}>
+    <div ref={ref} className={cn("font-serif text-4xl italic text-accent sm:text-5xl md:text-6xl", className)}>
       {display}
       {suffix}
     </div>

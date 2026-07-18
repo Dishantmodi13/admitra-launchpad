@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { coachingDropdownItems, primaryNavItems } from "@/data/primary-nav";
@@ -91,6 +91,15 @@ export function Navbar() {
     setCoachingOpen(false);
   };
 
+  useEffect(() => {
+    if (!open) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
+
   const mobileLinkClass = (key: string, to: string) => {
     const active = isNavItemActive(pathname, key, to);
     return cn(
@@ -102,11 +111,14 @@ export function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+    <nav
+      data-site-navbar
+      className="fixed inset-x-0 top-0 z-[100] border-b border-border bg-background/95 backdrop-blur-md"
+    >
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
         <Link
           to="/"
-          className="shrink-0"
+          className="inline-flex shrink-0 items-center rounded-sm bg-background/95 backdrop-blur-md"
           onClick={() => scrollIfActive(pathname, "/", scrollToTop, closeMobile)}
         >
           <img
@@ -114,11 +126,11 @@ export function Navbar() {
             alt="KAREERstudio - Powered by ADMITra"
             width={220}
             height={64}
-            className="h-10 w-auto object-contain md:h-11"
+            className="h-9 w-auto bg-background/95 object-contain sm:h-10 md:h-11"
           />
         </Link>
 
-        <div className="hidden items-center gap-6 text-[12px] font-medium uppercase tracking-[0.06em] text-muted-foreground lg:flex xl:gap-7 xl:text-[13px]">
+        <div className="hidden items-center gap-4 text-[11px] font-medium uppercase tracking-[0.06em] text-muted-foreground md:flex lg:gap-6 xl:gap-7 xl:text-[13px]">
           <Link
             to="/"
             onClick={() => scrollIfActive(pathname, "/", scrollToTop)}
@@ -157,7 +169,7 @@ export function Navbar() {
           })}
         </div>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-3 md:flex">
           <Link
             to="/login"
             onClick={() => scrollIfActive(pathname, "/login", scrollToTop)}
@@ -197,7 +209,7 @@ export function Navbar() {
         </div>
 
         <button
-          className="lg:hidden"
+          className="md:hidden"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -206,8 +218,8 @@ export function Navbar() {
       </div>
 
       {open && (
-        <div className="border-t border-border bg-background lg:hidden">
-          <div className="flex flex-col gap-1 px-6 py-4 text-sm">
+        <div className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-border bg-background md:hidden">
+          <div className="flex flex-col gap-1 px-4 py-4 text-sm sm:px-6">
             <Link
               to="/"
               className={cn(
@@ -289,17 +301,23 @@ export function Navbar() {
             >
               Enquire
             </Link>
-            <div className="mt-2 flex gap-3 border-t border-border pt-3">
+            <div className="mt-4 flex flex-col gap-2 border-t border-border pt-4">
               <Link
                 to="/login"
-                className={cn(pathname === "/login" && "font-medium text-accent")}
+                className={cn(
+                  "rounded-lg border border-border px-4 py-3 text-center font-medium transition-colors hover:border-accent/40 hover:text-accent",
+                  pathname === "/login" && "border-accent text-accent",
+                )}
                 onClick={() => scrollIfActive(pathname, "/login", scrollToTop, closeMobile)}
               >
                 Login
               </Link>
               <Link
                 to="/register"
-                className={cn(pathname === "/register" && "font-medium text-accent")}
+                className={cn(
+                  "rounded-lg border border-border px-4 py-3 text-center font-medium transition-colors hover:border-accent/40 hover:text-accent",
+                  pathname === "/register" && "border-accent text-accent",
+                )}
                 onClick={() => scrollIfActive(pathname, "/register", scrollToTop, closeMobile)}
               >
                 Register

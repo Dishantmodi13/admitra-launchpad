@@ -13,6 +13,16 @@ import { StripeHero } from "@/components/site/StripeHero";
 import { ScrollReveal, ScrollRevealGroup } from "@/components/site/ScrollReveal";
 import { heroNavLinks } from "@/data/primary-nav";
 import {
+  sectionDivider,
+  sectionDividerTop,
+  sectionGridGap,
+  sectionHeaderMb,
+  sectionLabelClass,
+  sectionPadding,
+  sectionPaddingIntro,
+  sectionSubtitleClass,
+} from "@/lib/section-styles";
+import {
   educationPhases,
   educationPlanningIntro,
   needForPlanning,
@@ -36,10 +46,6 @@ export const Route = createFileRoute("/education-planning")({
   component: EducationPlanningPage,
 });
 
-const sectionLabelClass =
-  "font-mono text-base uppercase tracking-[0.3em] text-accent md:text-lg";
-const sectionSubtitleClass =
-  "mt-4 font-serif text-4xl italic leading-snug text-foreground md:text-5xl lg:text-6xl";
 const boxEyebrowClass =
   "font-mono text-sm uppercase tracking-[0.25em] text-accent md:text-base";
 const processCardTitleClass =
@@ -86,14 +92,14 @@ function EducationPlanningPage() {
       />
 
       {/* Introduction */}
-      <section className="border-b border-border px-6 py-24 lg:py-32">
+      <section className={`${sectionDivider} ${sectionPadding}`}>
         <div className="mx-auto max-w-7xl">
           <ScrollReveal direction="left" className="mb-12 max-w-3xl">
             <h2 className={sectionLabelClass}>{educationPlanningIntro.label}</h2>
             <p className={sectionSubtitleClass}>{educationPlanningIntro.title}</p>
           </ScrollReveal>
           <ScrollRevealGroup
-            className="mx-auto max-w-4xl space-y-6 text-justify text-muted-foreground"
+            className="mx-auto max-w-4xl space-y-6 text-left text-muted-foreground lg:text-justify"
             stagger={120}
             direction="up"
             threshold={0.08}
@@ -108,9 +114,9 @@ function EducationPlanningPage() {
       </section>
 
       {/* Education Planning Process */}
-      <section className="border-b border-border px-6 py-24 lg:py-32">
+      <section className={`${sectionDivider} ${sectionPadding}`}>
         <div className="mx-auto max-w-7xl">
-          <ScrollReveal direction="blur" className="mb-16 max-w-2xl">
+          <ScrollReveal direction="blur" className={`${sectionHeaderMb} max-w-2xl`}>
             <h2 className={sectionLabelClass}>Our Process</h2>
             <p className={sectionSubtitleClass}>Education Planning Process</p>
           </ScrollReveal>
@@ -137,7 +143,7 @@ function EducationPlanningPage() {
       </section>
 
       {/* Need for Education Planning */}
-      <section className="border-b border-border px-6 py-24 lg:py-32">
+      <section className={`${sectionDivider} ${sectionPadding}`}>
         <div className="mx-auto max-w-7xl">
           <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
             <ScrollReveal direction="left">
@@ -145,14 +151,14 @@ function EducationPlanningPage() {
               <p className={sectionSubtitleClass}>{needForPlanning.title}</p>
             </ScrollReveal>
             <ScrollReveal direction="right">
-              <p className="text-justify text-muted-foreground leading-relaxed">
+              <p className="text-left leading-relaxed text-muted-foreground lg:text-justify">
                 {needForPlanning.intro}
               </p>
             </ScrollReveal>
           </div>
 
           <ScrollRevealGroup
-            className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5"
+            className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5"
             stagger={100}
             direction="up"
             threshold={0.06}
@@ -179,9 +185,9 @@ function EducationPlanningPage() {
       </section>
 
       {/* Phases of Education */}
-      <section className="overflow-x-clip border-b border-border px-6 py-24 lg:py-32">
+      <section className={`overflow-x-clip ${sectionDivider} ${sectionPadding}`}>
         <div className="mx-auto max-w-7xl">
-          <ScrollReveal direction="blur" className="mb-16 max-w-2xl">
+          <ScrollReveal direction="blur" className={`${sectionHeaderMb} max-w-2xl`}>
             <h2 className={sectionLabelClass}>The Journey</h2>
             <p className={sectionSubtitleClass}>Phases of Education</p>
           </ScrollReveal>
@@ -237,7 +243,7 @@ function EducationPlanningPage() {
       </section>
 
       {/* CTA */}
-      <section className="border-t border-border px-6 py-24 lg:py-32">
+      <section className={`${sectionDividerTop} ${sectionPadding}`}>
         <div className="mx-auto max-w-3xl text-center">
           <ScrollReveal direction="blur">
             <h2 className={sectionLabelClass}>Enquire Now</h2>

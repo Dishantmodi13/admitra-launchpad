@@ -268,7 +268,7 @@ export function ScholasticHero() {
 
             <div
               className={cn(
-                "mt-10 grid grid-cols-3 gap-4 border-t border-slate-200/80 pt-8 sm:gap-6",
+                "mt-10 grid grid-cols-1 gap-4 border-t border-slate-200/80 pt-8 sm:grid-cols-3 sm:gap-6",
                 visible ? "scholastic-fade-in" : "opacity-0",
               )}
               style={{ animationDelay: "760ms" }}

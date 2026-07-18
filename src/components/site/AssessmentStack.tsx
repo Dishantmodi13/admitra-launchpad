@@ -3,11 +3,38 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { assessments } from "@/data/assessments";
 
-const STACK_BASE_TOP = 88;
 const STACK_STEP = 14;
+const STACK_TOP_GAP = 12;
+
+function useNavbarStackOffset() {
+  const [offset, setOffset] = useState(88);
+
+  useEffect(() => {
+    const nav = document.querySelector<HTMLElement>("[data-site-navbar]");
+    if (!nav) return;
+
+    const update = () => {
+      setOffset(Math.round(nav.getBoundingClientRect().height + STACK_TOP_GAP));
+    };
+
+    update();
+
+    const observer = new ResizeObserver(update);
+    observer.observe(nav);
+    window.addEventListener("resize", update);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
+  return offset;
+}
 
 export function AssessmentStack() {
   const [reducedMotion, setReducedMotion] = useState(false);
+  const stackBaseTop = useNavbarStackOffset();
 
   useEffect(() => {
     setReducedMotion(
@@ -33,8 +60,8 @@ export function AssessmentStack() {
           className="mb-10 last:mb-0"
           style={{
             position: "sticky",
-            top: STACK_BASE_TOP + i * STACK_STEP,
-            zIndex: i + 1,
+            top: stackBaseTop + i * STACK_STEP,
+            zIndex: 10 + i,
           }}
         >
           <AssessmentCard assessment={a} index={i} stacked />

@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { MousePointerClick } from "lucide-react";
 import { PageLayout } from "@/components/site/PageLayout";
 import { StripeHero } from "@/components/site/StripeHero";
 import { heroNavLinks } from "@/data/primary-nav";
+import { sectionPadding } from "@/lib/section-styles";
 import { cn } from "@/lib/utils";
 import heroCoaching from "@/assets/hero-coaching.jpg";
 
@@ -77,7 +79,7 @@ function CoachingPage() {
         ctaTo="/enquiry"
       />
 
-      <section className="px-6 py-24">
+      <section className={sectionPadding}>
         <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2 lg:grid-cols-6">
           {programs.map((p) => (
             <Link
@@ -85,7 +87,7 @@ function CoachingPage() {
               to="/coaching/$slug"
               params={{ slug: p.slug }}
               className={cn(
-                "group border border-border bg-background p-10 transition-colors hover:border-accent/40 hover:bg-accent/[0.03]",
+                "group flex flex-col border border-border bg-background p-6 transition-colors hover:border-accent/40 hover:bg-accent/[0.03] sm:p-8 lg:p-10",
                 p.span,
               )}
             >
@@ -93,9 +95,13 @@ function CoachingPage() {
               <h3 className="mt-6 font-serif text-2xl italic leading-snug transition-colors group-hover:text-accent">
                 {p.title}
               </h3>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
                 {p.body}
               </p>
+              <span className="mt-4 inline-flex w-fit items-center gap-1 rounded-full border border-accent/40 bg-accent/10 px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.14em] text-accent">
+                <MousePointerClick className="size-3 shrink-0" aria-hidden />
+                Click
+              </span>
             </Link>
           ))}
         </div>

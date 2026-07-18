@@ -29,11 +29,13 @@ import { MousePointerClick } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ScrollReveal, ScrollRevealGroup } from "@/components/site/ScrollReveal";
 import { challengePhases, type ChallengePhaseId, type StudyAbroadChallenge } from "@/data/study-abroad";
-
-const sectionLabelClass =
-  "font-mono text-base uppercase tracking-[0.3em] text-accent md:text-lg";
-const sectionSubtitleClass =
-  "mt-4 font-serif text-4xl italic leading-snug text-foreground md:text-5xl lg:text-6xl";
+import {
+  sectionContentMt,
+  sectionDivider,
+  sectionLabelClass,
+  sectionPadding,
+  sectionSubtitleClass,
+} from "@/lib/section-styles";
 
 const iconMap: Record<string, LucideIcon> = {
   layers: Layers,
@@ -97,7 +99,7 @@ export function StudyAbroadChallengeExplorer() {
   return (
     <section
       id="study-abroad-journey"
-      className="border-b border-border px-6 py-24 lg:py-32"
+      className={`${sectionDivider} ${sectionPadding}`}
     >
       <div className="mx-auto max-w-7xl">
         <ScrollReveal direction="up" className="max-w-3xl">
@@ -111,9 +113,9 @@ export function StudyAbroadChallengeExplorer() {
           </p>
         </ScrollReveal>
 
-        <ScrollReveal delay={120} direction="up" className="mt-12">
+        <ScrollReveal delay={120} direction="up" className={sectionContentMt}>
           <div
-            className="flex flex-col gap-2 rounded-2xl border border-border bg-secondary/40 p-2 sm:flex-row sm:gap-0"
+            className="flex flex-col gap-2 rounded-2xl border border-border bg-secondary/40 p-2 md:flex-row md:gap-0"
             role="tablist"
             aria-label="Study abroad challenge phases"
           >
@@ -144,7 +146,7 @@ export function StudyAbroadChallengeExplorer() {
                 </div>
                 <span
                   className={cn(
-                    "mt-0.5 flex shrink-0 items-center gap-1 rounded-full border px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.14em] transition-all duration-300 sm:text-[10px]",
+                    "mt-0.5 hidden shrink-0 items-center gap-1 rounded-full border px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.14em] transition-all duration-300 sm:flex sm:text-[10px]",
                     isActive
                       ? "border-accent/40 bg-accent/10 text-accent"
                       : "border-border bg-background/80 text-muted-foreground group-hover:border-accent/30 group-hover:text-accent",

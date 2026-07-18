@@ -13,7 +13,7 @@ const mapsUrl = "https://maps.app.goo.gl/hhFbyjyS6YySQbQz7";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-background px-6 py-16 lg:py-20">
+    <footer className="border-t border-border bg-background px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
       <div className="mx-auto grid max-w-7xl gap-12 sm:gap-14 lg:grid-cols-12 lg:gap-10">
         {/* Brand */}
         <div className="lg:col-span-4">

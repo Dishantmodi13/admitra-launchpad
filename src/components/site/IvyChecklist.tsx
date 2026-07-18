@@ -2,11 +2,12 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { ScrollReveal, ScrollRevealGroup } from "@/components/site/ScrollReveal";
 import { parentChecklist, studentChecklist } from "@/data/ivy-league";
-
-const sectionLabelClass =
-  "font-mono text-base uppercase tracking-[0.3em] text-accent md:text-lg";
-const sectionSubtitleClass =
-  "mt-4 font-serif text-4xl italic leading-snug text-foreground md:text-5xl lg:text-6xl";
+import {
+  sectionDivider,
+  sectionLabelClass,
+  sectionPadding,
+  sectionSubtitleClass,
+} from "@/lib/section-styles";
 
 type Track = "students" | "parents";
 
@@ -15,7 +16,7 @@ export function IvyChecklist() {
   const items = track === "students" ? studentChecklist : parentChecklist;
 
   return (
-    <section id="roadmap" className="border-b border-border px-6 py-24 lg:py-32">
+    <section id="roadmap" className={`${sectionDivider} ${sectionPadding}`}>
       <div className="mx-auto max-w-7xl">
         <ScrollReveal direction="left" className="max-w-3xl">
           <p className={sectionLabelClass}>Application & Admission Checklist</p>

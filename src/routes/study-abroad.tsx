@@ -8,6 +8,17 @@ import { ScrollReveal, ScrollRevealGroup } from "@/components/site/ScrollReveal"
 import { CountUpStat } from "@/components/site/CountUpStat";
 import { heroNavLinks } from "@/data/primary-nav";
 import { kareerApproach, studyAbroadIntro } from "@/data/study-abroad";
+import {
+  sectionDivider,
+  sectionDividerTop,
+  bodyTextClass,
+  statCellClass,
+  sectionHeaderMb,
+  sectionLabelClass,
+  sectionPadding,
+  sectionPaddingIntro,
+  sectionSubtitleClass,
+} from "@/lib/section-styles";
 import heroStudyAbroad from "@/assets/hero-study-abroad.jpg";
 
 export const Route = createFileRoute("/study-abroad")({
@@ -25,11 +36,6 @@ export const Route = createFileRoute("/study-abroad")({
   }),
   component: StudyAbroadPage,
 });
-
-const sectionLabelClass =
-  "font-mono text-base uppercase tracking-[0.3em] text-accent md:text-lg";
-const sectionSubtitleClass =
-  "mt-4 font-serif text-4xl italic leading-snug text-foreground md:text-5xl lg:text-6xl";
 
 const studyAbroadHeroNavLinks = heroNavLinks(["study-abroad"]);
 
@@ -53,25 +59,27 @@ function StudyAbroadPage() {
         ctaTo="/enquiry"
       />
 
-      <section className="border-b border-border px-6 py-16 lg:py-20">
+      <section className={`${sectionDivider} ${sectionPaddingIntro}`}>
         <div className="mx-auto max-w-7xl">
-          <ScrollReveal direction="left" className="mb-12 max-w-3xl">
+          <ScrollReveal direction="left" className={`${sectionHeaderMb} max-w-3xl`}>
             <h2 className={sectionLabelClass}>{studyAbroadIntro.eyebrow}</h2>
             <p className={sectionSubtitleClass}>{studyAbroadIntro.headline}</p>
-            <p className="mt-6 text-base leading-relaxed text-muted-foreground lg:text-lg">
+            <p className={`mt-4 text-base lg:mt-6 lg:text-lg ${bodyTextClass}`}>
               {studyAbroadIntro.summary}
             </p>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 gap-8 border-t border-border pt-12 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 border-t-2 border-accent pt-6 sm:grid-cols-3 lg:border-t lg:border-border lg:pt-8">
             {studyAbroadIntro.pillars.map((pillar, i) => (
               <ScrollReveal key={pillar.label} delay={i * 100} direction="scale">
-                <CountUpStat
-                  value={pillar.value}
-                  suffix={pillar.suffix}
-                  delay={i * 100}
-                />
-                <p className={pillarLabelClass}>{pillar.label}</p>
+                <div className={statCellClass}>
+                  <CountUpStat
+                    value={pillar.value}
+                    suffix={pillar.suffix}
+                    delay={i * 100}
+                  />
+                  <p className={pillarLabelClass}>{pillar.label}</p>
+                </div>
               </ScrollReveal>
             ))}
           </div>
@@ -81,9 +89,9 @@ function StudyAbroadPage() {
       <StudyAbroadChallengeExplorer />
       <StudyAbroadTimeline />
 
-      <section className="border-b border-border px-6 py-24 lg:py-32">
+      <section className={`${sectionDivider} ${sectionPadding}`}>
         <div className="mx-auto max-w-7xl">
-          <ScrollReveal direction="left" className="mb-14 max-w-2xl">
+          <ScrollReveal direction="left" className={`${sectionHeaderMb} max-w-2xl`}>
             <p className={sectionLabelClass}>The KAREER Difference</p>
             <p className={sectionSubtitleClass}>Not just an agent. A strategic partner.</p>
           </ScrollReveal>
@@ -112,11 +120,11 @@ function StudyAbroadPage() {
         </div>
       </section>
 
-      <section className="border-t border-border px-6 py-24 lg:py-32">
+      <section className={`${sectionDividerTop} ${sectionPadding}`}>
         <div className="mx-auto max-w-3xl text-center">
           <ScrollReveal direction="blur">
             <h2 className={sectionLabelClass}>Enquire Now</h2>
-            <p className={`${sectionSubtitleClass} mt-4`}>Unlock your potential</p>
+            <p className={sectionSubtitleClass}>Unlock your potential</p>
             <p className="mt-8 text-muted-foreground">
               A complimentary session offers valuable insights and a chance to connect with
               industry experts who understand your full study abroad journey.

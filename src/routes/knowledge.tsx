@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, PageLayout } from "@/components/site/PageLayout";
+import { sectionPadding } from "@/lib/section-styles";
 import blog1 from "@/assets/blog-1.jpg";
 import blog2 from "@/assets/blog-2.jpg";
 
@@ -31,7 +32,7 @@ function KnowledgePage() {
         title="Voices of the Globe."
         body="Long-form writing and conversations on study abroad, careers, and the parenting that surrounds them."
       />
-      <section className="px-6 py-24">
+      <section className={sectionPadding}>
         <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-2">
           {items.map((it, i) => (
             <article key={i} className="group cursor-pointer border border-border">

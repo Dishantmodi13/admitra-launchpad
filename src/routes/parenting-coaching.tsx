@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageLayout } from "@/components/site/PageLayout";
 import { StripeHero } from "@/components/site/StripeHero";
 import { heroNavLinks } from "@/data/primary-nav";
+import { sectionGridGap, sectionLabelClass, sectionPadding, sectionSubtitleClass } from "@/lib/section-styles";
 import heroParentingCoaching from "@/assets/hero-parenting-coaching.jpg";
 
 export const Route = createFileRoute("/parenting-coaching")({
@@ -34,11 +35,11 @@ function ParentingPage() {
         navLinks={parentingHeroNavLinks}
       />
 
-      <section className="px-6 py-24">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2">
+      <section className={sectionPadding}>
+        <div className={`mx-auto grid max-w-7xl lg:grid-cols-2 ${sectionGridGap}`}>
           <div>
-            <h2 className="font-serif text-3xl italic">What you get</h2>
-            <ul className="mt-8 space-y-4 text-muted-foreground">
+            <h2 className={sectionLabelClass}>What you get</h2>
+            <ul className="mt-6 space-y-4 text-muted-foreground">
               <li className="flex gap-4">
                 <span className="font-mono text-xs text-accent">01</span>
                 <span>Monthly mentor sessions with senior consultants.</span>
@@ -57,9 +58,9 @@ function ParentingPage() {
               </li>
             </ul>
           </div>
-          <div className="border-l border-border p-12">
-            <h2 className="font-serif text-3xl italic">Why it matters</h2>
-            <p className="mt-6 text-muted-foreground">
+          <div className="border-l border-border p-6 sm:p-8 lg:p-10">
+            <h2 className={sectionLabelClass}>Why it matters</h2>
+            <p className="mt-4 text-muted-foreground">
               The hardest part of a global education is rarely academic - it's
               alignment. KAREER Studio's parenting program turns guesswork
               into shared vocabulary, and shared vocabulary into momentum.

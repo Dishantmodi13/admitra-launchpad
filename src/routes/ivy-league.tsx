@@ -21,6 +21,17 @@ import {
   whoShouldConsider,
 } from "@/data/ivy-league";
 import heroIvyLeague from "@/assets/hero-ivy-league.jpg";
+import {
+  statCellClass,
+  sectionDivider,
+  sectionDividerTop,
+  sectionGridGap,
+  sectionHeaderMb,
+  sectionLabelClass,
+  sectionPadding,
+  sectionPaddingIntro,
+  sectionSubtitleClass,
+} from "@/lib/section-styles";
 
 export const Route = createFileRoute("/ivy-league")({
   head: () => ({
@@ -38,11 +49,6 @@ export const Route = createFileRoute("/ivy-league")({
   component: IvyLeaguePage,
 });
 
-const sectionLabelClass =
-  "font-mono text-base uppercase tracking-[0.3em] text-accent md:text-lg";
-const sectionSubtitleClass =
-  "mt-4 font-serif text-4xl italic leading-snug text-foreground md:text-5xl lg:text-6xl";
-
 const ivyHeroNavLinks = heroNavLinks(["ivy-league"]);
 
 const statLabelClass =
@@ -51,6 +57,7 @@ const statLabelClass =
 function IvyLeaguePage() {
   return (
     <PageLayout>
+      <div className="max-lg:overflow-x-clip">
       <StripeHero
         image={heroIvyLeague}
         imageAlt="Students walking through an ivy-covered Ivy League campus"
@@ -66,22 +73,24 @@ function IvyLeaguePage() {
         ctaTo="/enquiry"
       />
 
-      <section className="border-b border-border px-6 py-16 lg:py-20">
+      <section className={`${sectionDivider} ${sectionPaddingIntro}`}>
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {ivyLeagueStats.map((stat, i) => (
               <ScrollReveal key={stat.label} delay={i * 100} direction="scale">
-                <CountUpStat value={stat.value} suffix={stat.suffix} delay={i * 100} />
-                <p className={statLabelClass}>{stat.label}</p>
+                <div className={statCellClass}>
+                  <CountUpStat value={stat.value} suffix={stat.suffix} delay={i * 100} />
+                  <p className={statLabelClass}>{stat.label}</p>
+                </div>
               </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-b border-border px-6 py-24 lg:py-32">
+      <section className={`${sectionDivider} ${sectionPadding}`}>
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-12">
+          <div className={`grid ${sectionGridGap} lg:grid-cols-12`}>
             <ScrollReveal direction="left" className="lg:col-span-5">
               <p className={sectionLabelClass}>{ivyLeagueOrigin.eyebrow}</p>
               <h2 className={sectionSubtitleClass}>{ivyLeagueOrigin.title}</h2>
@@ -110,9 +119,9 @@ function IvyLeaguePage() {
       <IvyAdmissionsTimeline />
       <IvyComparison />
 
-      <section className="border-b border-border px-6 py-24 lg:py-32">
+      <section className={`${sectionDivider} ${sectionPadding}`}>
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-12">
+          <div className={`grid ${sectionGridGap} lg:grid-cols-12`}>
             <ScrollReveal direction="left" className="lg:col-span-5">
               <p className={sectionLabelClass}>Who Should Consider Ivy League?</p>
               <h2 className={sectionSubtitleClass}>Designed for ambitious students & families.</h2>
@@ -145,9 +154,9 @@ function IvyLeaguePage() {
 
       <IvyChecklist />
 
-      <section className="border-b border-border px-6 py-24 lg:py-32">
+      <section className={`${sectionDivider} ${sectionPadding}`}>
         <div className="mx-auto max-w-7xl">
-          <ScrollReveal direction="left" className="mb-14 max-w-2xl">
+          <ScrollReveal direction="left" className={`${sectionHeaderMb} max-w-2xl`}>
             <p className={sectionLabelClass}>Our Expertise</p>
             <p className={sectionSubtitleClass}>End-to-end Ivy League mentoring.</p>
           </ScrollReveal>
@@ -162,7 +171,7 @@ function IvyLeaguePage() {
             {ivyServices.map((item, i) => (
               <div
                 key={item.title}
-                className="group relative flex h-full min-h-[240px] flex-col overflow-hidden rounded-2xl border border-border bg-background p-8 transition-all duration-500 hover:border-accent/40 hover:shadow-[0_12px_40px_rgba(15,23,42,0.06)]"
+                className="group relative flex h-full min-h-[200px] flex-col overflow-hidden rounded-2xl border border-border bg-background p-6 transition-all duration-500 hover:border-accent/40 hover:shadow-[0_12px_40px_rgba(15,23,42,0.06)] sm:min-h-[240px] sm:p-8"
               >
                 <span className="font-mono text-4xl font-bold text-accent/70 transition-colors group-hover:text-accent">
                   {String(i + 1).padStart(2, "0")}
@@ -177,7 +186,7 @@ function IvyLeaguePage() {
         </div>
       </section>
 
-      <section className="border-t border-border px-6 py-24 lg:py-32">
+      <section className={`${sectionDividerTop} ${sectionPadding}`}>
         <div className="mx-auto max-w-3xl text-center">
           <ScrollReveal direction="blur">
             <p className={sectionLabelClass}>Ready For The World&apos;s Best Education?</p>
@@ -214,6 +223,7 @@ function IvyLeaguePage() {
           </ScrollReveal>
         </div>
       </section>
+      </div>
     </PageLayout>
   );
 }
