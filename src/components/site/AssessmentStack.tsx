@@ -51,7 +51,7 @@ function AssessmentCardDetails({
           <span className="text-3xl" aria-hidden>
             {a.icon}
           </span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent/80">
+          <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-foreground">
             {String(index + 1).padStart(2, "0")} / {String(assessments.length).padStart(2, "0")}
           </span>
         </div>
@@ -110,7 +110,7 @@ function AssessmentMobileAccordion() {
   };
 
   return (
-    <div className="mt-16 space-y-2 lg:hidden">
+    <div className="mt-8 space-y-2 lg:mt-16 lg:hidden">
       {assessments.map((a, i) => {
         const isExpanded = expandedIndex === i;
 
@@ -140,7 +140,7 @@ function AssessmentMobileAccordion() {
                 {a.icon}
               </div>
               <div className="min-w-0 flex-1">
-                <span className="font-mono text-[10px] text-muted-foreground/70">
+                <span className="font-mono text-[10px] font-semibold text-foreground">
                   {String(i + 1).padStart(2, "0")} / {String(assessments.length).padStart(2, "0")}
                 </span>
                 <span className="mt-1 block text-sm font-semibold leading-snug text-foreground">
@@ -204,7 +204,7 @@ function AssessmentDesktopStack() {
               <span className="text-4xl" aria-hidden>
                 {a.icon}
               </span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent/80">
+              <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-foreground">
                 {String(i + 1).padStart(2, "0")} / {String(assessments.length).padStart(2, "0")}
               </span>
             </div>

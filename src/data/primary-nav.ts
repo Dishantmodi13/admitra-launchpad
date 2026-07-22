@@ -34,3 +34,8 @@ export function heroNavLinks(excludeKeys: string[] = []) {
     .filter((item) => !excludeKeys.includes(item.key))
     .map(({ key, label, to }) => ({ key, label, to }));
 }
+
+/** Bottom “Go to” bar links for individual coaching program pages */
+export function coachingProgramNavLinks() {
+  return heroNavLinks();
+}

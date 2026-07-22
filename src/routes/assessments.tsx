@@ -32,9 +32,32 @@ export const Route = createFileRoute("/assessments")({
 });
 
 const audienceCardClass =
-  "group relative h-full overflow-hidden border border-border p-8 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:-translate-y-2 hover:border-accent/50 hover:shadow-[0_24px_48px_-16px_oklch(0.22_0.018_230/0.18)] lg:p-10";
+  "group relative h-full overflow-hidden border border-border p-6 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:-translate-y-2 hover:border-accent/50 hover:shadow-[0_24px_48px_-16px_oklch(0.22_0.018_230/0.18)] sm:p-8 lg:p-10";
 
 const assessmentsHeroNavLinks = heroNavLinks(["assessments"]);
+
+function splitAssessmentListItem(item: string) {
+  const separator = " - ";
+  const separatorIndex = item.indexOf(separator);
+  if (separatorIndex === -1) {
+    return { name: item, description: null as string | null };
+  }
+  return {
+    name: item.slice(0, separatorIndex),
+    description: item.slice(separatorIndex + separator.length),
+  };
+}
+
+function AssessmentListItem({ item }: { item: string }) {
+  const { name, description } = splitAssessmentListItem(item);
+
+  return (
+    <span>
+      <span className="font-bold text-foreground">{name}</span>
+      {description ? <span className="text-muted-foreground"> - {description}</span> : null}
+    </span>
+  );
+}
 
 function AssessmentsPage() {
   return (
@@ -53,9 +76,9 @@ function AssessmentsPage() {
         ctaTo="/enquiry"
       />
 
-      <section className="border-b border-border px-6 py-16 lg:py-20">
+      <section className="border-b border-border px-4 py-6 sm:px-6 lg:py-20">
         <div className="mx-auto max-w-7xl">
-          <div className="grid justify-items-center gap-8 border-t border-border pt-12 text-center sm:grid-cols-3 sm:justify-items-stretch sm:text-left">
+          <div className="grid justify-items-center gap-5 border-t border-border pt-6 text-center sm:grid-cols-3 sm:justify-items-stretch sm:gap-8 sm:pt-12 sm:text-left lg:pt-12">
             {assessmentStats.map((item, i) => (
               <ScrollReveal key={item.label} delay={i * 100} direction="scale" className="w-full max-w-xs sm:max-w-none">
                 <CountUpStat
@@ -89,7 +112,7 @@ function AssessmentsPage() {
       </section>
 
       {/* Who should take */}
-      <section className="px-6 py-24 lg:py-32">
+      <section className="px-4 py-12 sm:px-6 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <ScrollReveal direction="blur">
             <h2 className="max-w-2xl font-serif text-4xl italic md:text-5xl">
@@ -101,7 +124,7 @@ function AssessmentsPage() {
             </p>
           </ScrollReveal>
 
-          <div className="mt-16 grid gap-8 lg:grid-cols-2">
+          <div className="mt-10 grid gap-6 lg:mt-16 lg:grid-cols-2 lg:gap-8">
             <ScrollReveal direction="left">
               <div
                 className={cn(
@@ -116,7 +139,7 @@ function AssessmentsPage() {
                 <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-accent">
                   Grades 6-12 & college
                 </p>
-                <ul className="mt-8 space-y-4">
+                <ul className="mt-5 space-y-3 sm:mt-8 sm:space-y-4">
                   {studentAssessments.map((item) => (
                     <li
                       key={item}
@@ -126,7 +149,7 @@ function AssessmentsPage() {
                         className="mt-0.5 size-4 shrink-0 text-accent transition-transform duration-300 group-hover:scale-110"
                         aria-hidden
                       />
-                      <span>{item}</span>
+                      <AssessmentListItem item={item} />
                     </li>
                   ))}
                 </ul>
@@ -153,7 +176,7 @@ function AssessmentsPage() {
                 <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-accent">
                   Actively supporting their child
                 </p>
-                <ul className="mt-8 space-y-4">
+                <ul className="mt-5 space-y-3 sm:mt-8 sm:space-y-4">
                   {parentBenefits.map((item) => (
                     <li
                       key={item}
@@ -163,7 +186,7 @@ function AssessmentsPage() {
                         className="mt-0.5 size-4 shrink-0 text-accent transition-transform duration-300 group-hover:scale-110"
                         aria-hidden
                       />
-                      <span>{item}</span>
+                      <AssessmentListItem item={item} />
                     </li>
                   ))}
                 </ul>
@@ -182,7 +205,7 @@ function AssessmentsPage() {
       {/* All assessments */}
       <section
         id="assessment-stack"
-        className="border-y border-border px-6 py-24 lg:py-32"
+        className="border-y border-border px-4 py-12 sm:px-6 lg:py-32"
         style={{ overflow: "visible" }}
       >
         <div className="mx-auto max-w-7xl">
@@ -190,7 +213,7 @@ function AssessmentsPage() {
             <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">
               Explore
             </span>
-            <h2 className="mt-4 max-w-2xl font-serif text-4xl italic md:text-5xl">
+            <h2 className="mt-3 max-w-2xl font-serif text-4xl italic md:mt-4 md:text-5xl">
               Our 9 Assessments
             </h2>
             <p className="mt-6 max-w-2xl text-muted-foreground">
@@ -205,7 +228,7 @@ function AssessmentsPage() {
       </section>
 
       {/* Report features */}
-      <section className="px-6 py-24 lg:py-32">
+      <section className="px-4 py-12 sm:px-6 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <ScrollReveal direction="blur">
             <h2 className="font-serif text-4xl italic md:text-5xl">
@@ -235,7 +258,7 @@ function AssessmentsPage() {
       </section>
 
       {/* How it works */}
-      <section className="border-t border-border bg-foreground px-6 py-24 text-background lg:py-32">
+      <section className="border-t border-border bg-foreground px-4 py-12 text-background sm:px-6 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <ScrollReveal direction="blur">
             <h2 className="font-serif text-4xl italic md:text-5xl">
@@ -260,7 +283,7 @@ function AssessmentsPage() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 py-24 lg:py-32">
+      <section className="px-4 py-12 sm:px-6 lg:py-32">
         <div className="mx-auto max-w-3xl text-center">
           <ScrollReveal direction="blur">
             <h2 className="font-serif text-4xl italic md:text-5xl">

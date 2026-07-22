@@ -2,6 +2,8 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowDown, ArrowRight, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { MobileHeroGoToNav } from "@/components/site/MobileHeroGoToNav";
+import { coachingProgramNavLinks } from "@/data/primary-nav";
 import {
   useSectionScrollOffset,
   useSmoothScroll,
@@ -206,8 +208,8 @@ export function ScholasticHero() {
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-14 sm:pb-20 sm:pt-16 lg:pb-24 lg:pt-20">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+      <div className="relative mx-auto max-w-7xl px-4 pb-8 pt-10 sm:px-6 sm:pb-12 sm:pt-14 lg:pb-24 lg:pt-20">
+        <div className="grid items-center gap-6 lg:grid-cols-12 lg:gap-10 xl:gap-14">
           <div className="lg:col-span-5 xl:col-span-5">
             <p
               className={cn(
@@ -268,17 +270,17 @@ export function ScholasticHero() {
 
             <div
               className={cn(
-                "mt-10 grid grid-cols-1 gap-4 border-t border-slate-200/80 pt-8 sm:grid-cols-3 sm:gap-6",
+                "mt-5 grid grid-cols-3 gap-2 border-t border-slate-200/80 pt-4 sm:mt-10 sm:gap-6 sm:pt-8",
                 visible ? "scholastic-fade-in" : "opacity-0",
               )}
               style={{ animationDelay: "760ms" }}
             >
               {trustStats.map((stat) => (
-                <div key={stat.label}>
-                  <p className="text-xl font-semibold tracking-tight text-[#0F172A] sm:text-2xl">
+                <div key={stat.label} className="min-w-0 text-center sm:text-left">
+                  <p className="text-lg font-semibold tracking-tight text-[#0F172A] sm:text-2xl">
                     {stat.value}
                   </p>
-                  <p className="mt-1 text-[10px] leading-snug text-slate-500 sm:text-xs">
+                  <p className="mt-0.5 text-[9px] leading-snug text-slate-500 sm:mt-1 sm:text-xs">
                     {stat.label}
                   </p>
                 </div>
@@ -320,7 +322,7 @@ export function ScholasticHero() {
               <FloatingGlassCard key={card.title} {...card} scrollOffset={scrollOffset} />
             ))}
 
-            <div className="mt-5 grid grid-cols-2 gap-2.5 sm:hidden">
+            <div className="mt-3 grid grid-cols-2 gap-2 sm:hidden">
               {floatingCards.slice(0, 4).map((card) => (
                 <div
                   key={card.title}
@@ -344,6 +346,8 @@ export function ScholasticHero() {
           <ArrowDown className="size-4" />
         </button>
       </div>
+
+      <MobileHeroGoToNav navLinks={coachingProgramNavLinks()} />
     </section>
   );
 }

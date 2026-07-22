@@ -13,6 +13,12 @@ import {
 const RING_RADIUS = 34;
 const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
 
+function getConstellationShortName(name: string) {
+  if (name === "University of Pennsylvania") return "Pennsylvania";
+  const firstWord = name.split(" ")[0];
+  return firstWord ?? name;
+}
+
 /** Constellation node positions (percent within the orbit container) */
 const constellationPositions = [
   { x: 50, y: 8 },
@@ -104,7 +110,7 @@ function IvyConstellation({
       {universities.map((uni, i) => {
         const pos = constellationPositions[i]!;
         const isActive = activeIndex === i;
-        const shortName = uni.name.split(" ")[0] ?? uni.name;
+        const shortName = getConstellationShortName(uni.name);
 
         return (
           <button
@@ -133,8 +139,8 @@ function IvyConstellation({
               />
               <span
                 className={cn(
-                  "whitespace-normal text-center font-mono text-[9px] uppercase tracking-wider transition-colors duration-300 sm:whitespace-nowrap sm:text-[10px]",
-                  isActive ? "font-semibold text-[#8c1d2b]" : "text-muted-foreground",
+                  "max-w-[5.5rem] whitespace-normal text-center font-mono text-[13px] font-bold uppercase leading-tight tracking-wider transition-colors duration-300 sm:max-w-none sm:text-sm lg:text-[10px] lg:font-semibold",
+                  isActive ? "text-[#8c1d2b]" : "text-muted-foreground",
                 )}
               >
                 {shortName}

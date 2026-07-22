@@ -27,6 +27,7 @@ const pageTitleClass =
 const cardHoverClass =
   "group relative transform-gpu rounded-xl border border-border bg-background transition-all duration-300 ease-out hover:-translate-y-3 hover:scale-[1.03] hover:border-accent/50 hover:shadow-xl hover:shadow-foreground/10 hover:z-10";
 
+const coachingSectionClass = "px-4 py-6 sm:px-6 lg:py-16";
 const bulletListClass = "space-y-3";
 const bulletItemClass = "flex gap-3 text-sm leading-relaxed text-muted-foreground";
 
@@ -80,11 +81,13 @@ function MaskedIcon({
 
 function BenefitCard({
   benefit,
+  index,
   delay,
   className,
   wrapperClassName,
 }: {
   benefit: CoachingBenefit;
+  index: number;
   delay: number;
   className?: string;
   wrapperClassName?: string;
@@ -98,10 +101,13 @@ function BenefitCard({
       threshold={0.06}
       className={cn("h-full", wrapperClassName)}
     >
-      <div className={cn(cardHoverClass, "flex h-full flex-col p-5 lg:p-6", className)}>
+      <div className={cn(cardHoverClass, "flex h-full flex-col p-4 lg:p-6", className)}>
+        <span className="font-mono text-3xl font-extrabold leading-none text-accent/80 sm:text-4xl">
+          {String(index + 1).padStart(2, "0")}
+        </span>
         <div
           className={cn(
-            "flex h-14 w-14 items-center justify-center rounded-xl",
+            "mt-4 flex h-14 w-14 items-center justify-center rounded-xl",
             iconStyle.surface,
           )}
         >
@@ -126,6 +132,7 @@ function BenefitsGrid({ benefits }: { benefits: NonNullable<CoachingProgram["ben
           <BenefitCard
             key={benefit.title}
             benefit={benefit}
+            index={index}
             delay={index * 90}
             wrapperClassName={cn("lg:col-span-2", index === 3 && "lg:col-start-2")}
           />
@@ -137,7 +144,7 @@ function BenefitsGrid({ benefits }: { benefits: NonNullable<CoachingProgram["ben
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5 [perspective:1200px]">
       {benefits.map((benefit, index) => (
-        <BenefitCard key={benefit.title} benefit={benefit} delay={index * 90} />
+        <BenefitCard key={benefit.title} benefit={benefit} index={index} delay={index * 90} />
       ))}
     </div>
   );
@@ -153,7 +160,7 @@ function IntroSection({
   if (hideHeader && !program.introImage) return null;
 
   return (
-    <section className="border-b border-border px-6 pb-12 pt-12 lg:pb-14 lg:pt-14">
+    <section className={`border-b border-border ${coachingSectionClass} lg:pb-14 lg:pt-14`}>
       <div className="mx-auto max-w-7xl">
         {!hideHeader && (
           <div className="grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-x-12 lg:gap-y-10">
@@ -176,7 +183,7 @@ function IntroSection({
         )}
 
         {program.introImage && (
-          <ScrollReveal direction="up" className={hideHeader ? undefined : "mt-14 lg:mt-20"}>
+          <ScrollReveal direction="up" className={hideHeader ? undefined : "mt-5 lg:mt-20"}>
             <div className="mx-auto w-full max-w-[1024px] bg-content-surface">
               <img
                 src={program.introImage}
@@ -206,10 +213,10 @@ function ProgramsSection({
   return (
     <section
       id={sectionId}
-      className="border-b border-border px-6 py-14 lg:py-16"
+      className={`border-b border-border ${coachingSectionClass}`}
     >
       <div className="mx-auto max-w-7xl">
-        <ScrollReveal direction="blur" className="mb-8">
+        <ScrollReveal direction="blur" className="mb-5 lg:mb-8">
           <h2 className={sectionLabelClass}>Programs</h2>
         </ScrollReveal>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5 [perspective:1200px]">
@@ -225,7 +232,7 @@ function ProgramsSection({
                 params={{ slug: item.slug }}
                 className={cn(
                   cardHoverClass,
-                  "relative isolate flex h-full min-h-[16rem] flex-col overflow-hidden border-0 px-5 py-7 lg:min-h-[18rem] lg:px-6 lg:py-8",
+                  "relative isolate flex h-full min-h-[14rem] flex-col overflow-hidden border-0 px-5 py-6 lg:min-h-[18rem] lg:px-6 lg:py-8",
                   hasPhotoBackground && "bg-foreground text-white shadow-lg hover:shadow-xl",
                 )}
               >
@@ -248,6 +255,14 @@ function ProgramsSection({
                 />
 
                 <div className="relative z-10 flex h-full flex-col">
+                <span
+                  className={cn(
+                    "font-mono text-3xl font-extrabold leading-none sm:text-4xl",
+                    hasPhotoBackground ? "text-white/90" : "text-accent/80",
+                  )}
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
                 {item.image && (
                   <div
                     className={cn(
@@ -312,10 +327,10 @@ function BenefitsSection({
   return (
     <section
       id={sectionId}
-      className="border-b border-border px-6 py-14 lg:py-16"
+      className={`border-b border-border ${coachingSectionClass}`}
     >
       <div className="mx-auto max-w-7xl">
-        <ScrollReveal direction="blur" className="mb-8 max-w-2xl">
+        <ScrollReveal direction="blur" className="mb-5 max-w-2xl lg:mb-8">
           <h2 className={sectionLabelClass}>{program.benefitsHeading ?? "Benefits"}</h2>
         </ScrollReveal>
         <BenefitsGrid benefits={program.benefits} />
@@ -326,11 +341,11 @@ function BenefitsSection({
 
 function CtaSection() {
   return (
-    <section className="px-6 py-14 lg:py-16">
+    <section className={coachingSectionClass}>
       <div className="mx-auto max-w-3xl text-center">
         <ScrollReveal direction="blur">
           <h3 className={sectionSubtitleClass}>Unlock your potential</h3>
-          <p className="mt-6 text-muted-foreground">
+          <p className="mt-4 text-muted-foreground lg:mt-6">
             A complimentary session offers valuable insights and a chance to connect with
             industry experts!
           </p>
@@ -357,7 +372,9 @@ export function CoachingProgramPage({ program }: { program: CoachingProgram }) {
   ].includes(program.slug);
 
   const benefitsSectionId =
-    program.slug === "ielts"
+    program.slug === "scholastic-language"
+      ? "scholastic-benefits"
+      : program.slug === "ielts"
       ? "ielts-benefits"
       : program.slug === "gre"
         ? "gre-benefits"

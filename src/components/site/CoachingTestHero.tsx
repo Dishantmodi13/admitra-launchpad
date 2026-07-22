@@ -7,6 +7,8 @@ import type {
   CoachingTestHeroConfig,
 } from "@/data/coaching-hero-configs";
 import { cn } from "@/lib/utils";
+import { MobileHeroGoToNav } from "@/components/site/MobileHeroGoToNav";
+import { coachingProgramNavLinks } from "@/data/primary-nav";
 import {
   useSectionScrollOffset,
   useSmoothScroll,
@@ -176,8 +178,8 @@ export function CoachingTestHero({ config }: { config: CoachingTestHeroConfig })
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-14 sm:pb-20 sm:pt-16 lg:pb-24 lg:pt-20">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+      <div className="relative mx-auto max-w-7xl px-4 pb-8 pt-10 sm:px-6 sm:pb-12 sm:pt-14 lg:pb-24 lg:pt-20">
+        <div className="grid items-center gap-6 lg:grid-cols-12 lg:gap-10 xl:gap-14">
           <div className="lg:col-span-5">
             <p
               className={cn(
@@ -244,7 +246,7 @@ export function CoachingTestHero({ config }: { config: CoachingTestHeroConfig })
 
             <div
               className={cn(
-                "mt-10 flex flex-wrap gap-x-5 gap-y-3 border-t border-slate-200/80 pt-8",
+                "mt-5 flex flex-wrap gap-x-4 gap-y-2 border-t border-slate-200/80 pt-4 sm:mt-10 sm:gap-x-5 sm:gap-y-3 sm:pt-8",
                 visible ? "scholastic-fade-in" : "opacity-0",
               )}
               style={{ animationDelay: "660ms" }}
@@ -307,7 +309,7 @@ export function CoachingTestHero({ config }: { config: CoachingTestHeroConfig })
               />
             ))}
 
-            <div className="mt-5 grid grid-cols-2 gap-2.5 sm:hidden">
+            <div className="mt-3 grid grid-cols-2 gap-2 sm:hidden">
               {config.floatingCards.map((card) => (
                 <div
                   key={card.id}
@@ -348,6 +350,8 @@ export function CoachingTestHero({ config }: { config: CoachingTestHeroConfig })
           <ArrowDown className="size-4" />
         </button>
       </div>
+
+      <MobileHeroGoToNav navLinks={coachingProgramNavLinks()} />
     </section>
   );
 }

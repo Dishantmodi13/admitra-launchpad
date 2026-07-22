@@ -56,8 +56,8 @@ function WhyIvyDetailPanel({
           {active.body}
         </p>
         <div className="mt-8 flex items-center gap-2 border-t border-border pt-6">
-          <span className="ivy-pulse-dot size-2 rounded-full bg-[#8c1d2b]" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+          <span className="ivy-pulse-dot size-2 rounded-full bg-accent" />
+          <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-accent">
             Benefit {activeIndex + 1} of {whyIvyLeague.length}
           </span>
         </div>
@@ -135,8 +135,8 @@ function IvyWhyMobileAccordion() {
                     {item.body}
                   </p>
                   <div className="mt-4 flex items-center gap-2">
-                    <span className="ivy-pulse-dot size-2 rounded-full bg-[#8c1d2b]" />
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                    <span className="ivy-pulse-dot size-2 rounded-full bg-accent" />
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-accent">
                       Benefit {i + 1} of {whyIvyLeague.length}
                     </span>
                   </div>

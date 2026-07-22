@@ -3,7 +3,6 @@ import { MousePointerClick } from "lucide-react";
 import { PageLayout } from "@/components/site/PageLayout";
 import { StripeHero } from "@/components/site/StripeHero";
 import { heroNavLinks } from "@/data/primary-nav";
-import { sectionPadding } from "@/lib/section-styles";
 import { cn } from "@/lib/utils";
 import heroCoaching from "@/assets/hero-coaching.jpg";
 
@@ -79,7 +78,7 @@ function CoachingPage() {
         ctaTo="/enquiry"
       />
 
-      <section className={sectionPadding}>
+      <section className="px-4 py-6 sm:px-6 lg:py-16">
         <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2 lg:grid-cols-6">
           {programs.map((p) => (
             <Link
@@ -87,12 +86,12 @@ function CoachingPage() {
               to="/coaching/$slug"
               params={{ slug: p.slug }}
               className={cn(
-                "group flex flex-col border border-border bg-background p-6 transition-colors hover:border-accent/40 hover:bg-accent/[0.03] sm:p-8 lg:p-10",
+                "group flex flex-col border border-border bg-background p-5 transition-colors hover:border-accent/40 hover:bg-accent/[0.03] sm:p-8 lg:p-10",
                 p.span,
               )}
             >
-              <span className="font-mono text-xs text-accent">{p.n}</span>
-              <h3 className="mt-6 font-serif text-2xl italic leading-snug transition-colors group-hover:text-accent">
+              <span className="font-mono text-3xl font-extrabold leading-none text-accent sm:text-4xl">{p.n}</span>
+              <h3 className="mt-3 font-serif text-2xl italic leading-snug transition-colors group-hover:text-accent sm:mt-6">
                 {p.title}
               </h3>
               <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
