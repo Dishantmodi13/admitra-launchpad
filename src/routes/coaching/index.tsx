@@ -70,7 +70,7 @@ function CoachingPage() {
         imageAlt="Student in a live online coaching session with headphones and study materials"
         imagePosition="object-[center_40%]"
         quoteEyebrow="Coaching"
-        quote="‘Five focused programs delivered online by trainers who have helped hundreds of students cross the bar.’"
+        quote="Five focused programs delivered online by trainers who have helped hundreds of students cross the bar."
         stripeHeading="Coaching"
         stripeTagline="Live, expert coaching - built for outcomes."
         navLinks={coachingHeroNavLinks}

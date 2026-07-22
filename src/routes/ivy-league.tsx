@@ -52,7 +52,7 @@ export const Route = createFileRoute("/ivy-league")({
 const ivyHeroNavLinks = heroNavLinks(["ivy-league"]);
 
 const statLabelClass =
-  "mt-3 font-mono text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground md:text-base";
+  "mt-3 font-mono text-sm font-bold uppercase tracking-[0.18em] text-muted-foreground md:text-base";
 
 function IvyLeaguePage() {
   return (

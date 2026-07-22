@@ -2,7 +2,7 @@ export const studyAbroadIntro = {
   eyebrow: "Career-Focused Study Abroad",
   headline: "Turn global dreams into a planned, employable career path.",
   summary:
-    "At KAREER Studio, we pair scientific assessments with senior mentor judgment to design your international education journey - from first doubts to departure day.",
+    "At KAREER Studio, we pair scientific assessments with senior mentor Judgement to design your international education journey - from first doubts to departure day.",
   pillars: [
     { value: 25, suffix: "+", label: "Challenge areas we guide you through" },
     { value: 5, suffix: "", label: "Phases on your global timeline" },

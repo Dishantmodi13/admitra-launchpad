@@ -44,7 +44,7 @@ function AssessmentsPage() {
         imageAlt="Student reviewing a personalized career assessment report"
         imagePosition="object-[center_40%]"
         quoteEyebrow="Assessment Center"
-        quote="‘Career discovery, resilience profiling, academic-interest mapping, study-abroad readiness, and employability - one trusted platform for students and parents.’"
+        quote="Career discovery, resilience profiling, academic-interest mapping, study-abroad readiness, and employability - one trusted platform for students and parents."
         stripeHeading="Assessment Center"
         stripeTagline="Know yourself. Choose smarter."
         navLinks={assessmentsHeroNavLinks}

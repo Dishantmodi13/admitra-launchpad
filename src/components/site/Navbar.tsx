@@ -41,7 +41,7 @@ function CoachingNavDropdown({
   const active = isCoachingPath(pathname);
 
   return (
-    <div className="group relative">
+    <div className="group relative shrink-0">
       <Link
         to="/coaching"
         onClick={() => {
@@ -49,7 +49,7 @@ function CoachingNavDropdown({
           onNavigate?.();
         }}
         className={cn(
-          "relative flex items-center gap-1 transition-colors duration-300",
+          "relative flex shrink-0 items-center gap-1 transition-colors duration-300",
           navUnderline,
           active
             ? "font-medium text-foreground after:scale-x-100"
@@ -115,7 +115,7 @@ export function Navbar() {
       data-site-navbar
       className="fixed inset-x-0 top-0 z-[100] border-b border-border bg-background/95 backdrop-blur-md"
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4 lg:gap-6">
         <Link
           to="/"
           className="inline-flex shrink-0 items-center rounded-sm bg-background/95 backdrop-blur-md"
@@ -126,16 +126,19 @@ export function Navbar() {
             alt="KAREERstudio - Powered by ADMITra"
             width={220}
             height={64}
-            className="h-9 w-auto bg-background/95 object-contain sm:h-10 md:h-11"
+            className="h-9 w-auto bg-background/95 object-contain sm:h-10 lg:h-11"
           />
         </Link>
 
-        <div className="hidden items-center gap-4 text-[11px] font-medium uppercase tracking-[0.06em] text-muted-foreground md:flex lg:gap-6 xl:gap-7 xl:text-[13px]">
+        <div
+          data-nav-links
+          className="hidden min-w-0 flex-1 items-center justify-center gap-4 whitespace-nowrap px-3 text-[11px] font-medium uppercase tracking-[0.05em] text-muted-foreground lg:flex lg:gap-6 xl:gap-7 xl:text-[13px] xl:tracking-[0.06em]"
+        >
           <Link
             to="/"
             onClick={() => scrollIfActive(pathname, "/", scrollToTop)}
             className={cn(
-              "relative transition-colors duration-300",
+              "relative shrink-0 transition-colors duration-300",
               navUnderline,
               pathname === "/"
                 ? "font-medium text-foreground after:scale-x-100"
@@ -156,7 +159,7 @@ export function Navbar() {
                 to={item.to}
                 onClick={() => scrollIfActive(pathname, item.to, scrollToTop)}
                 className={cn(
-                  "relative transition-colors duration-300",
+                  "relative shrink-0 transition-colors duration-300",
                   navUnderline,
                   active
                     ? "font-medium text-foreground after:scale-x-100"
@@ -169,12 +172,15 @@ export function Navbar() {
           })}
         </div>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div
+          data-nav-auth
+          className="hidden shrink-0 items-center gap-2.5 sm:flex sm:gap-3 lg:gap-4"
+        >
           <Link
             to="/login"
             onClick={() => scrollIfActive(pathname, "/login", scrollToTop)}
             className={cn(
-              "text-sm font-medium transition-all duration-300",
+              "text-xs font-medium transition-all duration-300 md:text-sm",
               pathname === "/login"
                 ? "text-accent underline decoration-accent underline-offset-4"
                 : "opacity-70 hover:text-foreground hover:opacity-100",
@@ -186,7 +192,7 @@ export function Navbar() {
             to="/register"
             onClick={() => scrollIfActive(pathname, "/register", scrollToTop)}
             className={cn(
-              "text-sm font-medium transition-all duration-300",
+              "text-xs font-medium transition-all duration-300 md:text-sm",
               pathname === "/register"
                 ? "text-accent underline decoration-accent underline-offset-4"
                 : "opacity-70 hover:text-foreground hover:opacity-100",
@@ -198,7 +204,7 @@ export function Navbar() {
             to="/enquiry"
             onClick={() => scrollIfActive(pathname, "/enquiry", scrollToTop)}
             className={cn(
-              "px-4 py-2 text-sm font-medium transition-all duration-300",
+              "px-3 py-1.5 text-xs font-medium transition-all duration-300 md:px-4 md:py-2 md:text-sm",
               pathname === "/enquiry"
                 ? "bg-accent text-accent-foreground shadow-[0_0_20px_oklch(0.62_0.18_35/0.35)]"
                 : "bg-foreground text-background hover:bg-accent",
@@ -209,16 +215,17 @@ export function Navbar() {
         </div>
 
         <button
-          className="md:hidden"
+          className="shrink-0 sm:hidden"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
       {open && (
-        <div className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-border bg-background md:hidden">
+        <div className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-border bg-background sm:hidden">
           <div className="flex flex-col gap-1 px-4 py-4 text-sm sm:px-6">
             <Link
               to="/"

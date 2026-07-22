@@ -44,7 +44,7 @@ function BookshelfPage() {
         imageAlt="Curated bookshelf with vintage books and trailing plants"
         imagePosition="object-[center_45%]"
         quoteEyebrow="Bookshelf"
-        quote="‘Free resources to help you decide, prepare, and arrive. Every title is ₹0/-.’"
+        quote="Free resources to help you decide, prepare, and arrive. Every title is ₹0/-."
         stripeHeading="Bookshelf"
         stripeTagline="The Knowledge Library."
         navLinks={bookshelfHeroNavLinks}

@@ -15,6 +15,10 @@ function boldKareerStudio(text: string, emphasisClass = "font-extrabold") {
   );
 }
 
+function formatHeroQuote(text: string) {
+  return text.replace(/^[\s'‘’"`]+|[\s'‘’"`]+$/g, "");
+}
+
 export type StripeHeroNavLink = {
   key: string;
   label: string;
@@ -66,6 +70,7 @@ export function StripeHero({
   imageClassName = "",
   contentBottomClass,
 }: StripeHeroProps) {
+  const displayQuote = formatHeroQuote(quote);
   const isShortTagline = stripeTagline.length < 120;
   const mobileTagline = stripeTaglineMobile ?? stripeTagline;
   const showFullTaglineOnMobile = isShortTagline && !stripeTaglineMobile;
@@ -109,7 +114,7 @@ export function StripeHero({
         <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-4 pt-10 font-gilroy sm:px-6">
           <p className={quoteEyebrowClass}>{boldKareerStudio(quoteEyebrow)}</p>
           <p className={quoteClass} style={{ animationDelay: "80ms" }}>
-            {quote}
+            {displayQuote}
           </p>
           {quoteDetail && (
             <p className="mt-1.5 line-clamp-2 text-[10px] leading-snug text-white/85 sm:line-clamp-3 sm:text-xs">
@@ -149,7 +154,7 @@ export function StripeHero({
         <div className="hidden px-6 pb-0 sm:px-10 lg:block lg:px-14 lg:pr-[15%]">
           <p className={quoteEyebrowClass}>{boldKareerStudio(quoteEyebrow)}</p>
           <p className={cn(quoteClass, "mt-1.5")} style={{ animationDelay: "80ms" }}>
-            {quote}
+            {displayQuote}
           </p>
           {quoteDetail && (
             <p

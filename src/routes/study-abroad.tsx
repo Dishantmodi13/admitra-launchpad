@@ -40,7 +40,7 @@ export const Route = createFileRoute("/study-abroad")({
 const studyAbroadHeroNavLinks = heroNavLinks(["study-abroad"]);
 
 const pillarLabelClass =
-  "mt-3 font-mono text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground md:text-base";
+  "mt-3 font-mono text-sm font-bold uppercase tracking-[0.18em] text-muted-foreground md:text-base";
 
 function StudyAbroadPage() {
   return (
@@ -50,7 +50,7 @@ function StudyAbroadPage() {
         imageAlt="Indian students preparing for an international study abroad journey"
         imagePosition="object-[center_40%]"
         quoteEyebrow="Career-Focused Study Abroad"
-        quote="‘We pair scientific assessments with senior mentor judgment to turn your global education dream into a planned, employable career path.’"
+        quote="We pair scientific assessments with senior mentor Judgement to turn your global education dream into a planned, employable career path."
         stripeHeading="Study Abroad"
         stripeTagline="Personalized higher education solutions - from first doubts to departure day."
         navLinks={studyAbroadHeroNavLinks}

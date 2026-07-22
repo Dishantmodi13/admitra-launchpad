@@ -18,11 +18,11 @@ import {
   sectionLabelClass,
   sectionPadding,
   sectionSubtitleClass,
+  cardTitleClass,
 } from "@/lib/section-styles";
 
 const pageTitleClass =
   "font-serif text-3xl font-bold italic leading-snug text-foreground sm:text-4xl md:text-5xl lg:text-[3.25rem] lg:leading-[1.1]";
-const cardTitleClass = "text-xl font-medium text-foreground md:text-2xl";
 
 const cardHoverClass =
   "group relative transform-gpu rounded-xl border border-border bg-background transition-all duration-300 ease-out hover:-translate-y-3 hover:scale-[1.03] hover:border-accent/50 hover:shadow-xl hover:shadow-foreground/10 hover:z-10";

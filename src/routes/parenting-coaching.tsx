@@ -29,7 +29,7 @@ function ParentingPage() {
         imageAlt="Parent and child planning an academic journey together"
         imagePosition="object-[center_40%]"
         quoteEyebrow="Parenting Coaching"
-        quote="‘A program for parents who want to walk alongside their child's global ambitions with clarity and calm.’"
+        quote="A program for parents who want to walk alongside their child's global ambitions with clarity and calm."
         stripeHeading="Parenting Coaching"
         stripeTagline="Raising globally minded children - together."
         navLinks={parentingHeroNavLinks}

@@ -177,6 +177,35 @@
     text-rendering: optimizeLegibility;
   }
 
+  @media (max-width: 1023px) {
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    main p,
+    main li,
+    main h1,
+    main h2,
+    main h3,
+    main h4,
+    main h5,
+    main h6,
+    .ks-body-text {
+      text-align: left;
+      text-justify: auto;
+      word-spacing: normal;
+      hyphens: manual;
+    }
+
+    main .text-center p,
+    main .text-center h1,
+    main .text-center h2,
+    main .text-center h3 {
+      text-align: center;
+    }
+  }
+
   ::selection {
     background-color: color-mix(in oklab, var(--accent) 20%, transparent);
     color: var(--accent);
@@ -190,6 +219,11 @@
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+  /* Card mono eyebrow headings — ASSESS, PLAN, MANAGE, etc. */
+  main .font-mono.uppercase {
+    font-weight: 700;
+  }
+
   @media (max-width: 1023px) {
     html.mobile-go-to-nav-active main {
       padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
@@ -197,6 +231,13 @@
 
     html.mobile-go-to-nav-active .scroll-to-top-btn {
       bottom: calc(6.5rem + env(safe-area-inset-bottom));
+    }
+  }
+
+  /* iPad + Nest Hub: even spacing between navbar links (desktop auth uses lg+) */
+  @media (min-width: 768px) and (max-width: 1279px) {
+    [data-site-navbar] [data-nav-links] {
+      gap: clamp(0.75rem, 1.6vw, 1.25rem);
     }
   }
 

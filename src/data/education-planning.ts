@@ -9,7 +9,7 @@ export const educationPlanningIntro = {
 
 export const planningProcess = [
   {
-    phase: "ACCESS",
+    phase: "ASSESS",
     subtitle: "Your Potential",
     steps: [
       "Step 1: Identify the Potential Intelligence",
