@@ -1,9 +1,17 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { PageLayout } from "@/components/site/PageLayout";
+import { LoginForm } from "@/components/site/LoginForm";
 
 export const Route = createFileRoute("/login")({
   head: () => ({
-    meta: [{ title: "Login - KAREER Studio" }, { name: "description", content: "Student area login." }],
+    meta: [
+      { title: "Login - KAREER Studio" },
+      {
+        name: "description",
+        content:
+          "Sign in to KAREER Studio with OTP verification. Password-free access to assessments and your education roadmap.",
+      },
+    ],
   }),
   component: LoginPage,
 });
@@ -11,41 +19,26 @@ export const Route = createFileRoute("/login")({
 function LoginPage() {
   return (
     <PageLayout>
-      <section className="grid min-h-[80vh] place-items-center px-6 py-24">
-        <div className="w-full max-w-md">
-          <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">
+      <section className="grid min-h-[calc(100vh-160px)] border-y border-border lg:grid-cols-2">
+        <div className="flex flex-col justify-center border-b border-border bg-accent/5 p-6 sm:p-10 lg:border-b-0 lg:border-r lg:p-24">
+          <span className="font-mono text-sm uppercase tracking-[0.3em] text-accent md:text-base">
             Student Area
           </span>
-          <h1 className="mt-6 font-serif text-5xl italic">Welcome back.</h1>
-          <p className="mt-3 text-sm text-muted-foreground">
-            Login to continue your KAREER Studio journey.
+          <h1 className="mt-6 font-serif text-4xl italic leading-[1.05] sm:text-5xl md:text-7xl">
+            Welcome back
+          </h1>
+          <p className="mt-6 max-w-sm text-muted-foreground sm:mt-8">
+            Sign in with a one-time password sent to your email. No password to remember —
+            secure, fast access to your assessments, coaching, and planning tools.
           </p>
-          <form className="mt-10 space-y-6">
-            <input
-              type="email"
-              required
-              placeholder="Email Address"
-              className="w-full border-b border-border bg-transparent py-3 focus:border-accent focus:outline-none"
-            />
-            <input
-              type="password"
-              required
-              placeholder="Password"
-              className="w-full border-b border-border bg-transparent py-3 focus:border-accent focus:outline-none"
-            />
-            <button
-              type="submit"
-              className="w-full bg-foreground py-4 font-mono uppercase tracking-widest text-background hover:bg-accent"
-            >
-              Login
-            </button>
-          </form>
-          <p className="mt-8 text-sm text-muted-foreground">
-            New here?{" "}
-            <Link to="/register" className="text-accent underline-offset-4 hover:underline">
-              Create an account
-            </Link>
-          </p>
+          <ul className="mt-8 space-y-2 text-sm text-muted-foreground">
+            <li>OTP login — no password required</li>
+            <li>Access assessments and reports</li>
+            <li>Powered by ADMITra</li>
+          </ul>
+        </div>
+        <div className="bg-background p-6 sm:p-10 lg:overflow-y-auto lg:p-16 xl:p-24">
+          <LoginForm />
         </div>
       </section>
     </PageLayout>
