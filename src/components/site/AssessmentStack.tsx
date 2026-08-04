@@ -110,7 +110,7 @@ function AssessmentMobileAccordion() {
   };
 
   return (
-    <div className="mt-8 space-y-2 lg:mt-16 lg:hidden">
+    <div className="mt-6 space-y-2 lg:mt-16 lg:hidden">
       {assessments.map((a, i) => {
         const isExpanded = expandedIndex === i;
 
@@ -183,11 +183,11 @@ function AssessmentDesktopStack() {
   const stackBaseTop = useNavbarStackOffset();
 
   return (
-    <div className="relative mt-16 hidden pb-32 lg:block">
+    <div className="relative mt-14 hidden pb-24 lg:block">
       {assessments.map((a, i) => (
         <div
           key={a.title}
-          className="mb-10 last:mb-0"
+          className="mb-9 last:mb-0"
           style={{
             position: "sticky",
             top: stackBaseTop + i * STACK_STEP,
@@ -196,7 +196,7 @@ function AssessmentDesktopStack() {
         >
           <article
             className={cn(
-              "grid gap-8 rounded-xl border border-border bg-background p-8 shadow-[0_12px_40px_-16px_oklch(0.22_0.018_230/0.2)] ring-1 ring-border/60 lg:grid-cols-[auto_1fr] lg:p-10",
+              "grid gap-6 rounded-xl border border-border bg-background p-6 shadow-[0_12px_40px_-16px_oklch(0.22_0.018_230/0.2)] ring-1 ring-border/60 lg:grid-cols-[auto_1fr] lg:gap-8 lg:p-8",
               "origin-top transition-[box-shadow,transform] duration-500 hover:shadow-[0_24px_56px_-16px_oklch(0.22_0.018_230/0.28)]",
             )}
           >
@@ -227,7 +227,7 @@ export function AssessmentStack() {
 
   if (reducedMotion) {
     return (
-      <div className="mt-16 space-y-8">
+      <div className="mt-10 space-y-7">
         {assessments.map((a, i) => (
           <article
             key={a.title}

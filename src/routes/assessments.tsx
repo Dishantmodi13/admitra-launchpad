@@ -32,9 +32,12 @@ export const Route = createFileRoute("/assessments")({
 });
 
 const audienceCardClass =
-  "group relative h-full overflow-hidden border border-border p-6 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:-translate-y-2 hover:border-accent/50 hover:shadow-[0_24px_48px_-16px_oklch(0.22_0.018_230/0.18)] sm:p-8 lg:p-10";
+  "group relative h-full overflow-hidden border border-border p-5 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:-translate-y-2 hover:border-accent/50 hover:shadow-[0_24px_48px_-16px_oklch(0.22_0.018_230/0.18)] sm:p-8 lg:p-10";
 
 const assessmentsHeroNavLinks = heroNavLinks(["assessments"]);
+
+/** Shared vertical rhythm — balanced section padding */
+const assessmentsSectionClass = "px-4 py-10 sm:px-6 lg:py-20";
 
 function splitAssessmentListItem(item: string) {
   const separator = " - ";
@@ -76,9 +79,9 @@ function AssessmentsPage() {
         ctaTo="/enquiry"
       />
 
-      <section className="border-b border-border px-4 py-6 sm:px-6 lg:py-20">
+      <section className={`border-b border-border ${assessmentsSectionClass}`}>
         <div className="mx-auto max-w-7xl">
-          <div className="grid justify-items-center gap-5 border-t border-border pt-6 text-center sm:grid-cols-3 sm:justify-items-stretch sm:gap-8 sm:pt-12 sm:text-left lg:pt-12">
+          <div className="grid justify-items-center gap-5 border-t border-border pt-5 text-center sm:grid-cols-3 sm:justify-items-stretch sm:gap-7 sm:pt-10 sm:text-left lg:pt-10">
             {assessmentStats.map((item, i) => (
               <ScrollReveal key={item.label} delay={i * 100} direction="scale" className="w-full max-w-xs sm:max-w-none">
                 <CountUpStat
@@ -88,7 +91,7 @@ function AssessmentsPage() {
                   delay={i * 100}
                   className="mx-auto sm:mx-0"
                 />
-                <div className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                <div className="mt-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground sm:mt-3">
                   {item.label}
                 </div>
               </ScrollReveal>
@@ -112,19 +115,19 @@ function AssessmentsPage() {
       </section>
 
       {/* Who should take */}
-      <section className="px-4 py-12 sm:px-6 lg:py-32">
+      <section className="px-4 pt-10 pb-8 sm:px-6 lg:pt-20 lg:pb-12">
         <div className="mx-auto max-w-7xl">
           <ScrollReveal direction="blur">
             <h2 className="max-w-2xl font-serif text-4xl italic md:text-5xl">
               Who should take these assessments?
             </h2>
-            <p className="mt-6 max-w-2xl text-muted-foreground">
+            <p className="mt-4 max-w-2xl text-muted-foreground lg:mt-6">
               Eight assessments are built for students. The Litmus Test is designed
               for parents. Register once and access the tests that fit your role.
             </p>
           </ScrollReveal>
 
-          <div className="mt-10 grid gap-6 lg:mt-16 lg:grid-cols-2 lg:gap-8">
+          <div className="mt-8 grid gap-6 lg:mt-12 lg:grid-cols-2 lg:gap-8">
             <ScrollReveal direction="left">
               <div
                 className={cn(
@@ -139,7 +142,7 @@ function AssessmentsPage() {
                 <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-accent">
                   Grades 6-12 & college
                 </p>
-                <ul className="mt-5 space-y-3 sm:mt-8 sm:space-y-4">
+                <ul className="mt-5 space-y-3 sm:mt-7 sm:space-y-3.5">
                   {studentAssessments.map((item) => (
                     <li
                       key={item}
@@ -155,7 +158,7 @@ function AssessmentsPage() {
                 </ul>
                 <Link
                   to="/register"
-                  className="mt-10 inline-block font-mono text-[11px] uppercase tracking-widest text-accent underline-offset-4 transition-all duration-300 group-hover:translate-x-1 group-hover:underline"
+                  className="mt-4 inline-block font-mono text-[11px] uppercase tracking-widest text-accent underline-offset-4 transition-all duration-300 group-hover:translate-x-1 group-hover:underline sm:mt-6"
                 >
                   Register now →
                 </Link>
@@ -176,7 +179,7 @@ function AssessmentsPage() {
                 <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-accent">
                   Actively supporting their child
                 </p>
-                <ul className="mt-5 space-y-3 sm:mt-8 sm:space-y-4">
+                <ul className="mt-5 space-y-3 sm:mt-7 sm:space-y-3.5">
                   {parentBenefits.map((item) => (
                     <li
                       key={item}
@@ -192,7 +195,7 @@ function AssessmentsPage() {
                 </ul>
                 <Link
                   to="/register"
-                  className="mt-10 inline-block font-mono text-[11px] uppercase tracking-widest text-accent underline-offset-4 transition-all duration-300 group-hover:translate-x-1 group-hover:underline"
+                  className="mt-4 inline-block font-mono text-[11px] uppercase tracking-widest text-accent underline-offset-4 transition-all duration-300 group-hover:translate-x-1 group-hover:underline sm:mt-6"
                 >
                   Register now →
                 </Link>
@@ -205,7 +208,7 @@ function AssessmentsPage() {
       {/* All assessments */}
       <section
         id="assessment-stack"
-        className="border-y border-border px-4 py-12 sm:px-6 lg:py-32"
+        className="border-y border-border px-4 pt-10 pb-10 sm:px-6 lg:pt-14 lg:pb-20"
         style={{ overflow: "visible" }}
       >
         <div className="mx-auto max-w-7xl">
@@ -213,10 +216,10 @@ function AssessmentsPage() {
             <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent">
               Explore
             </span>
-            <h2 className="mt-3 max-w-2xl font-serif text-4xl italic md:mt-4 md:text-5xl">
+            <h2 className="mt-2 max-w-2xl font-serif text-4xl italic md:mt-3 md:text-5xl">
               Our 9 Assessments
             </h2>
-            <p className="mt-6 max-w-2xl text-muted-foreground">
+            <p className="mt-5 max-w-2xl text-muted-foreground lg:mt-6">
               Each assessment is built around a proven psychological model, and
               everyone ends with an instant, personalized report. Find the test that
               answers your biggest question.
@@ -228,27 +231,27 @@ function AssessmentsPage() {
       </section>
 
       {/* Report features */}
-      <section className="px-4 py-12 sm:px-6 lg:py-32">
+      <section className={assessmentsSectionClass}>
         <div className="mx-auto max-w-7xl">
           <ScrollReveal direction="blur">
             <h2 className="font-serif text-4xl italic md:text-5xl">
               More than just a score
             </h2>
-            <p className="mt-4 max-w-xl text-muted-foreground">
+            <p className="mt-4 max-w-xl text-muted-foreground lg:mt-5">
               Every assessment delivers a complete, actionable package - not a single
               number.
             </p>
           </ScrollReveal>
 
           <ScrollRevealGroup
-            className="mt-16 grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3"
+            className="mt-10 grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:mt-14 lg:grid-cols-3"
             stagger={100}
             direction="up"
           >
             {reportFeatures.map((f) => (
-              <div key={f.title} className="bg-background p-8">
+              <div key={f.title} className="bg-background p-6 lg:p-8">
                 <h3 className="font-serif text-xl italic">{f.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {f.body}
                 </p>
               </div>
@@ -258,7 +261,7 @@ function AssessmentsPage() {
       </section>
 
       {/* How it works */}
-      <section className="border-t border-border bg-foreground px-4 py-12 text-background sm:px-6 lg:py-32">
+      <section className={`border-t border-border bg-foreground text-background ${assessmentsSectionClass}`}>
         <div className="mx-auto max-w-7xl">
           <ScrollReveal direction="blur">
             <h2 className="font-serif text-4xl italic md:text-5xl">
@@ -266,13 +269,13 @@ function AssessmentsPage() {
             </h2>
           </ScrollReveal>
 
-          <div className="mt-16 grid gap-8 lg:grid-cols-3">
+          <div className="mt-10 grid gap-7 lg:mt-14 lg:grid-cols-3 lg:gap-8">
             {howItWorks.map((step, i) => (
               <ScrollReveal key={step.n} delay={i * 120} direction="up">
-                <div className="border-t border-background/20 pt-8">
+                <div className="border-t border-background/20 pt-7">
                   <span className="font-mono text-xs text-accent">{step.n}</span>
-                  <h3 className="mt-4 font-serif text-2xl italic">{step.title}</h3>
-                  <p className="mt-4 text-sm leading-relaxed text-background/65">
+                  <h3 className="mt-3.5 font-serif text-2xl italic">{step.title}</h3>
+                  <p className="mt-3.5 text-sm leading-relaxed text-background/65">
                     {step.body}
                   </p>
                 </div>
@@ -283,23 +286,23 @@ function AssessmentsPage() {
       </section>
 
       {/* CTA */}
-      <section className="px-4 py-12 sm:px-6 lg:py-32">
+      <section className={assessmentsSectionClass}>
         <div className="mx-auto max-w-3xl text-center">
           <ScrollReveal direction="blur">
             <h2 className="font-serif text-4xl italic md:text-5xl">
               Ready to discover your strengths & direction?
             </h2>
-            <p className="mt-6 text-muted-foreground">
+            <p className="mt-5 text-muted-foreground lg:mt-6">
               Join thousands of students and parents who use Assessment Center to make
               confident decisions about careers, streams, and education - backed by
               science, not guesswork.
             </p>
-            <ul className="mt-8 space-y-2 text-sm text-muted-foreground">
+            <ul className="mt-7 space-y-2 text-sm text-muted-foreground">
               <li>OTP verification - no password needed</li>
               <li>Access all 9 assessments</li>
               <li>Premium PDF reports included</li>
             </ul>
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <div className="mt-9 flex flex-wrap justify-center gap-4">
               <Link
                 to="/register"
                 className="bg-foreground px-8 py-4 font-mono text-[11px] uppercase tracking-widest text-background transition-colors hover:bg-accent"
@@ -313,7 +316,7 @@ function AssessmentsPage() {
                 Already have an account? Login
               </Link>
             </div>
-            <p className="mt-8 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+            <p className="mt-7 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
               No credit card required to register. Assessments are available via your
               school portal or individual purchase.
             </p>

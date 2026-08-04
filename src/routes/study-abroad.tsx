@@ -93,7 +93,11 @@ function StudyAbroadPage() {
         <div className="mx-auto max-w-7xl">
           <ScrollReveal direction="left" className={`${sectionHeaderMb} max-w-2xl`}>
             <p className={sectionLabelClass}>The KAREER Difference</p>
-            <p className={sectionSubtitleClass}>Not just an agent. A strategic partner.</p>
+            <p className={sectionSubtitleClass}>
+              Not just an agent.
+              <br />
+              A strategic partner.
+            </p>
           </ScrollReveal>
 
           <ScrollRevealGroup

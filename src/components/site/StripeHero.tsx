@@ -58,7 +58,7 @@ export function StripeHero({
   quote,
   quoteDetail,
   stripeHeading,
-  stripeSubheading = "Powered by ADMITra",
+  stripeSubheading,
   stripeTagline,
   stripeTaglineMobile,
   navLinks,
@@ -92,7 +92,7 @@ export function StripeHero({
   );
 
   const quoteClass = cn(
-    "mt-1 max-w-2xl font-extrabold uppercase leading-snug tracking-wide text-white animate-reveal",
+    "mt-1 max-w-2xl whitespace-pre-line font-extrabold uppercase leading-snug tracking-wide text-white animate-reveal",
     compactStripe
       ? "text-xs sm:text-base lg:text-lg"
       : "text-sm sm:text-lg lg:text-xl xl:text-2xl",
@@ -212,9 +212,11 @@ export function StripeHero({
                   >
                     {boldKareerStudio(stripeHeading)}
                   </h1>
-                  <p className="mt-0.5 text-right text-[9px] text-white/75 sm:text-[11px]">
-                    {stripeSubheading}
-                  </p>
+                  {stripeSubheading ? (
+                    <p className="mt-0.5 text-right text-[9px] text-white/75 sm:text-[11px]">
+                      {stripeSubheading}
+                    </p>
+                  ) : null}
                 </div>
 
                 {/* Mobile: tagline only — larger text */}
