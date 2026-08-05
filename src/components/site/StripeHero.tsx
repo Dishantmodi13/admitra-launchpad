@@ -43,8 +43,6 @@ type StripeHeroProps = {
   ctaEyebrow?: string;
   ctaTitle?: string;
   ctaTo?: string;
-  /** Tighter blue stripe - more hero image visible */
-  compactStripe?: boolean;
   /** Extra image transform classes (e.g. scale / translate for focal point) */
   imageClassName?: string;
   /** Override bottom offset for the overlay block (desktop) */
@@ -67,7 +65,6 @@ export function StripeHero({
   ctaEyebrow = "Start Here",
   ctaTitle = "Assessment Center",
   ctaTo = "/assessments",
-  compactStripe = false,
   imageClassName = "",
   contentBottomClass,
 }: StripeHeroProps) {
@@ -83,22 +80,14 @@ export function StripeHero({
     imageClassName,
   );
 
-  const gradientClass = cn(
-    "absolute inset-0 bg-gradient-to-t to-transparent",
-    compactStripe ? "from-black/40 via-black/10" : "from-black/55 via-black/15",
-  );
+  const gradientClass =
+    "absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent";
 
-  const quoteEyebrowClass = cn(
-    "font-bold uppercase tracking-[0.22em] text-white animate-reveal",
-    compactStripe ? "text-[10px] sm:text-[11px] lg:text-xs" : "text-[10px] sm:text-xs lg:text-sm",
-  );
+  const quoteEyebrowClass =
+    "font-bold uppercase tracking-[0.22em] text-white animate-reveal text-[10px] sm:text-[11px] lg:text-xs";
 
-  const quoteClass = cn(
-    "mt-1 max-w-2xl whitespace-pre-line font-extrabold uppercase leading-snug tracking-wide text-white animate-reveal",
-    compactStripe
-      ? "text-xs sm:text-base lg:text-lg"
-      : "text-sm sm:text-lg lg:text-xl xl:text-2xl",
-  );
+  const quoteClass =
+    "mt-1 max-w-2xl whitespace-pre-line font-extrabold uppercase leading-snug tracking-wide text-white animate-reveal text-xs sm:text-base lg:text-lg";
 
   return (
     <section className="relative overflow-x-hidden lg:min-h-[600px] lg:h-[88vh]">
@@ -119,7 +108,7 @@ export function StripeHero({
             {displayQuote}
           </p>
           {quoteDetail && (
-            <p className="mt-1.5 line-clamp-2 text-[10px] leading-snug text-white/85 sm:line-clamp-3 sm:text-xs">
+            <p className="mt-2 line-clamp-3 text-xs font-medium leading-relaxed text-white/95 sm:text-sm">
               {quoteDetail}
             </p>
           )}
@@ -138,10 +127,7 @@ export function StripeHero({
           loading="eager"
         />
         <div
-          className={cn(
-            "absolute inset-0 bg-gradient-to-t to-transparent",
-            compactStripe ? "from-black/35 via-black/5" : "from-black/50 via-black/10",
-          )}
+          className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"
         />
       </div>
 
@@ -160,10 +146,7 @@ export function StripeHero({
           </p>
           {quoteDetail && (
             <p
-              className={cn(
-                "mt-2 max-w-xl font-normal normal-case leading-relaxed tracking-normal text-white/85 animate-reveal",
-                compactStripe ? "text-[11px] sm:text-xs" : "text-xs sm:text-sm",
-              )}
+              className="mt-2.5 max-w-2xl animate-reveal text-sm font-medium normal-case leading-relaxed tracking-normal text-white/95 sm:text-base"
               style={{ animationDelay: "120ms" }}
             >
               {quoteDetail}
@@ -205,14 +188,7 @@ export function StripeHero({
               <div className="min-w-0 flex-1 lg:px-14 lg:py-4">
                 {/* Company name — desktop only (shown in hero image area on mobile) */}
                 <div className="hidden w-fit max-w-full lg:block">
-                  <h1
-                    className={cn(
-                      "font-bold leading-none tracking-tight text-white",
-                      compactStripe
-                        ? "text-lg sm:text-2xl lg:text-[1.75rem]"
-                        : "text-xl sm:text-3xl lg:text-[2rem]",
-                    )}
-                  >
+                  <h1 className="text-lg font-bold leading-none tracking-tight text-white sm:text-2xl lg:text-[1.75rem]">
                     {boldKareerStudio(stripeHeading)}
                   </h1>
                   {stripeSubheading ? (
@@ -250,14 +226,7 @@ export function StripeHero({
 
                 {/* Desktop: full tagline */}
                 <p
-                  className={cn(
-                    "mt-3 hidden max-w-2xl animate-reveal text-white/95 lg:block",
-                    compactStripe
-                      ? "text-xs font-medium italic leading-snug sm:text-sm"
-                      : isShortTagline
-                        ? "text-sm font-medium italic leading-snug sm:text-base lg:text-lg"
-                        : "max-w-3xl text-xs font-normal leading-snug text-white/92 sm:text-sm",
-                  )}
+                  className="mt-3 hidden max-w-3xl animate-reveal text-xs font-medium italic leading-snug text-white/95 sm:text-sm lg:block"
                   style={{ animationDelay: "120ms" }}
                 >
                   {boldKareerStudio(stripeTagline)}

@@ -6,8 +6,8 @@ export function HeroSlider() {
   return (
     <StripeHero
       image={heroHome}
-      imageAlt="Young woman studying outdoors on a park bench"
-      imagePosition="object-[center_35%]"
+      imageAlt="Student planning education and career pathway with academic plan, psychometric insights, and global career roadmap at KAREER Studio"
+      imagePosition="object-[65%_20%]"
       quoteEyebrow="Welcome to KAREER Studio"
       quote="Plan Your Education - Shape Your Career - Build Your Global Future."
       stripeHeading="KAREER Studio"
@@ -17,7 +17,6 @@ export function HeroSlider() {
       ctaEyebrow="Get Started"
       ctaTitle="Book a Discovery Session"
       ctaTo="/enquiry"
-      compactStripe
       navLinks={heroNavLinks(["home"])}
     />
   );
