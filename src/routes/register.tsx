@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageLayout } from "@/components/site/PageLayout";
+import { StandalonePageLayout } from "@/components/site/PageLayout";
 import { RegisterForm } from "@/components/site/RegisterForm";
 
 export const Route = createFileRoute("/register")({
@@ -18,8 +18,8 @@ export const Route = createFileRoute("/register")({
 
 function RegisterPage() {
   return (
-    <PageLayout>
-      <section className="grid min-h-[calc(100vh-160px)] border-y border-border lg:grid-cols-2">
+    <StandalonePageLayout>
+      <section className="grid min-h-screen lg:grid-cols-2">
         <div className="flex flex-col justify-center border-b border-border bg-accent/5 p-6 sm:p-10 lg:border-b-0 lg:border-r lg:p-24">
           <span className="font-mono text-sm uppercase tracking-[0.3em] text-accent md:text-base">
             Student Area
@@ -41,6 +41,6 @@ function RegisterPage() {
           <RegisterForm />
         </div>
       </section>
-    </PageLayout>
+    </StandalonePageLayout>
   );
 }

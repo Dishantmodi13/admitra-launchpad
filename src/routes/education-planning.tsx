@@ -26,6 +26,7 @@ import {
   needForPlanning,
   planningProcess,
 } from "@/data/education-planning";
+import { newTabLinkProps } from "@/lib/standalone-routes";
 import heroEducationPlanning from "@/assets/hero-education-planning.jpg";
 
 export const Route = createFileRoute("/education-planning")({
@@ -251,6 +252,7 @@ function EducationPlanningPage() {
             </p>
             <Link
               to="/enquiry"
+              {...newTabLinkProps}
               className="group mt-6 inline-flex items-center gap-3 bg-foreground px-8 py-4 font-mono text-[11px] uppercase tracking-widest text-background transition-colors hover:bg-accent lg:mt-10"
             >
               Book Appointment

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageLayout } from "@/components/site/PageLayout";
+import { StandalonePageLayout } from "@/components/site/PageLayout";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
 
 export const Route = createFileRoute("/enquiry")({
@@ -18,8 +18,8 @@ export const Route = createFileRoute("/enquiry")({
 
 function EnquiryPage() {
   return (
-    <PageLayout>
-      <section className="grid min-h-[calc(100vh-160px)] border-y border-border lg:grid-cols-2">
+    <StandalonePageLayout>
+      <section className="grid min-h-screen lg:grid-cols-2">
         <div className="flex flex-col justify-center border-b border-border bg-accent/5 p-6 sm:p-10 lg:border-b-0 lg:border-r lg:p-24">
           <span className="font-mono text-sm uppercase tracking-[0.3em] text-accent md:text-base">
             Enquiry
@@ -32,10 +32,10 @@ function EnquiryPage() {
             hours with a tailored next step.
           </p>
         </div>
-        <div className="bg-background p-6 sm:p-10 lg:overflow-y-auto lg:p-16 xl:p-24">
+        <div className="bg-background p-6 sm:p-10 lg:p-16 xl:p-24">
           <EnquiryForm />
         </div>
       </section>
-    </PageLayout>
+    </StandalonePageLayout>
   );
 }

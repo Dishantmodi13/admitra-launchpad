@@ -16,6 +16,16 @@ export function PageLayout({ children }: { children: ReactNode }) {
   );
 }
 
+/** Login, register, and enquiry — no site chrome */
+export function StandalonePageLayout({ children }: { children: ReactNode }) {
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <main>{children}</main>
+      <Toaster position="top-center" richColors />
+    </div>
+  );
+}
+
 export function PageHeader({
   eyebrow,
   title,

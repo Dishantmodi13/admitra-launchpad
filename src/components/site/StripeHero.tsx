@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { linkPropsForRoute } from "@/lib/standalone-routes";
 import { MobileHeroGoToNav } from "@/components/site/MobileHeroGoToNav";
 
 function boldKareerStudio(text: string, emphasisClass = "font-extrabold") {
@@ -71,6 +72,7 @@ export function StripeHero({
   contentBottomClass,
 }: StripeHeroProps) {
   const displayQuote = formatHeroQuote(quote);
+  const ctaLinkProps = linkPropsForRoute(ctaTo);
   const isShortTagline = stripeTagline.length < 120;
   const mobileTagline = stripeTaglineMobile ?? stripeTagline;
   const showFullTaglineOnMobile = isShortTagline && !stripeTaglineMobile;
@@ -175,6 +177,7 @@ export function StripeHero({
             <div className="hidden justify-end lg:flex lg:px-0 lg:pr-[15%]">
               <Link
                 to={ctaTo}
+                {...ctaLinkProps}
                 className="group relative z-10 flex w-full max-w-[300px] items-center justify-between gap-3 border-t-4 border-brand-blue bg-white px-6 py-3 transition-colors hover:bg-white/95"
               >
                 <div>
@@ -235,6 +238,7 @@ export function StripeHero({
                 {showAssessment && (
                   <Link
                     to={ctaTo}
+                    {...ctaLinkProps}
                     className="group mt-3 flex w-full items-center justify-center gap-2 rounded-lg bg-white px-4 py-3.5 transition-colors hover:bg-white/95 lg:hidden"
                   >
                     <span className="text-base font-bold text-foreground group-hover:text-brand-blue">

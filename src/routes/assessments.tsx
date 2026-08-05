@@ -7,6 +7,7 @@ import { ScrollReveal, ScrollRevealGroup } from "@/components/site/ScrollReveal"
 import { CountUpStat } from "@/components/site/CountUpStat";
 import { AssessmentStack } from "@/components/site/AssessmentStack";
 import { cn } from "@/lib/utils";
+import { newTabLinkProps } from "@/lib/standalone-routes";
 import heroAssessments from "@/assets/hero-assessments.jpg";
 import {
   assessmentStats,
@@ -158,6 +159,7 @@ function AssessmentsPage() {
                 </ul>
                 <Link
                   to="/register"
+                  {...newTabLinkProps}
                   className="mt-4 inline-block font-mono text-[11px] uppercase tracking-widest text-accent underline-offset-4 transition-all duration-300 group-hover:translate-x-1 group-hover:underline sm:mt-6"
                 >
                   Register now →
@@ -195,6 +197,7 @@ function AssessmentsPage() {
                 </ul>
                 <Link
                   to="/register"
+                  {...newTabLinkProps}
                   className="mt-4 inline-block font-mono text-[11px] uppercase tracking-widest text-accent underline-offset-4 transition-all duration-300 group-hover:translate-x-1 group-hover:underline sm:mt-6"
                 >
                   Register now →
@@ -305,12 +308,14 @@ function AssessmentsPage() {
             <div className="mt-9 flex flex-wrap justify-center gap-4">
               <Link
                 to="/register"
+                {...newTabLinkProps}
                 className="bg-foreground px-8 py-4 font-mono text-[11px] uppercase tracking-widest text-background transition-colors hover:bg-accent"
               >
                 Register & start your first test
               </Link>
               <Link
                 to="/login"
+                {...newTabLinkProps}
                 className="border border-border px-8 py-4 font-mono text-[11px] uppercase tracking-widest transition-colors hover:border-accent hover:text-accent"
               >
                 Already have an account? Login

@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { newTabLinkProps } from "@/lib/standalone-routes";
 import { assessments } from "@/data/assessments";
 
 const STACK_STEP = 14;
@@ -93,6 +94,7 @@ function AssessmentCardDetails({
         </div>
         <Link
           to="/register"
+          {...newTabLinkProps}
           className="mt-6 inline-block font-mono text-[11px] uppercase tracking-widest text-accent underline-offset-4 hover:underline"
         >
           Register to take this test →

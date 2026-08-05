@@ -5,6 +5,7 @@ import logo from "@/assets/logo.png";
 import { coachingDropdownItems, primaryNavItems } from "@/data/primary-nav";
 import { useSmoothScroll } from "@/components/site/SmoothScrollProvider";
 import { cn } from "@/lib/utils";
+import { newTabLinkProps } from "@/lib/standalone-routes";
 
 const navUnderline =
   "after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-accent after:transition-transform after:duration-300 after:content-['']";
@@ -178,7 +179,7 @@ export function Navbar() {
         >
           <Link
             to="/login"
-            onClick={() => scrollIfActive(pathname, "/login", scrollToTop)}
+            {...newTabLinkProps}
             className={cn(
               "text-xs font-medium transition-all duration-300 md:text-sm",
               pathname === "/login"
@@ -190,7 +191,7 @@ export function Navbar() {
           </Link>
           <Link
             to="/register"
-            onClick={() => scrollIfActive(pathname, "/register", scrollToTop)}
+            {...newTabLinkProps}
             className={cn(
               "text-xs font-medium transition-all duration-300 md:text-sm",
               pathname === "/register"
@@ -202,7 +203,7 @@ export function Navbar() {
           </Link>
           <Link
             to="/enquiry"
-            onClick={() => scrollIfActive(pathname, "/enquiry", scrollToTop)}
+            {...newTabLinkProps}
             className={cn(
               "px-3 py-1.5 text-xs font-medium transition-all duration-300 md:px-4 md:py-2 md:text-sm",
               pathname === "/enquiry"
@@ -303,29 +304,32 @@ export function Navbar() {
             })}
             <Link
               to="/enquiry"
+              {...newTabLinkProps}
               className={mobileLinkClass("enquiry", "/enquiry")}
-              onClick={() => scrollIfActive(pathname, "/enquiry", scrollToTop, closeMobile)}
+              onClick={closeMobile}
             >
               Enquire
             </Link>
             <div className="mt-4 flex flex-col gap-2 border-t border-border pt-4">
               <Link
                 to="/login"
+                {...newTabLinkProps}
                 className={cn(
                   "rounded-lg border border-border px-4 py-3 text-center font-medium transition-colors hover:border-accent/40 hover:text-accent",
                   pathname === "/login" && "border-accent text-accent",
                 )}
-                onClick={() => scrollIfActive(pathname, "/login", scrollToTop, closeMobile)}
+                onClick={closeMobile}
               >
                 Login
               </Link>
               <Link
                 to="/register"
+                {...newTabLinkProps}
                 className={cn(
                   "rounded-lg border border-border px-4 py-3 text-center font-medium transition-colors hover:border-accent/40 hover:text-accent",
                   pathname === "/register" && "border-accent text-accent",
                 )}
-                onClick={() => scrollIfActive(pathname, "/register", scrollToTop, closeMobile)}
+                onClick={closeMobile}
               >
                 Register
               </Link>

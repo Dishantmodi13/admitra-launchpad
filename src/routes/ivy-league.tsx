@@ -32,6 +32,7 @@ import {
   sectionPaddingIntro,
   sectionSubtitleClass,
 } from "@/lib/section-styles";
+import { newTabLinkProps } from "@/lib/standalone-routes";
 
 export const Route = createFileRoute("/ivy-league")({
   head: () => ({
@@ -207,6 +208,7 @@ function IvyLeaguePage() {
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 to="/enquiry"
+                {...newTabLinkProps}
                 className="group inline-flex items-center gap-3 bg-foreground px-8 py-4 font-mono text-[11px] uppercase tracking-widest text-background transition-colors hover:bg-accent"
               >
                 Book a Discovery Session
@@ -214,6 +216,7 @@ function IvyLeaguePage() {
               </Link>
               <Link
                 to="/enquiry"
+                {...newTabLinkProps}
                 className="group inline-flex items-center gap-3 border border-border px-8 py-4 font-mono text-[11px] uppercase tracking-widest text-foreground transition-colors hover:border-accent hover:text-accent"
               >
                 Download the Ivy Starter Kit

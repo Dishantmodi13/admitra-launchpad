@@ -169,6 +169,16 @@
     scroll-behavior: auto !important;
   }
 
+  .location-select-list {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
+  }
+
+  [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);

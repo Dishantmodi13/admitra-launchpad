@@ -7,6 +7,7 @@ import type {
   CoachingTestHeroConfig,
 } from "@/data/coaching-hero-configs";
 import { cn } from "@/lib/utils";
+import { newTabLinkProps } from "@/lib/standalone-routes";
 import { MobileHeroGoToNav } from "@/components/site/MobileHeroGoToNav";
 import { coachingProgramNavLinks } from "@/data/primary-nav";
 import {
@@ -227,6 +228,7 @@ export function CoachingTestHero({ config }: { config: CoachingTestHeroConfig })
             >
               <Link
                 to="/enquiry"
+                {...newTabLinkProps}
                 className="group inline-flex items-center gap-2.5 rounded-full bg-[#0F172A] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_4px_24px_rgba(15,23,42,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1e293b] hover:shadow-[0_8px_32px_rgba(15,23,42,0.22)]"
               >
                 Book Free Demo Class

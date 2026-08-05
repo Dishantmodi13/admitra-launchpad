@@ -19,6 +19,7 @@ import {
   sectionPaddingIntro,
   sectionSubtitleClass,
 } from "@/lib/section-styles";
+import { newTabLinkProps } from "@/lib/standalone-routes";
 import heroStudyAbroad from "@/assets/hero-study-abroad.jpg";
 
 export const Route = createFileRoute("/study-abroad")({
@@ -135,6 +136,7 @@ function StudyAbroadPage() {
             </p>
             <Link
               to="/enquiry"
+              {...newTabLinkProps}
               className="group mt-10 inline-flex items-center gap-3 bg-foreground px-8 py-4 font-mono text-[11px] uppercase tracking-widest text-background transition-colors hover:bg-accent"
             >
               Book Appointment
