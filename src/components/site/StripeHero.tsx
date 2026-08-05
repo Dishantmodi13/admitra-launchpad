@@ -80,8 +80,11 @@ export function StripeHero({
     imageClassName,
   );
 
-  const gradientClass =
-    "absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent";
+  const bottomGradientClass =
+    "pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent";
+
+  const leftGradientClass =
+    "pointer-events-none absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 via-[38%] to-transparent to-[78%]";
 
   const quoteEyebrowClass =
     "font-bold uppercase tracking-[0.22em] text-white animate-reveal text-[10px] sm:text-[11px] lg:text-xs";
@@ -101,7 +104,8 @@ export function StripeHero({
           className={imageClass}
           loading="eager"
         />
-        <div className={gradientClass} />
+        <div className={bottomGradientClass} />
+        <div className={leftGradientClass} />
         <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-4 pt-10 font-gilroy sm:px-6">
           <p className={quoteEyebrowClass}>{boldKareerStudio(quoteEyebrow)}</p>
           <p className={quoteClass} style={{ animationDelay: "80ms" }}>
@@ -126,9 +130,8 @@ export function StripeHero({
           className={imageClass}
           loading="eager"
         />
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"
-        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/20 to-transparent" />
+        <div className={leftGradientClass} />
       </div>
 
       {/* Content: stacks below image on mobile, overlays on desktop */}

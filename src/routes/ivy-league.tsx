@@ -62,7 +62,7 @@ function IvyLeaguePage() {
       <StripeHero
         image={heroIvyLeague}
         imageAlt="Students walking through an ivy-covered Ivy League campus"
-        imagePosition="object-top"
+        imagePosition="object-[28%_top]"
         quoteEyebrow="Ivy League Admissions"
         quote={ivyLeagueHero.quote}
         quoteDetail="Get into Harvard. Yale. Princeton. Columbia - guided by Ivy alumni, with a 95% interview success rate."

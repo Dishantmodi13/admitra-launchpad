@@ -6,8 +6,8 @@ export function HeroSlider() {
   return (
     <StripeHero
       image={heroHome}
-      imageAlt="Student planning education and career pathway with academic plan, psychometric insights, and global career roadmap at KAREER Studio"
-      imagePosition="object-[65%_20%]"
+      imageAlt="College student planning education and career pathways in a bright study space with laptop, assessment report, and academic plan notebook"
+      imagePosition="object-[62%_22%]"
       quoteEyebrow="Welcome to KAREER Studio"
       quote="Plan Your Education - Shape Your Career - Build Your Global Future."
       stripeHeading="KAREER Studio"
