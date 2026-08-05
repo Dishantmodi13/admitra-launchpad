@@ -1,7 +1,7 @@
 export const ivyLeagueHero = {
   eyebrow: "Ivy League Admissions",
   quote: "Ivy League doesn't mean perfect.\nIt means purposeful.",
-  stripeHeading: "Ivy League",
+  stripeHeading: "Ivy League Admissions",
   stripeTagline: "Your future starts at the top - Harvard, Yale, Princeton, Columbia & beyond.",
 };
 

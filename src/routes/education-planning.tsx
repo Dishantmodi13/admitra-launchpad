@@ -77,8 +77,8 @@ function EducationPlanningPage() {
     <PageLayout>
       <StripeHero
         image={heroEducationPlanning}
-        imageAlt="Students collaborating on education planning with books and a tablet"
-        imagePosition="object-[center_40%]"
+        imageAlt="Premium education planning workspace with academic planner, notebook, and roadmap materials"
+        imagePosition="object-[right_35%]"
         quoteEyebrow="Education Planning"
         quote="We pair scientific assessments with senior mentor Judgement to design the next 4-8 years of your academic life."
         stripeHeading="Education Planning"

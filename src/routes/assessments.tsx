@@ -68,8 +68,8 @@ function AssessmentsPage() {
     <PageLayout>
       <StripeHero
         image={heroAssessments}
-        imageAlt="Student reviewing a personalized career assessment report"
-        imagePosition="object-[center_40%]"
+        imageAlt="Personalized career assessment reports, charts, and analytics on a refined study desk"
+        imagePosition="object-[right_35%]"
         quoteEyebrow="Assessment Center"
         quote="Career discovery, resilience profiling, academic-interest mapping, study-abroad readiness, and employability - one trusted platform for students and parents."
         stripeHeading="Assessment Center"

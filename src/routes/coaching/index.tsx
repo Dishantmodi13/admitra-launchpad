@@ -66,8 +66,8 @@ function CoachingPage() {
     <PageLayout>
       <StripeHero
         image={heroCoaching}
-        imageAlt="Student in a live online coaching session with headphones and study materials"
-        imagePosition="object-[center_40%]"
+        imageAlt="Premium online coaching setup with laptop, headphones, and study materials in a warm modern workspace"
+        imagePosition="object-[right_35%]"
         quoteEyebrow="Coaching"
         quote="Five focused programs delivered online by trainers who have helped hundreds of students cross the bar."
         stripeHeading="Coaching"

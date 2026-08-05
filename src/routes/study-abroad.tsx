@@ -48,8 +48,8 @@ function StudyAbroadPage() {
     <PageLayout>
       <StripeHero
         image={heroStudyAbroad}
-        imageAlt="Indian students preparing for an international study abroad journey"
-        imagePosition="object-[center_40%]"
+        imageAlt="International student researching universities on a laptop in a library with globe and textbooks"
+        imagePosition="object-[68%_18%]"
         quoteEyebrow="Career-Focused Study Abroad"
         quote="We pair scientific assessments with senior mentor Judgement to turn your global education dream into a planned, employable career path."
         stripeHeading="Study Abroad"
