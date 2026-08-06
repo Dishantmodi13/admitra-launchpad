@@ -16,7 +16,7 @@ export const ivyLeagueOrigin = {
   eyebrow: "What Is the Ivy League?",
   title: "Eight universities. One century-old legacy.",
   paragraphs: [
-    "The term \"Ivy League\" was coined in 1937 by sportswriter Caswell Adams while covering a football game between Columbia and the University of Pennsylvania. He described the old \"ivy-covered\" campuses of these schools - and the name stuck.",
+    "The term \"Ivy League\" was coined in 1937 by sportswriter Coffaswell Adams while covering a football game between Columbia and the University of Pennsylvania. He described the old \"ivy-covered\" campuses of these schools - and the name stuck.",
     "The Ivy League is a group of eight private universities in the northeastern United States, originally united in the 1950s as an NCAA Division I athletic conference. Their fierce, competitive sports programs attracted major funding, research grants, and world-renowned faculty.",
     "Over time, athletic excellence was matched by outstanding academic performance - earning these eight institutions a reputation as some of the most prestigious universities on Earth, recognized far beyond the United States.",
   ],
