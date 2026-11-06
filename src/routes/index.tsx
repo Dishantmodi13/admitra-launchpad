@@ -68,7 +68,7 @@ const whyChooseReasons = [
 const pillars = [
   { value: 15, suffix: "+", label: "Years of Practice" },
   { value: 500, suffix: "+", label: "Global Admits" },
-  { value: 8, suffix: "", label: "Scientific Assessments" },
+  { value: 9, suffix: "", label: "Scientific Assessments" },
   { value: 40, suffix: "+", label: "Partner Universities" },
 ];
 
