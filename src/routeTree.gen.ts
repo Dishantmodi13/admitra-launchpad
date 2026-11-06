@@ -9,69 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as StudyAbroadRouteImport } from './routes/study-abroad'
-import { Route as RegisterRouteImport } from './routes/register'
-import { Route as ParentingCoachingRouteImport } from './routes/parenting-coaching'
-import { Route as LoginRouteImport } from './routes/login'
-import { Route as KnowledgeRouteImport } from './routes/knowledge'
-import { Route as IvyLeagueRouteImport } from './routes/ivy-league'
-import { Route as EnquiryRouteImport } from './routes/enquiry'
-import { Route as EducationPlanningRouteImport } from './routes/education-planning'
-import { Route as CoachingRouteImport } from './routes/coaching'
-import { Route as BookshelfRouteImport } from './routes/bookshelf'
-import { Route as AssessmentsRouteImport } from './routes/assessments'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AssessmentsRouteImport } from './routes/assessments'
+import { Route as BookshelfRouteImport } from './routes/bookshelf'
+import { Route as CoachingRouteImport } from './routes/coaching'
+import { Route as EducationPlanningRouteImport } from './routes/education-planning'
+import { Route as EnquiryRouteImport } from './routes/enquiry'
+import { Route as IvyLeagueRouteImport } from './routes/ivy-league'
+import { Route as KnowledgeRouteImport } from './routes/knowledge'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as ParentingCoachingRouteImport } from './routes/parenting-coaching'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as StudyAbroadRouteImport } from './routes/study-abroad'
 import { Route as CoachingIndexRouteImport } from './routes/coaching/index'
 import { Route as CoachingSlugRouteImport } from './routes/coaching/$slug'
 
-const StudyAbroadRoute = StudyAbroadRouteImport.update({
-  id: '/study-abroad',
-  path: '/study-abroad',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RegisterRoute = RegisterRouteImport.update({
-  id: '/register',
-  path: '/register',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ParentingCoachingRoute = ParentingCoachingRouteImport.update({
-  id: '/parenting-coaching',
-  path: '/parenting-coaching',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const KnowledgeRoute = KnowledgeRouteImport.update({
-  id: '/knowledge',
-  path: '/knowledge',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IvyLeagueRoute = IvyLeagueRouteImport.update({
-  id: '/ivy-league',
-  path: '/ivy-league',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EnquiryRoute = EnquiryRouteImport.update({
-  id: '/enquiry',
-  path: '/enquiry',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EducationPlanningRoute = EducationPlanningRouteImport.update({
-  id: '/education-planning',
-  path: '/education-planning',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CoachingRoute = CoachingRouteImport.update({
-  id: '/coaching',
-  path: '/coaching',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BookshelfRoute = BookshelfRouteImport.update({
-  id: '/bookshelf',
-  path: '/bookshelf',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AssessmentsRoute = AssessmentsRouteImport.update({
@@ -79,9 +34,54 @@ const AssessmentsRoute = AssessmentsRouteImport.update({
   path: '/assessments',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const BookshelfRoute = BookshelfRouteImport.update({
+  id: '/bookshelf',
+  path: '/bookshelf',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoachingRoute = CoachingRouteImport.update({
+  id: '/coaching',
+  path: '/coaching',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EducationPlanningRoute = EducationPlanningRouteImport.update({
+  id: '/education-planning',
+  path: '/education-planning',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnquiryRoute = EnquiryRouteImport.update({
+  id: '/enquiry',
+  path: '/enquiry',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IvyLeagueRoute = IvyLeagueRouteImport.update({
+  id: '/ivy-league',
+  path: '/ivy-league',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KnowledgeRoute = KnowledgeRouteImport.update({
+  id: '/knowledge',
+  path: '/knowledge',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParentingCoachingRoute = ParentingCoachingRouteImport.update({
+  id: '/parenting-coaching',
+  path: '/parenting-coaching',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyAbroadRoute = StudyAbroadRouteImport.update({
+  id: '/study-abroad',
+  path: '/study-abroad',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CoachingIndexRoute = CoachingIndexRouteImport.update({
@@ -210,74 +210,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/study-abroad': {
-      id: '/study-abroad'
-      path: '/study-abroad'
-      fullPath: '/study-abroad'
-      preLoaderRoute: typeof StudyAbroadRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/register': {
-      id: '/register'
-      path: '/register'
-      fullPath: '/register'
-      preLoaderRoute: typeof RegisterRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/parenting-coaching': {
-      id: '/parenting-coaching'
-      path: '/parenting-coaching'
-      fullPath: '/parenting-coaching'
-      preLoaderRoute: typeof ParentingCoachingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/knowledge': {
-      id: '/knowledge'
-      path: '/knowledge'
-      fullPath: '/knowledge'
-      preLoaderRoute: typeof KnowledgeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ivy-league': {
-      id: '/ivy-league'
-      path: '/ivy-league'
-      fullPath: '/ivy-league'
-      preLoaderRoute: typeof IvyLeagueRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/enquiry': {
-      id: '/enquiry'
-      path: '/enquiry'
-      fullPath: '/enquiry'
-      preLoaderRoute: typeof EnquiryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/education-planning': {
-      id: '/education-planning'
-      path: '/education-planning'
-      fullPath: '/education-planning'
-      preLoaderRoute: typeof EducationPlanningRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/coaching': {
-      id: '/coaching'
-      path: '/coaching'
-      fullPath: '/coaching'
-      preLoaderRoute: typeof CoachingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/bookshelf': {
-      id: '/bookshelf'
-      path: '/bookshelf'
-      fullPath: '/bookshelf'
-      preLoaderRoute: typeof BookshelfRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/assessments': {
@@ -287,11 +224,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AssessmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/bookshelf': {
+      id: '/bookshelf'
+      path: '/bookshelf'
+      fullPath: '/bookshelf'
+      preLoaderRoute: typeof BookshelfRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/coaching': {
+      id: '/coaching'
+      path: '/coaching'
+      fullPath: '/coaching'
+      preLoaderRoute: typeof CoachingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/education-planning': {
+      id: '/education-planning'
+      path: '/education-planning'
+      fullPath: '/education-planning'
+      preLoaderRoute: typeof EducationPlanningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/enquiry': {
+      id: '/enquiry'
+      path: '/enquiry'
+      fullPath: '/enquiry'
+      preLoaderRoute: typeof EnquiryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ivy-league': {
+      id: '/ivy-league'
+      path: '/ivy-league'
+      fullPath: '/ivy-league'
+      preLoaderRoute: typeof IvyLeagueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/knowledge': {
+      id: '/knowledge'
+      path: '/knowledge'
+      fullPath: '/knowledge'
+      preLoaderRoute: typeof KnowledgeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parenting-coaching': {
+      id: '/parenting-coaching'
+      path: '/parenting-coaching'
+      fullPath: '/parenting-coaching'
+      preLoaderRoute: typeof ParentingCoachingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-abroad': {
+      id: '/study-abroad'
+      path: '/study-abroad'
+      fullPath: '/study-abroad'
+      preLoaderRoute: typeof StudyAbroadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/coaching/': {
